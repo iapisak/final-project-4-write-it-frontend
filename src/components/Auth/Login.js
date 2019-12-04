@@ -46,6 +46,7 @@ class Login extends Component {
             .then((res) => {
                 this.props.setCurrentUser(res.data.data.id, res.data.data.name)
                 this.setState(initialState)
+                this.props.loginToggle()
             })
             .catch((err) => this.setState({passwordError: `Invalid password`, emailError: ''}))
         }
@@ -55,8 +56,7 @@ class Login extends Component {
         const { emailError, passwordError } = this.state
 
         return (
-            <div className="container">
-            <form className="form-signin" onSubmit={ this.handleOnSubmit }>
+            <form id="login" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={ this.handleOnSubmit }>
                 <div className="form-label-group">
                     <label htmlFor="email">Email address</label>
                     <input onChange={ this.handleOnChange } type="text" name='email' id="email" className="form-control"  value={this.state.email} />
@@ -69,7 +69,6 @@ class Login extends Component {
                 </div>
                 <button type="submit" className="btn btn-primary">Log in</button>
             </form>
-            </div>
         )
     }
 }

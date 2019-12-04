@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './components/Navbar/Navbar';
-import Signup from './components/Auth/Signup';
-import Login from './components/Auth/Login';
+import Home from './components/Home/Home';
 
 class App extends Component {
   state = {
@@ -28,19 +26,18 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar 
-          logout={this.logout}
-          />
-        <div class="main">
-        <Signup />
-        <Login 
-          currentUser={this.state.currentUser}
-          username={this.state.username}
-          setCurrentUser={this.setCurrentUser}
-        />
+      <>
+        <div className="container">
+          <h1 className="display-3">Hello, world!</h1>
+          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         </div>
-      </div>
+        <Home
+          currentUser={ this.state.currentUser }
+          username={ this.state.username }
+          setCurrentUser={ this.setCurrentUser }
+          logout={ this.logout }
+        />
+      </>
     );
   }
 }

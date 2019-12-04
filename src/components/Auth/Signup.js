@@ -78,6 +78,7 @@ class Signup extends Component {
             if (res.data.status === 201) {
             console.log(res)
             this.setState(initialState)
+            this.props.signupToggle()
             } else {
                 this.setState({ emailError: `Invalid Email, Please try again`, password2Error: ''})
             }
@@ -88,8 +89,7 @@ class Signup extends Component {
 
   render() {
     return (
-        <div className="container">
-        <form id="signup" onSubmit={this.handleSubmit}>
+        <form id="signup" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="email" name="email" placeholder="Email" value={this.state.email} />
                 <div className='alert'>{this.state.emailError}</div>
@@ -112,7 +112,6 @@ class Signup extends Component {
             </div>
             <button className="btn btn-primary float-right" type="submit">Sign up</button>
         </form>
-        </div>
     );
   }
 }
