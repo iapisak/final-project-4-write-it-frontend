@@ -6,6 +6,13 @@ import PostDetail from '../Post/postDetail';
 class PostContainer extends Component {
     state = {
         posts: [],
+        isToggle: false,
+    }
+
+    isToggle = () => {
+        this.setState({ 
+            loginToggle: !this.state.loginToggle, 
+        });
     }
 
     componentDidMount () {
@@ -32,9 +39,9 @@ class PostContainer extends Component {
                     <p>{ this.props.channelDetail }</p>
 
                     <CreatePosts 
-                    currentUser={ this.props.currentUser }
-                    channel={ this.props.channel }
-                    handleSubmit={ this.handleSubmit } />
+                        currentUser={ this.props.currentUser }
+                        channel={ this.props.channel }
+                        handleSubmit={ this.handleSubmit } />
                 </div>
 
                 {this.state.posts.map(post => (

@@ -60,8 +60,8 @@ class Login extends Component {
         return (
             <form id="login" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={ this.handleOnSubmit }>
                 <div className="form-label-group">
-                    <label htmlFor="email">Email address</label>
-                    <input onChange={ this.handleOnChange } type="text" name='email' id="email" className="form-control"  value={this.state.email} />
+                    <label htmlFor="email-address">Email address</label>
+                    <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
                     <div className='alert'>{emailError}</div>
                 </div>
                 <div className="form-label-group">

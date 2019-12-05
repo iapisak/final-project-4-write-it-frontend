@@ -67,12 +67,12 @@ class CreatePosts extends Component{
         <form>
         <div className="form-group">
             <label for="exampleFormControlInput1">Title</label>
-            <input onChange={this.handleChange} type="email" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />
+            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />
             <div>{this.state.titleError}</div>
         </div>
         <div className="form-group">
             <label for="exampleFormControlInput1">Photo</label>
-            <input onChange={this.handleChange} type="email" className="form-control" id="exampleFormControlInput1" name="photo" value={this.state.photo} />
+            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="photo" value={this.state.photo} />
         </div>
         <div className="form-group">
             <label for="exampleFormControlTextarea1">Contents</label>
