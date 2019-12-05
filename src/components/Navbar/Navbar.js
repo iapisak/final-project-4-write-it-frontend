@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
-import CreatePost from '../Home/Post/createPost';
 
 class Navbar extends Component {
 
     authenticated = (currentUser) => {
         const isUser = (
             <>
-                <li className="nav-link" data-toggle="modal" data-target="#createPost">Create</li>
                 <li className="nav-link" onClick={ this.props.logout }>Sign out</li>
             </>
         )
@@ -60,9 +58,6 @@ class Navbar extends Component {
             <Signup 
                 toggle={ this.props.signup }
                 signupToggle={ this.props.signupToggle } />
-            <CreatePost 
-                currentUser={ this.props.currentUser }
-                category={this.props.category} />
             </>
         )
     }

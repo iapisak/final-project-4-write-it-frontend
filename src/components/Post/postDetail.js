@@ -6,7 +6,7 @@ const postDetail = (props) => {
         <div>
             <h3>{props.detail.title}</h3>
             <p>{props.detail.content}</p>
-            <p>{props.detail.user}</p>
+            <p>User id : {props.detail.user}</p>
         </div>
     )
 }

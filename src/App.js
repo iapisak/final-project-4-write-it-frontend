@@ -65,14 +65,13 @@ class App extends Component {
         loginToggle={ this.loginToggle }
         signupToggle={ this.signupToggle } 
         category={ this.state.channel } />
-        <div className="container">
+
+        <main className="container" style={{ display: this.state.mainToggle ? 'block': 'none' }}>
           <Routes 
             currentUser={ this.state.currentUser } 
-            setCurrentUser={ this.setCurrentUser }
-            mainToggle={ this.state.mainToggle }
-            category={ this.state.channel }  />
-        </div>
-
+            username={ this.state.username }
+            category={ this.state.channel } />
+        </main>
       </>
     );
   }
