@@ -73,10 +73,9 @@ class Signup extends Component {
     const formValidation = this.formValidation()
 
     if (formValidation) {
-        axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state)
+        axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state,)
         .then((res) => {
             if (res.data.status === 201) {
-            console.log(res)
             this.setState(initialState)
             this.props.signupToggle()
             } else {
