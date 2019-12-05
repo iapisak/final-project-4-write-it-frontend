@@ -10,10 +10,14 @@ class Home extends Component {
             <section className="d-flex">
                 <PostContainer 
                     currentUser={ this.props.currentUser } 
-                    channel={ this.props.channel } />
+                    channel={ this.props.channel } 
+                    channelName={ this.props.channelName } 
+                    channelDetail={ this.props.channelDetail } 
+                    channelPhoto={ this.props.channelPhoto } />
 
                 <div className="col-3">
                     <h4>Channel</h4>
+                    <div><a href="/">General</a></div>
                     {this.props.category.map((channel) => (
                     <Channel name={ channel.name } key={ channel._id } />
                 ))}

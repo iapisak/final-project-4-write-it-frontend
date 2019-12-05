@@ -7,16 +7,11 @@ const initialState = {
       titleError: '',
       contentError: '',
       disabled: true,
-    //   channel: '',
 };
 
 class CreatePosts extends Component{
     state = initialState
     
-    // categoryList = (e) =>{
-    //   this.setState({ channel: e.target.value })
-    // }
-
     postValidation = () => {
       const { title, content } = this.state
       let titleError = ''
@@ -67,6 +62,8 @@ class CreatePosts extends Component{
   render() {
     return (
       <>
+      {this.props.currentUser ? 
+
         <form>
         <div className="form-group">
             <label for="exampleFormControlInput1">Title</label>
@@ -88,6 +85,8 @@ class CreatePosts extends Component{
             className={`btn btn-primary ${this.state.disable}`}
             disabled={this.state.disabled}> Post</button>
         </form>
+
+        : null }
       </>
       );
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 const initialState = {
@@ -78,6 +79,7 @@ class Signup extends Component {
             if (res.data.status === 201) {
             this.setState(initialState)
             this.props.signupToggle()
+            this.props.history.push('/')
             } else {
                 this.setState({ emailError: `Invalid Email, Please try again`, password2Error: ''})
             }
@@ -115,4 +117,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

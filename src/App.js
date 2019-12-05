@@ -26,6 +26,7 @@ class App extends Component {
     axios.delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true }
     ).then(res => {
       this.setState({ currentUser: null, username: '' });
+      this.props.history.push('/');
       })
       .catch(err => console.log(err));
   };

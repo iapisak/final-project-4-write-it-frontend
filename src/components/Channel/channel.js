@@ -3,7 +3,7 @@ import React from 'react';
 const Channel = (props) => {
     return (
         <div>
-            <div>{props.name}</div>
+            <a href={`/${props.name}`}>{props.name}</a>
         </div>
     )
 }

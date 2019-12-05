@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 const initialState = {
@@ -47,6 +48,7 @@ class Login extends Component {
                 this.props.setCurrentUser(res.data.data.id, res.data.data.name)
                 this.setState(initialState)
                 this.props.loginToggle()
+                this.props.history.push('/')
             })
             .catch((err) => this.setState({passwordError: `Invalid password`, emailError: ''}))
         }
@@ -73,4 +75,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default withRouter(Login)

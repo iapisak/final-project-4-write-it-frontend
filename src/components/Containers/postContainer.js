@@ -9,9 +9,8 @@ class PostContainer extends Component {
     }
 
     componentDidMount () {
-        const channel = this.props.channel
-        // console.log(channel)
-        axios.get(`${process.env.REACT_APP_API_URL}/posts/${channel}`)
+        const channel_Id = this.props.channel
+        axios.get(`${process.env.REACT_APP_API_URL}/posts/${channel_Id}`)
         .then((res) => {
             this.setState({posts: res.data.data})
         })
@@ -28,13 +27,20 @@ class PostContainer extends Component {
     render () {
         return (
             <div>
-                {this.state.posts.map(post => (
-                    <PostDetail detail={ post }/>
-                ))}
-                <CreatePosts 
+                <div className="topic-container">
+                    <h2>{ this.props.channelName } Topic</h2>
+                    <p>{ this.props.channelDetail }</p>
+
+                    <CreatePosts 
                     currentUser={ this.props.currentUser }
                     channel={ this.props.channel }
                     handleSubmit={ this.handleSubmit } />
+                </div>
+
+                {this.state.posts.map(post => (
+                    <PostDetail detail={ post }/>
+                ))}
+
             </div>
         )
     }
