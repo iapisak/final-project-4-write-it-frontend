@@ -137,6 +137,7 @@ class PostDetailsContainer extends Component {
                 <div>
                     <h2>{ title }</h2>
                     <p>{ content }</p>
+                    <p>Post By : {this.props.userSlug}</p>
                     { this.props.currentUser === this.state.userId ? 
                         <>
                             <button onClick={ this.handleEditChange } className="btn btn-primary" >Edit</button>

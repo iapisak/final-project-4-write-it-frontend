@@ -37,7 +37,7 @@ class Signup extends Component {
 
     if (lastName === '') {
         lastNameError = `This field can not be empty`
-      } else if (name.length < 3 && name !== Number ) {
+      } else if (lastName.length < 3 && name !== Number ) {
         lastNameError = `Last Name must be at least 3 characters`
       }
 

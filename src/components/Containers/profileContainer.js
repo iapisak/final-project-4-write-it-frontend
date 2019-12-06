@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Profile from '../Profile/Profile';
+import ProfilePosts from '../Profile/ProflePosts';
 
 class ProfileContainer extends Component {
     state = {
@@ -30,9 +31,17 @@ class ProfileContainer extends Component {
 
     render () {
         return (
-            <>
-                <Profile />
-            </>
+            <div>
+                <Profile user= { this.state.profile }/>
+                <div>
+                    <h1>Your Posts</h1>
+                    { this.state.posts.map( posts => (
+                        <ProfilePosts 
+                            posts= { posts }
+                        />
+                    )) }
+                </div>
+            </div>
         )
     }
 }
