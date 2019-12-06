@@ -10,7 +10,7 @@ class ProfilePosts extends Component {
                     <h3>{ this.props.posts.title }</h3>
                 </Link>
                 <p>{ this.props.posts.content }</p>
-                <p>Post By : { this.props.posts.userSlug }</p>
+                {/* <p>Post By : { this.props.posts.userSlug }</p> */}
             </div>
         )
     }

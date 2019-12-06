@@ -8,6 +8,7 @@ import CommentDetails from '../Comments/CommentDetails';
 class PostDetailsContainer extends Component {
     state = {
         userId: '',
+        userSlug: '',
         postId: '',
         title: '',
         photo: '',
@@ -23,8 +24,10 @@ class PostDetailsContainer extends Component {
         const post_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/posts/post_detail/${post_Id}`)
         .then((res) => {
+            console.log(res.data.data)
             this.setState({ 
                 userId: res.data.data.user,
+                userSlug: res.data.data.userSlug,
                 postId: res.data.data._id,
                 title: res.data.data.title,
                 photo: res.data.data.photo,
@@ -39,7 +42,6 @@ class PostDetailsContainer extends Component {
         const post_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/comment/post/${post_Id}`)
         .then((res) => {
-            console.log(res.data.data)
             this.setState({ comments: res.data.data})
         })
     }
@@ -61,7 +63,6 @@ class PostDetailsContainer extends Component {
             return false
         }
         if (title !== '' && content !== '') {
-            console.log(true)
             this.setState({disabled:false, titleError, contentError})
             return true
         }
@@ -137,7 +138,11 @@ class PostDetailsContainer extends Component {
                 <div>
                     <h2>{ title }</h2>
                     <p>{ content }</p>
-                    <p>Post By : {this.props.userSlug}</p>
+                    
+                    <p>Post By : 
+                        <a href={`/profile/${this.state.userId}`}>{this.state.userSlug}</a>
+                    </p>
+
                     { this.props.currentUser === this.state.userId ? 
                         <>
                             <button onClick={ this.handleEditChange } className="btn btn-primary" >Edit</button>

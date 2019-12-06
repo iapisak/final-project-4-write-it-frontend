@@ -62,25 +62,10 @@ class Profile extends Component {
     handdleOnEdit = () => {
         this.setState({ editing: !this.state.editing });
         setTimeout(1000)
-
-        // if (this.state.editing === true) {
-        //     const user_Id = localStorage.getItem('uid')
-        //     console.log(user_Id)
-        //     axios.get(`${process.env.REACT_APP_API_URL}/profile/${user_Id}`)
-        //     .then((res) => {
-        //         console.log(res.data.data)
-        //         this.setState({
-        //             name: res.data.data.name,
-        //             lastName: res.data.data.lastName,
-        //             email: res.data.data.email,
-        //             slug: res.data.data.slug,
-        //         })
-        //     })
-        // }
     }
 
     componentDidMount () {
-        const user_Id = localStorage.getItem('uid')
+        const user_Id = this.props.user_Id
         console.log(user_Id)
         axios.get(`${process.env.REACT_APP_API_URL}/profile/${user_Id}`)
         .then((res) => {
@@ -94,28 +79,38 @@ class Profile extends Component {
         })
     }
 
-
     handleEditSubmit = (e) => {
         e.preventDefault()
+        const validation = this.formValidation()
+        if (validation) {
         const user_Id = localStorage.getItem('uid')
         axios.put(`${process.env.REACT_APP_API_URL}/profile/edit/${user_Id}`, this.state)
         .then((res) => {
             this.setState({ editing: !this.state.editing });
-         })
+         })}
     }
 
     render() {
+        const currentUser = localStorage.getItem('uid')
+        console.log(currentUser)
+        console.log(this.props.user_Id)
         return (
             !this.state.editing ? 
             <>
-                <div><h1>Profile : {this.props.user.slug}</h1></div>
-                <div>Name : {this.props.user.name}-{this.props.user.lastName}</div>
-                <div>Email : {this.props.user.email}</div>
+                <div><h1>Profile : {this.state.slug}</h1></div>
+                <div>Name : {this.state.name}-{this.props.user.lastName}</div>
+                <div>Email : {this.state.email}</div>
                 <div>Join Date : {this.props.user.signup_date}</div>
-                <button
-                    className={`btn btn-primary`}
-                    onClick={ this.handdleOnEdit }
-                    >Edit Profile</button>
+
+                { currentUser === this.props.user_Id 
+                ?
+                    <button
+                        className={`btn btn-primary`}
+                        onClick={ this.handdleOnEdit }
+                        >Edit Profile</button>
+                :
+                null
+                }
             </>
             :
             <>
@@ -123,21 +118,21 @@ class Profile extends Component {
                     <h1>Edit Your Profile</h1>
                     <div className="form-group">
                         <label htmlFor="slug">Profile Name</label>
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" 
+                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="slug" name="slug" 
                             value={ this.state.slug }/>
-                        <div>{this.state.slugError}</div>
+                        <div>{ this.state.slugError }</div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" 
+                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="name" name="name" 
                             value={ this.state.name }/>
-                        <div>{this.state.nameError}</div>
+                        <div>{ this.state.nameError }</div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="lastName" name="lastName" 
+                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="lastName" name="lastName" 
                         value={ this.state.lastName }/>
-                        <div>{this.state.lastNameError}</div>
+                        <div>{ this.state.lastNameError }</div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>

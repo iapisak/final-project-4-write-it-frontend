@@ -13,7 +13,7 @@ class ProfileContainer extends Component {
     }
 
     componentDidMount () {
-        const user_Id = this.props.currentUser
+        const user_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/profile/${user_Id}`)
         .then((res) => {
             this.setState({ profile: res.data.data })
@@ -22,7 +22,7 @@ class ProfileContainer extends Component {
     }
 
     fetchPosts = () => {
-        const user_Id = this.props.currentUser
+        const user_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/profile/posts/${user_Id}`)
         .then((res) => {
             this.setState({ posts: res.data.data })
@@ -32,7 +32,9 @@ class ProfileContainer extends Component {
     render () {
         return (
             <div>
-                <Profile user= { this.state.profile }/>
+                <Profile 
+                    user_Id = { this.props.id }
+                    user= { this.state.profile }/>
                 <div>
                     <h1>Your Posts</h1>
                     { this.state.posts.map( posts => (

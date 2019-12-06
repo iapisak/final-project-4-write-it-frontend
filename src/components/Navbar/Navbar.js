@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 
+import './Navbar.css'
+
 class Navbar extends Component {
+    state = {
+        dropdown: '',
+        change: false,
+
+    }
 
     authenticated = (currentUser) => {
         const isUser = (
@@ -28,6 +35,13 @@ class Navbar extends Component {
         }
     }
 
+    handleDropdown = (e) =>{
+        this.setState({
+          dropdown: e.target.value,
+          changed: true
+        })
+    }
+
     render() {
         return (
             <>
@@ -36,7 +50,6 @@ class Navbar extends Component {
                 <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             </div>
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                <a className="navbar-brand" href="/">Writeit</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -45,10 +58,20 @@ class Navbar extends Component {
                         <li className="nav-item active">
                             <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                         </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link" href="#">News</a>
-                        </li> */}
+
+                        <div className="dropdown">
+                            <button className="dropbtn">Channel</button>
+                            <div className="dropdown-content">
+
+                                {this.props.category.map(channel=>{
+                                    return <a href={ `/${channel.name}` }>{ channel.name }</a>
+                                })}
+
+                            </div>
+                        </div>
+
                         { this.authenticated(this.props.currentUser) }
+
                     </ul>
                 </div>
             </nav>

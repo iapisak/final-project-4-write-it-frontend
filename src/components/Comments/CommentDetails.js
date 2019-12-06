@@ -2,10 +2,16 @@ import React from 'react';
 import axios from 'axios';
 
 const CommentDetails = (props) => {
+    console.log(props)
     return (
         <>
         <div>{ props.detail.comment }</div>
-        <div>Comment by : { props.detail.userSlug }</div>
+        <div>Comment by : 
+            <a href={`/profile/${props.detail.user}`}>
+                { props.detail.userSlug }
+            </a>
+        </div>
+
         { props.currentUser === props.detail.user ?
         <button 
             onClick={()=> {
