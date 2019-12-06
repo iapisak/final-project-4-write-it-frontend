@@ -43,19 +43,14 @@ class CreatePosts extends Component{
     handleSubmit = (e) => {
         e.preventDefault()
         const postValidation = this.postValidation()
-        const userId = this.props.currentUser
-        const newPosts = {
-          title: this.state.title,
-          content: this.state.content,
-          photo: this.state.photo,
-          user: userId,
-          channel: this.props.channel,
-        }
+        const user = this.props.currentUser
+        const userSlug = this.props.userSlug
+        const channel = this.props.channel
+        const newPosts = {...this.state, user, userSlug, channel}
 
         if (postValidation) {
           this.props.handleSubmit(e, newPosts);
           this.setState(initialState)
-
         }
     }
 

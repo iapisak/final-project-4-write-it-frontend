@@ -7,6 +7,9 @@ class Navbar extends Component {
     authenticated = (currentUser) => {
         const isUser = (
             <>
+                <li className="nav-link">
+                    <a href={`/profile/${this.props.currentUser}`}>Profile</a>
+                </li>
                 <li className="nav-link" onClick={ this.props.logout }>Sign out</li>
             </>
         )

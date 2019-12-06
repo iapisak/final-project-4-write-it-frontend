@@ -6,6 +6,7 @@ const initialState = {
     name: '',
     lastName: '',
     email: '',
+    slug: '',
     password: '',
     password2: '',
     
@@ -98,6 +99,9 @@ class Signup extends Component {
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" placeholder="Name" value={this.state.name} />
                 <div className='alert'>{this.state.nameError}</div>
+            </div>
+            <div className="form-group">
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" placeholder="Profile-Name" value={this.state.slug} />
             </div>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="lastName" name="lastName" placeholder="Last name" value={this.state.lastName} />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 const initialState = {
     comment: '',
@@ -32,12 +31,10 @@ class Comments extends Component {
         e.preventDefault()
         const post = this.props.post_Id
         const user = this.props.currentUser
-        const newState = {...this.state, post, user}
-        axios.put(`${process.env.REACT_APP_API_URL}/comment/create`, newState)
-        .then((res) => {
-            this.setState(initialState)
-         })
-        .catch(err => console.log(err))
+        const userSlug = this.props.userSlug
+        const newState = {...this.state, post, user, userSlug}
+        this.props.handleCommentSubmit(e, newState)
+        this.setState(initialState)
     }
 
     handleChange = (e) => {

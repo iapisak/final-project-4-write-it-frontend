@@ -45,7 +45,8 @@ class Login extends Component {
         if (formValidation) {
             axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state, { withCredentials: true })
             .then((res) => {
-                this.props.setCurrentUser(res.data.data.id, res.data.data.name)
+                console.log(res.data.data)
+                this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug)
                 this.setState(initialState)
                 this.props.loginToggle()
                 this.props.history.push('/')

@@ -23,7 +23,6 @@ class PostDetailsContainer extends Component {
         const post_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/posts/post_detail/${post_Id}`)
         .then((res) => {
-            // console.log(res.data.data)
             this.setState({ 
                 userId: res.data.data.user,
                 postId: res.data.data._id,
@@ -67,7 +66,7 @@ class PostDetailsContainer extends Component {
             return true
         }
     }
-
+    // ==== Handle on Posts ==== //
     handleDelete = () => {
         const post_Id = this.state.postId
         axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`,{withCredentials:true})
@@ -93,6 +92,16 @@ class PostDetailsContainer extends Component {
     handleEditChange = (e) => {
         e.preventDefault();
         this.setState({ editing: !this.state.editing });
+    }
+
+    // ==== Handle on Comment ==== //
+    handleCommentSubmit = (e, newState) => {
+        e.preventDefault()
+        axios.put(`${process.env.REACT_APP_API_URL}/comment/create`, newState)
+        .then((res) => {
+            this.componentDidMount()
+         })
+        .catch(err => console.log(err))
     }
 
     render () {
@@ -137,12 +146,17 @@ class PostDetailsContainer extends Component {
                 </div>
 
                 {this.state.comments.map(comment => (
-                    <CommentDetails detail={ comment }/>
+                    <CommentDetails 
+                        currentUser= { this.props.currentUser }
+                        detail={ comment }
+                    />
                 ))}
 
                 <Comments
                     currentUser={ this.props.currentUser }
+                    userSlug={ this.props.userSlug }
                     post_Id={ this.state.postId }
+                    handleCommentSubmit={ this.handleCommentSubmit }
                 />
             
             </>

@@ -8,16 +8,18 @@ class App extends Component {
   state = {
     currentUser: localStorage.getItem('uid'),
     username: localStorage.getItem('username'),
+    userSlug: localStorage.getItem('slug'),
     loginToggle: false,
     signupToggle: false,
     mainToggle: true,
     channel: [],
   }
 
-  setCurrentUser = (userId, username) => {
-    this.setState({ currentUser: userId, username });
+  setCurrentUser = (userId, username, userSlug) => {
+    this.setState({ currentUser: userId, username, userSlug });
     localStorage.setItem('uid', userId);
     localStorage.setItem('username', username);
+    localStorage.setItem('slug', userSlug);
   };
 
   logout = () => {
@@ -71,6 +73,7 @@ class App extends Component {
           <Routes 
             currentUser={ this.state.currentUser } 
             username={ this.state.username }
+            userSlug={ this.state.userSlug}
             category={ this.state.channel } />
         </main>
       </>

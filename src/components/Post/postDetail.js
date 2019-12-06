@@ -9,7 +9,7 @@ const postDetail = (props) => {
                 <h3>{props.detail.title}</h3>
             </Link>
             <p>{props.detail.content}</p>
-            <p>User id : {props.detail.user}</p>
+            <p>Post By : {props.detail.userSlug}</p>
         </div>
     )
 }

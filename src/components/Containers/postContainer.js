@@ -3,6 +3,8 @@ import axios from 'axios';
 import CreatePosts from '../Post/createPosts';
 import PostDetail from '../Post/postDetail';
 
+import '../Containers/postcontainer.css'
+
 class PostContainer extends Component {
     state = {
         posts: [],
@@ -17,7 +19,7 @@ class PostContainer extends Component {
         const channel_Id = this.props.channel
         axios.get(`${process.env.REACT_APP_API_URL}/posts/${channel_Id}`)
         .then((res) => {
-            this.setState({posts: res.data.data})
+            this.setState({ posts: res.data.data })
         })
     }
 
@@ -32,29 +34,30 @@ class PostContainer extends Component {
 
     render () {
         return (
-            <div>
-                <div className="topic-container">
-                    <h2>{ this.props.channelName } Topic</h2>
-                    <p>{ this.props.channelDetail }</p>
-
-                    {this.props.currentUser ? 
-                    <button onClick={ this.isToggle } className="btn btn-primary">Post</button>
-                    : 
-                    <button className="btn btn-primary">You must be log in</button>}
-
+            <>
+                <div className="flex-grow-1" >
+                    <div className="topic-container" style={{ backgroundImage:`url('${ this.props.channelPhoto}')` }}>
+                        <h2>{ this.props.channelName } Topic</h2>
+                        <p>{ this.props.channelDetail }</p>
+                        {this.props.currentUser ? 
+                        <button onClick={ this.isToggle } className="btn btn-primary"> Post </button>
+                        : 
+                        <button className="btn btn-primary float-right">You must be log in</button>}
+                    </div>
                     <CreatePosts 
                         toggle={ this.state.isToggle }
                         isToggle
                         currentUser={ this.props.currentUser }
+                        userSlug={ this.props.userSlug }
                         channel={ this.props.channel }
                         handleSubmit={ this.handleSubmit } />
-                </div>
+                
 
                 {this.state.posts.map(post => (
                     <PostDetail detail={ post }/>
                 ))}
-
-            </div>
+                </div>
+            </>
         )
     }
 }

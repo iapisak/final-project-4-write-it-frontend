@@ -10,6 +10,7 @@ class Home extends Component {
             <section className="d-flex">
                 <PostContainer 
                     currentUser={ this.props.currentUser } 
+                    userSlug={ this.props.userSlug }
                     channel={ this.props.channel } 
                     channelName={ this.props.channelName } 
                     channelDetail={ this.props.channelDetail } 
