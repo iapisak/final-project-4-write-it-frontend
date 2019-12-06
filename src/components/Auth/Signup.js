@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 const initialState = {
     name: '',
     lastName: '',
     email: '',
+    slug: '',
     password: '',
     password2: '',
     
@@ -73,11 +75,12 @@ class Signup extends Component {
     const formValidation = this.formValidation()
 
     if (formValidation) {
-        axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state)
+        axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state,)
         .then((res) => {
             if (res.data.status === 201) {
-            console.log(res)
             this.setState(initialState)
+            this.props.signupToggle()
+            this.props.history.push('/')
             } else {
                 this.setState({ emailError: `Invalid Email, Please try again`, password2Error: ''})
             }
@@ -88,8 +91,7 @@ class Signup extends Component {
 
   render() {
     return (
-        <div className="container">
-        <form id="signup" onSubmit={this.handleSubmit}>
+        <form id="signup" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={this.handleSubmit}>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="email" name="email" placeholder="Email" value={this.state.email} />
                 <div className='alert'>{this.state.emailError}</div>
@@ -97,6 +99,9 @@ class Signup extends Component {
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" placeholder="Name" value={this.state.name} />
                 <div className='alert'>{this.state.nameError}</div>
+            </div>
+            <div className="form-group">
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" placeholder="Profile-Name" value={this.state.slug} />
             </div>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="lastName" name="lastName" placeholder="Last name" value={this.state.lastName} />
@@ -112,9 +117,8 @@ class Signup extends Component {
             </div>
             <button className="btn btn-primary float-right" type="submit">Sign up</button>
         </form>
-        </div>
     );
   }
 }
 
-export default Signup;
+export default withRouter(Signup);
