@@ -10,9 +10,7 @@ class PostContainer extends Component {
     }
 
     isToggle = () => {
-        this.setState({ 
-            loginToggle: !this.state.loginToggle, 
-        });
+        this.setState({ isToggle: !this.state.isToggle });
     }
 
     componentDidMount () {
@@ -27,7 +25,8 @@ class PostContainer extends Component {
         e.preventDefault()
         axios.post(`${process.env.REACT_APP_API_URL}/posts/create`, newPosts)
         .then((res) => {
-           this.componentDidMount()
+            this.isToggle()
+            this.componentDidMount()
          })
     }
 
@@ -38,7 +37,14 @@ class PostContainer extends Component {
                     <h2>{ this.props.channelName } Topic</h2>
                     <p>{ this.props.channelDetail }</p>
 
+                    {this.props.currentUser ? 
+                    <button onClick={ this.isToggle } className="btn btn-primary">Post</button>
+                    : 
+                    <button className="btn btn-primary">You must be log in</button>}
+
                     <CreatePosts 
+                        toggle={ this.state.isToggle }
+                        isToggle
                         currentUser={ this.props.currentUser }
                         channel={ this.props.channel }
                         handleSubmit={ this.handleSubmit } />

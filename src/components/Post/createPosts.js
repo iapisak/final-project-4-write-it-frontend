@@ -63,19 +63,18 @@ class CreatePosts extends Component{
     return (
       <>
       {this.props.currentUser ? 
-
-        <form>
+        <form style={{ display: this.props.toggle ? 'block': 'none' }}>
         <div className="form-group">
-            <label for="exampleFormControlInput1">Title</label>
+            <label htmlFor="exampleFormControlInput1">Title</label>
             <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />
             <div>{this.state.titleError}</div>
         </div>
         <div className="form-group">
-            <label for="exampleFormControlInput1">Photo</label>
+            <label htmlFor="exampleFormControlInput1">Photo</label>
             <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="photo" value={this.state.photo} />
         </div>
         <div className="form-group">
-            <label for="exampleFormControlTextarea1">Contents</label>
+            <label htmlFor="exampleFormControlTextarea1">Contents</label>
             <textarea onChange={this.handleChange} className="form-control" id="exampleFormControlTextarea1" name="content" value={this.state.content} rows="3"></textarea>
             <div>{this.state.contentError}</div>
         </div>
@@ -83,7 +82,7 @@ class CreatePosts extends Component{
             type="submit"
             onClick={this.handleSubmit}
             className={`btn btn-primary ${this.state.disable}`}
-            disabled={this.state.disabled}> Post</button>
+            disabled={this.state.disabled}>Submit</button>
         </form>
 
         : null }
