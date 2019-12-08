@@ -1,7 +1,43 @@
 .topic-container {
+    position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: none;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    color: white;
+    font-size: 105%;
+}
+
+.topic-container h2 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.channel-detail {
+    margin: 40px 0 30px 0;
+}
+
+.post-button-option {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.postsDetail-container {
+    margin-bottom: 20px;
+}
+
+.postsDetail-container img {
+    width: 100%;
+}
+
+.comment-form-container {
+    background-color: #efefef;
+    margin: 40px 0;
+    padding: 5% 0;
+}
+
+.comment-form {
+    background-color: white;
+    width: 50%;
 }

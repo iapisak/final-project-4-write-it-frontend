@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Comment.css'
+
 const initialState = {
     comment: '',
     commentError: '',
@@ -44,20 +46,21 @@ class Comments extends Component {
     render() {
         return (
             this.props.currentUser ?
-            <form>
-            <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea1">Comment</label>
-                <textarea onChange={this.handleChange} className="form-control" id="exampleFormControlTextarea1" name="comment"  rows="3" value={ this.state.comment } ></textarea>
-                <div>{this.state.commentError}</div>
+            <div className="comment-box">
+                <form>
+                <div className="form-group">
+                    <textarea onChange={this.handleChange} className="form-control" name="comment"  rows="3" value={ this.state.comment } placeholder="Join the discussion..."></textarea>
+                    <div>{this.state.commentError}</div>
+                </div>
+                
+                <button
+                    type="submit"
+                    className={`btn btn-primary`}
+                    onClick={ this.handleSubmit }
+                    disabled={ this.state.disabled } >
+                    Send your comment</button>
+                </form>
             </div>
-            
-            <button
-                type="submit"
-                className={`btn btn-primary`}
-                onClick={ this.handleSubmit }
-                disabled={ this.state.disabled } >
-                Send your comment</button>
-            </form>
             :
             null
         )

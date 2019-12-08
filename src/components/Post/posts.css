@@ -1,0 +1,28 @@
+.posts-detail {
+    margin-bottom: 20px;
+    /* padding: 20px; */
+}
+
+.posts-detail h5 {
+    font-family: 'Abril Fatface', cursive;
+    font-weight: normal;
+    color: black;
+}
+
+.posts-detail h4:hover {
+    color: coral;
+}
+
+.posts-detail img {
+    width: 300px;
+    height: auto;
+}
+
+.posts-content-box {
+    padding: 0 0 20px 20px;
+}
+
+.posts-content {
+    margin-bottom: 30px;
+}
+

@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import Routes from './config/Routes';
 import Navbar from './components/Navbar/Navbar';
 
+import './App.css'
+
 class App extends Component {
   state = {
     currentUser: localStorage.getItem('uid'),
@@ -70,7 +72,7 @@ class App extends Component {
         signupToggle={ this.signupToggle } 
         category={ this.state.channel } />
 
-        <main className="container" style={{ display: this.state.mainToggle ? 'block': 'none' }}>
+        <main style={{ display: this.state.mainToggle ? 'block': 'none' }}>
           <Routes 
             currentUser={ this.state.currentUser } 
             username={ this.state.username }

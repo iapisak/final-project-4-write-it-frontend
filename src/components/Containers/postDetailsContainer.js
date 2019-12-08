@@ -5,6 +5,8 @@ import axios from 'axios';
 import Comments from '../Comments/Comments';
 import CommentDetails from '../Comments/CommentDetails';
 
+import './postcontainer.css'
+
 class PostDetailsContainer extends Component {
     state = {
         userId: '',
@@ -110,7 +112,7 @@ class PostDetailsContainer extends Component {
 
         return (
             this.state.editing ? 
-            <form>
+            <form className="container">
                 <div className="form-group">
                     <label for="exampleFormControlInput1">Title</label>
                     <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput1" name="title" value={ title } />
@@ -135,35 +137,43 @@ class PostDetailsContainer extends Component {
 
             :
             <>
-                <div>
-                    <h2>{ title }</h2>
-                    <p>{ content }</p>
-                    
-                    <p>Post By : 
-                        <a href={`/profile/${this.state.userId}`}>{this.state.userSlug}</a>
-                    </p>
+                <section className="container">
+                    <div className="postsDetail-container">
+                        <h2>{ title }</h2>
+                        <img src={ this.state.photo } alt={ this.state.title } / >
+                        <p>{ content }</p>
+                        
+                        <p>Post By : 
+                            <a href={`/profile/${this.state.userId}`}>{this.state.userSlug}</a>
+                        </p>
 
-                    { this.props.currentUser === this.state.userId ? 
-                        <>
-                            <button onClick={ this.handleEditChange } className="btn btn-primary" >Edit</button>
-                            <button onClick={ this.handleDelete } className="btn btn-primary">Delete</button>
-                        </>
-                    : null }
+                        { this.props.currentUser === this.state.userId ? 
+                            <>
+                                <button onClick={ this.handleEditChange } className="btn btn-primary" >Edit</button>
+                                <button onClick={ this.handleDelete } className="btn btn-primary">Delete</button>
+                            </>
+                        : null }
+                    </div>
+                    <div className="comment-container">
+                        {this.state.comments.map(comment => (
+                            <CommentDetails 
+                                currentUser= { this.props.currentUser }
+                                detail={ comment }
+                            />
+                        ))}
+                    </div>
+                </section>
+                <div className="comment-form-container">
+                    <h1 className="text-center">Comment on this article</h1>
+                    <div className="comment-form container">
+                        <Comments
+                            currentUser={ this.props.currentUser }
+                            userSlug={ this.props.userSlug }
+                            post_Id={ this.state.postId }
+                            handleCommentSubmit={ this.handleCommentSubmit }
+                        />
+                    </div>
                 </div>
-
-                {this.state.comments.map(comment => (
-                    <CommentDetails 
-                        currentUser= { this.props.currentUser }
-                        detail={ comment }
-                    />
-                ))}
-
-                <Comments
-                    currentUser={ this.props.currentUser }
-                    userSlug={ this.props.userSlug }
-                    post_Id={ this.state.postId }
-                    handleCommentSubmit={ this.handleCommentSubmit }
-                />
             
             </>
         )

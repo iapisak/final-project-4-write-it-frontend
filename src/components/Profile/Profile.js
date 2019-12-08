@@ -66,10 +66,8 @@ class Profile extends Component {
 
     componentDidMount () {
         const user_Id = this.props.user_Id
-        console.log(user_Id)
         axios.get(`${process.env.REACT_APP_API_URL}/profile/${user_Id}`)
         .then((res) => {
-            console.log(res.data.data)
             this.setState({
                 name: res.data.data.name,
                 lastName: res.data.data.lastName,
@@ -92,8 +90,6 @@ class Profile extends Component {
 
     render() {
         const currentUser = localStorage.getItem('uid')
-        console.log(currentUser)
-        console.log(this.props.user_Id)
         return (
             !this.state.editing ? 
             <>

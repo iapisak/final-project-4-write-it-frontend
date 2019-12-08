@@ -37,12 +37,15 @@ class PostContainer extends Component {
             <>
                 <div className="flex-grow-1" >
                     <div className="topic-container" style={{ backgroundImage:`url('${ this.props.channelPhoto}')` }}>
+                        {/* <img src={ this.props.channelPhoto } alt={ this.props.channelName} / > */}
                         <h2>{ this.props.channelName } Topic</h2>
-                        <p>{ this.props.channelDetail }</p>
+                        <p className="channel-detail text-right">{ this.props.channelDetail }</p>
+                        <div className="post-button-option">
                         {this.props.currentUser ? 
-                        <button onClick={ this.isToggle } className="btn btn-primary"> Post </button>
-                        : 
-                        <button className="btn btn-primary float-right">You must be log in</button>}
+                            <button onClick={ this.isToggle } className="btn-primary"> Post </button>
+                            : 
+                            <button className="btn-primary">You must be log in before post</button>}
+                        </div>
                     </div>
                     <CreatePosts 
                         toggle={ this.state.isToggle }
@@ -52,7 +55,6 @@ class PostContainer extends Component {
                         channel={ this.props.channel }
                         handleSubmit={ this.handleSubmit } />
                 
-
                 {this.state.posts.map(post => (
                     <PostDetail detail={ post }/>
                 ))}

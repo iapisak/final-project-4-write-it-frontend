@@ -65,8 +65,8 @@ class CreatePosts extends Component{
             <div>{this.state.titleError}</div>
         </div>
         <div className="form-group">
-            <label htmlFor="exampleFormControlInput1">Photo</label>
-            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="photo" value={this.state.photo} />
+            <label htmlFor="exampleFormControlInput2">Photo</label>
+            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput2" name="photo" value={this.state.photo} />
         </div>
         <div className="form-group">
             <label htmlFor="exampleFormControlTextarea1">Contents</label>
