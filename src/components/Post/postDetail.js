@@ -22,13 +22,14 @@ class postDetail extends Component {
             <div className="posts-detail d-flex">
                 <img src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
                 <div className="posts-content-box">
+                    <div className="channel">{ this.props.channel } Channel</div>
                     <a href={`/post/${this.props.detail._id}`}>
                         <h3>{this.props.detail.title}</h3>
                     </a>    
                         <p className="profile-slug">By : 
                             <Link to={`/profile/${this.props.detail.user}`}>
                             <span>{this.props.detail.userSlug}</span>
-                            </Link> | <span>{ this.state.comment.length } comment</span>
+                            </Link> | <span role="img" aria-label="comment">&#128172; { this.state.comment.length }</span>
                         </p>
                         <p className="posts-content">{this.props.detail.content}</p>
                     </div>

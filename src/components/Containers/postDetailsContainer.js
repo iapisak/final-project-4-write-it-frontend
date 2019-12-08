@@ -9,6 +9,7 @@ import './postcontainer.css'
 
 class PostDetailsContainer extends Component {
     state = {
+        channel: '',
         userId: '',
         userSlug: '',
         postId: '',
@@ -26,7 +27,9 @@ class PostDetailsContainer extends Component {
         const post_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/posts/post_detail/${post_Id}`)
         .then((res) => {
+            console.log(res.data.data)
             this.setState({ 
+                // channel: res.data.data.channel.name,
                 userId: res.data.data.user,
                 userSlug: res.data.data.userSlug,
                 postId: res.data.data._id,
@@ -138,7 +141,8 @@ class PostDetailsContainer extends Component {
             <>
                 <section className="container">
                     <div className="postsDetail-container">
-                        <h2>{ title }</h2>
+                        {/* <p>{ this.state.channel }</p> */}
+                        <h2>{ title }</h2><span role="img" aria-label="comment">&#128172; { this.state.comments.length }</span>
                         <img src={ this.state.photo } alt={ this.state.title } / >
                         <p>{ content }</p>
                         

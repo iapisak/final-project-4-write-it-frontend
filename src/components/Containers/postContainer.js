@@ -55,7 +55,9 @@ class PostContainer extends Component {
                         handleSubmit={ this.handleSubmit } />
                 
                 {this.state.posts.map(post => (
-                    <PostDetail detail={ post }/>
+                    <PostDetail 
+                        channel={ this.props.channelName }
+                        detail={ post }/>
                 ))}
                 </div>
             </>

@@ -3,11 +3,14 @@
     /* padding: 20px; */
 }
 
+.channel {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 90%;
+    color: rgb(231, 111, 41);
+}
 .posts-detail a {
     font-family: 'Abril Fatface', cursive;
-    /* font-weight: 200; */
     color: #1a1a1a;
-    /* letter-spacing: 1.3px; */
 }
 
 .posts-detail a:hover {
@@ -28,7 +31,7 @@
 .profile-slug span {
     font-family: 'Merriweather', serif;
     color: rgb(231, 111, 41);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .profile-slug span:hover {
