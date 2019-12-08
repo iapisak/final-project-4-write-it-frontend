@@ -4,7 +4,6 @@ import axios from 'axios';
 import './Comment.css'
 
 const CommentDetails = (props) => {
-    console.log(props)
     return (
         <div className="comment-detail">
             <div>{ props.detail.comment }</div>

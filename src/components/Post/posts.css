@@ -1,16 +1,18 @@
 .posts-detail {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     /* padding: 20px; */
 }
 
-.posts-detail h5 {
+.posts-detail a {
     font-family: 'Abril Fatface', cursive;
-    font-weight: normal;
-    color: black;
+    /* font-weight: 200; */
+    color: #1a1a1a;
+    /* letter-spacing: 1.3px; */
 }
 
-.posts-detail h4:hover {
-    color: coral;
+.posts-detail a:hover {
+    text-decoration: none;
+    color: rgb(231, 111, 41);
 }
 
 .posts-detail img {
@@ -18,11 +20,26 @@
     height: auto;
 }
 
+.profile-slug {
+    color: rgb(172, 171, 171);
+    font-weight: 300;
+}
+
+.profile-slug span {
+    font-family: 'Merriweather', serif;
+    color: rgb(231, 111, 41);
+    font-weight: 700;
+}
+
+.profile-slug span:hover {
+    color: rgb(150, 126, 82);
+}
+
 .posts-content-box {
-    padding: 0 0 20px 20px;
+    margin-left: 20px;
 }
 
 .posts-content {
-    margin-bottom: 30px;
+    color: gray;
 }
 

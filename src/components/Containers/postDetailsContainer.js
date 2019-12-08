@@ -26,7 +26,6 @@ class PostDetailsContainer extends Component {
         const post_Id = this.props.id
         axios.get(`${process.env.REACT_APP_API_URL}/posts/post_detail/${post_Id}`)
         .then((res) => {
-            console.log(res.data.data)
             this.setState({ 
                 userId: res.data.data.user,
                 userSlug: res.data.data.userSlug,

@@ -37,7 +37,6 @@ class PostContainer extends Component {
             <>
                 <div className="flex-grow-1" >
                     <div className="topic-container" style={{ backgroundImage:`url('${ this.props.channelPhoto}')` }}>
-                        {/* <img src={ this.props.channelPhoto } alt={ this.props.channelName} / > */}
                         <h2>{ this.props.channelName } Topic</h2>
                         <p className="channel-detail text-right">{ this.props.channelDetail }</p>
                         <div className="post-button-option">
