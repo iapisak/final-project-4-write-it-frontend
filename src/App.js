@@ -11,23 +11,26 @@ class App extends Component {
     currentUser: localStorage.getItem('uid'),
     username: localStorage.getItem('username'),
     userSlug: localStorage.getItem('slug'),
+    userPhoto: localStorage.getItem('photo'),
     loginToggle: false,
     signupToggle: false,
     mainToggle: true,
     channel: [],
   }
 
-  setCurrentUser = (userId, username, userSlug) => {
-    this.setState({ currentUser: userId, username, userSlug });
+  setCurrentUser = (userId, username, userSlug, userPhoto) => {
+    this.setState({ currentUser: userId, username, userSlug, userPhoto });
     localStorage.setItem('uid', userId);
     localStorage.setItem('username', username);
     localStorage.setItem('slug', userSlug);
+    localStorage.setItem('photo', userPhoto);
   };
 
   logout = () => {
     localStorage.removeItem('uid');
     localStorage.removeItem('username');
     localStorage.removeItem('slug')
+    localStorage.removeItem('photo')
     axios.delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true }
     ).then(res => {
       this.setState({ currentUser: null, username: '' });

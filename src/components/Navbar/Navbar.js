@@ -8,7 +8,6 @@ class Navbar extends Component {
     state = {
         dropdown: '',
         change: false,
-
     }
 
     authenticated = (currentUser) => {

@@ -1,0 +1,92 @@
+/* Profile Page */
+.profile-box {
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 40vh;
+}
+
+.profile-box h2 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.profile-box h2 span {
+    font-size: 70%;
+}
+
+.profile-box .edit-profile-form input {
+    font-size: 100%;
+}
+
+.profile-wrap {
+    flex: 1;
+}
+
+.profile-img img {
+    width: 130px;
+    margin-right: 20px;
+}
+
+.edit-profile-form {
+    flex: 1.3;
+}
+
+.edit-profile-form h2 {
+    font-family: 'Abril Fatface', cursive;
+    width: 300px;
+}
+
+.edit-profile-form label {
+    display: inline;
+    margin-right: 10px;
+}
+
+.edit-profile-form input {
+    margin-bottom: 10px;
+}
+
+.edit-profile-form .last-name {
+    /* width: 120px; */
+}
+
+.profile-post-container {
+    border-bottom: 1px solid gray;
+    color: gray;
+}
+
+.profile-post-container a {
+    text-decoration: none;
+    font-family: 'Abril Fatface', cursive;
+    color: coral;
+}
+
+.profile-post-container img {
+    width: 200px;
+    padding: 20px;
+    padding-left: 0;
+}
+
+.profile-post-container .post-date {
+    color: black;
+    font-size: 85%;
+    font-weight: 600;
+}
+
+.profile-post-detail {
+    padding: 20px;
+    padding-left: 0;
+}
+
+.profile-comment-container {
+    padding-top: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid gray;
+    color: rgb(146, 138, 138);
+    font-size: 85%;
+}
+
+.profile-comment-container .date {
+    color: black;
+    font-weight: 600;
+}

@@ -16,7 +16,7 @@ class Comments extends Component {
         let commentError = ''
 
         if (comment === '') {
-            commentError = `Required, this field can not be empty`
+            commentError = `This field is empty`
         }
 
         if (commentError) {
@@ -34,7 +34,7 @@ class Comments extends Component {
         const post = this.props.post_Id
         const user = this.props.currentUser
         const userSlug = this.props.userSlug
-        const newState = {...this.state, post, user, userSlug}
+        const newState = {...this.state, post, user, userSlug, date: Date.now()}
         this.props.handleCommentSubmit(e, newState)
         this.setState(initialState)
     }
@@ -44,25 +44,36 @@ class Comments extends Component {
     };
 
     render() {
-        return (
-            this.props.currentUser ?
+        const userPhoto = localStorage.getItem('photo')
+        console.log(userPhoto)
+        return (            
             <div className="comment-box">
+                <p className="text-center">Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>
+                <h6>
+                <span className="icons" role="img" aria-label="comment">
+                    &#128172;
+                </span>
+                { this.props.numberComment } {this.props.numberComment <=1 ? "comment" : "comments" }
+                </h6>
                 <form>
-                <div className="form-group">
-                    <textarea onChange={this.handleChange} className="form-control" name="comment"  rows="3" value={ this.state.comment } placeholder="Join the discussion..."></textarea>
-                    <div>{this.state.commentError}</div>
-                </div>
+                    <div className="d-flex">
+                        <div className="current-photo">
+                            <img src={ userPhoto } alt="" />
+                        </div>
+                        <div className="form-group comment-textarea">
+                            <textarea onChange={this.handleChange} className="form-control" name="comment"  rows="3" value={ this.state.comment } placeholder="Join the discussion..."></textarea>
+                            <div className="alert">{this.state.commentError}</div>
+                        </div>
+                    </div>
                 
                 <button
                     type="submit"
-                    className={`btn btn-primary`}
+                    className="btn btn-info float-right"
                     onClick={ this.handleSubmit }
                     disabled={ this.state.disabled } >
                     Send your comment</button>
                 </form>
             </div>
-            :
-            null
         )
     }
 }

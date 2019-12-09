@@ -1,0 +1,23 @@
+.profile-container {
+    padding: 30px 0;
+}
+
+.profile-post-history {
+    padding: 30px 0;
+    flex: 1.5;
+}
+
+.profile-comment-history {
+    padding: 30px 0;
+    flex: 1;
+    border-left: 2px solid gray;
+    border-top: 2px solid gray;
+}
+
+.profile-post-history h2, .profile-comment-history h2 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.history-box {
+    padding-left: 20px;
+}

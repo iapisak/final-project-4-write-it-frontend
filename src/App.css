@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Merriweather&display=swap');
 
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+}
+
 body {
     font-family: 'Merriweather', serif;
-    /* font-family: 'Abril Fatface', cursive; */
+    font-size: 90%;
+}
+
+.alert {
+    color: orangered;
+    padding: 10px 15px;
+    padding-bottom: 0;
+    
 }

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './Profile.css'
+
 class Profile extends Component {
     state = {
         name: '',
         lastName: '',
         email: '',
         slug: '',
+        photo: '',
+        theme: '',
         disabled: false,
         editing: false,
 
@@ -73,6 +77,8 @@ class Profile extends Component {
                 lastName: res.data.data.lastName,
                 email: res.data.data.email,
                 slug: res.data.data.slug,
+                photo: res.data.data.photo,
+                theme: res.data.data.theme,
             })
         })
     }
@@ -91,59 +97,83 @@ class Profile extends Component {
     render() {
         const currentUser = localStorage.getItem('uid')
         return (
-            !this.state.editing ? 
-            <>
-                <div><h1>Profile : {this.state.slug}</h1></div>
-                <div>Name : {this.state.name}-{this.props.user.lastName}</div>
-                <div>Email : {this.state.email}</div>
-                <div>Join Date : {this.props.user.signup_date}</div>
-
-                { currentUser === this.props.user_Id 
-                ?
-                    <button
-                        className={`btn btn-primary`}
-                        onClick={ this.handdleOnEdit }
-                        >Edit Profile</button>
-                :
-                null
-                }
-            </>
-            :
-            <>
-                <form>
-                    <h1>Edit Your Profile</h1>
-                    <div className="form-group">
-                        <label htmlFor="slug">Profile Name</label>
-                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="slug" name="slug" 
-                            value={ this.state.slug }/>
-                        <div>{ this.state.slugError }</div>
+            
+            <div className="profile-box d-flex" style={{ backgroundImage:`url(${this.state.theme})` }} >
+                <div className="profile-wrap d-flex">
+                    <div className="profile-img">
+                        <img src={ this.state.photo } alt=""/>
                     </div>
-                    <div className="form-group">
+                    <div>
+                        <h2>Profile<span> : {this.state.slug}</span></h2>
+                        <div>Name : {this.state.name}-{this.props.user.lastName}</div>
+                        <div>Email : {this.state.email}</div>
+                        <div>Member : {new Date(this.props.user.signup_date).toDateString()}</div>
+                        <div>Post : { this.props.posts } { this.props.posts <=1 ? " post" : " posts" }</div>
+                        <div>Comment : { this.props.comments } { this.props.comments <=1 ? " comment" : " comments" } </div>
+
+                        { currentUser === this.props.user_Id 
+                        ?
+                            <button
+                                className="btn btn-info"
+                                onClick={ this.handdleOnEdit }
+                                >Edit Profile</button>
+                        :
+                        null
+                        }
+                    </div>
+                </div>
+
+            { this.state.editing ? 
+    
+            <form className="edit-profile-form">
+                <div className="d-flex">
+                    <h2>Edit profile</h2>
+
+                    <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" 
+                        value={ this.state.slug }/>
+                    <div>{ this.state.slugError }</div>
+                </div>
+                <div className="d-flex">
+                    <label htmlFor="photo">Photo</label>
+                    <input onChange={ this.handleChange } className="form-control" type="text" id="photo" name="photo" 
+                        value={ this.state.photo } />
+                </div>
+                <div className="d-flex justify-content-between">
+                    <div className="d-flex">
                         <label htmlFor="name">Name</label>
-                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="name" name="name" 
+                        <input onChange={ this.handleChange } className="form-control" type="text" id="name" name="name" 
                             value={ this.state.name }/>
                         <div>{ this.state.nameError }</div>
                     </div>
-                    <div className="form-group">
+                    <div className="d-flex">
                         <label htmlFor="lastName">Last Name</label>
-                        <input onChange={ this.handleChange } className="form-control form-control-lg" type="text" id="lastName" name="lastName" 
+                        <input onChange={ this.handleChange } className="last-name form-control" type="text" id="lastName" name="lastName" 
                         value={ this.state.lastName }/>
                         <div>{ this.state.lastNameError }</div>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="email" name="email" 
+                </div>
+                <div className="d-flex">
+                    <label htmlFor="email">Email</label>
+                    <input onChange={this.handleChange} className="form-control" type="text" id="email" name="email" 
                         value={ this.state.email }/>
-                        <div>{this.state.emailError}</div>
-                    </div>
-                    <button
-                        type="submit"
-                        className={`btn btn-primary`}
-                        disabled={ this.state.disabled }
-                        onClick={ this.handleEditSubmit }
-                        >Save</button>
-                </form>
-            </>
+                    <div>{this.state.emailError}</div>
+                </div>
+                <div className="d-flex">
+                    <label htmlFor="theme">Back ground</label>
+                    <input onChange={this.handleChange} className="back-ground form-control" type="text" id="theme" name="theme" 
+                        value={ this.state.photo } />
+                </div>
+                <button
+                    type="submit"
+                    className="btn btn-info float-right"
+                    disabled={ this.state.disabled }
+                    onClick={ this.handleEditSubmit }
+                    >Save</button>
+            </form>
+            :
+            null
+            }
+            </div>
         )
     }
 }

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Channel from '../Channel/channel';
 import PostContainer from '../Containers/postContainer';
 
+import './Home.css'
+
 class Home extends Component {
 
     render() {
@@ -17,9 +19,8 @@ class Home extends Component {
                         channelDetail={ this.props.channelDetail } 
                         channelPhoto={ this.props.channelPhoto } />
 
-                    <div className="col-3">
+                    <div className="channel-container col-2">
                         <h4>Channel</h4>
-                        <div><a href="/">General</a></div>
                         {this.props.category.map((channel) => (
                         <Channel name={ channel.name } key={ channel._id } />
                     ))}

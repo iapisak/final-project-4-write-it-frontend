@@ -1,0 +1,37 @@
+#login {
+    margin: 40px auto;
+    width: 40%;
+    padding: 7%;
+    background-color: rgba(228, 225, 224, 0.425);
+    font-size: 100%;
+}
+
+#login h1 {
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: 50px;
+}
+
+#login label {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 120%;
+}
+
+#login .alert {
+    padding-left: 0;
+}
+
+#signup {
+    margin: 40px auto;
+    width: 50%;
+    padding: 7%;
+    background-color: rgba(228, 225, 224, 0.425);
+}
+
+#signup input {
+    font-size: 100%;
+}
+
+#signup h1 {
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: 50px;
+}

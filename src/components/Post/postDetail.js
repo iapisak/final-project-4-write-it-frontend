@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './posts.css'
 
+
 class postDetail extends Component {
     state = {
         comment: [],
@@ -20,16 +21,21 @@ class postDetail extends Component {
     render () {
         return (
             <div className="posts-detail d-flex">
-                <img src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
+                <img className="posts-deatil-image" src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
                 <div className="posts-content-box">
-                    <div className="channel">{ this.props.channel } Channel</div>
                     <a href={`/post/${this.props.detail._id}`}>
                         <h3>{this.props.detail.title}</h3>
                     </a>    
                         <p className="profile-slug">By : 
                             <Link to={`/profile/${this.props.detail.user}`}>
                             <span>{this.props.detail.userSlug}</span>
-                            </Link> | <span role="img" aria-label="comment">&#128172; { this.state.comment.length }</span>
+                            </Link> 
+                            
+                            | <span>{ new Date(this.props.detail.date).toLocaleDateString() }</span>
+                            
+                            | <span role="img" aria-label="comment">&#128172; { this.state.comment.length } 
+                                { this.state.comment.length <= 1 ? " comment" : " comments" }
+                            </span>
                         </p>
                         <p className="posts-content">{this.props.detail.content}</p>
                     </div>

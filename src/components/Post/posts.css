@@ -18,6 +18,8 @@
     color: rgb(231, 111, 41);
 }
 
+
+
 .posts-detail img {
     width: 300px;
     height: auto;
@@ -44,5 +46,29 @@
 
 .posts-content {
     color: gray;
+}
+
+/* Create Posts */
+.posts-create-container {
+    background-color: rgb(233, 231, 231);
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.posts-create-container h1 {
+    font-family: 'Abril Fatface', cursive;
+    color: rgb(90, 80, 90);
+}
+
+.posts-create-container input, .posts-create-container textarea {
+    font-size: 100%;
+    color: gray;
+}
+
+.posts-create-container label {
+    font-weight: 700;
+    color: rgb(107, 101, 107);
 }
 

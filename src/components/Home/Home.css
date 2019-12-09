@@ -1,0 +1,11 @@
+.channel-container {
+    margin: 20px;
+    padding: 0 20px;
+    border-left: 2px solid rgb(224, 220, 220);
+}
+
+.channel-container h4 {
+    font-family: 'Abril Fatface', cursive;
+    color: black;
+    margin-bottom: 30px;
+}
