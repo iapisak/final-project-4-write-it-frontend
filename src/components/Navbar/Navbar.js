@@ -49,7 +49,7 @@ class Navbar extends Component {
                     <div className="nav-sub-header container">
                         <h2 className="display-3">Write-It</h2>
                     </div>
-                    <p className="slogan container text-right">This is a template for a simple marketing or informational website.</p>
+                    <h4 className="slogan container">Share Information, Share Experience.</h4>
                 </div>
                 
                 <nav className="nav-menu navbar navbar-expand-md navbar-dark">

@@ -102,24 +102,35 @@ class Profile extends Component {
                 <div className="profile-wrap d-flex">
                     <div className="profile-img">
                         <img src={ this.state.photo } alt="" />
-                    </div>
-                    <div className="profile-info">
-                        <h2>Profile<span> : {this.state.slug}</span></h2>
-                        <div>Name : {this.state.name}-{this.props.user.lastName}</div>
-                        <div>Email : {this.state.email}</div>
-                        <div>Member : {new Date(this.props.user.signup_date).toDateString()}</div>
-                        <div>Post : { this.props.posts } { this.props.posts <=1 ? " post" : " posts" }</div>
-                        <div>Comment : { this.props.comments } { this.props.comments <=1 ? " comment" : " comments" } </div>
-
                         { currentUser === this.props.user_Id 
                         ?
                             <button
-                                className="btn btn-danger"
+                                className="btn-danger"
                                 onClick={ this.handdleOnEdit }
                                 >Edit Profile</button>
                         :
                         null
                         }
+                    </div>
+                    <div className="profile-info">
+                        <h3>Profile<span> : {this.state.slug}</span></h3>
+                        <div>Name : {this.state.name}-{this.props.user.lastName}</div>
+                        <div>Email : {this.state.email}</div>
+                        <div>Member : {new Date(this.props.user.signup_date).toDateString()}</div>
+                        <div><span className="total">Post : 
+                                <span className="number">
+                                    { this.props.posts } 
+                                    { this.props.posts <=1 ? " post" : " posts" }
+                                </span>
+                            </span>
+                        </div>
+                        <div><span className="total">Comment : 
+                                <span className="number">
+                                    { this.props.comments } 
+                                    { this.props.comments <=1 ? " comment" : " comments" }
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -127,7 +138,7 @@ class Profile extends Component {
     
             <form className="edit-profile-form">
                 <div className="d-flex">
-                    <h2>Edit profile</h2>
+                    <h3>Edit profile</h3>
 
                     <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" 
                         value={ this.state.slug }/>
@@ -146,8 +157,8 @@ class Profile extends Component {
                         <div>{ this.state.nameError }</div>
                     </div>
                     <div className="d-flex">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input onChange={ this.handleChange } className="last-name form-control" type="text" id="lastName" name="lastName" 
+                        <label htmlFor="lastName" className="last-name">Last Name</label>
+                        <input onChange={ this.handleChange } className="form-control" type="text" id="lastName" name="lastName" 
                         value={ this.state.lastName }/>
                         <div>{ this.state.lastNameError }</div>
                     </div>
@@ -159,8 +170,8 @@ class Profile extends Component {
                     <div>{this.state.emailError}</div>
                 </div>
                 <div className="d-flex">
-                    <label htmlFor="theme">Back ground</label>
-                    <input onChange={this.handleChange} className="back-ground form-control" type="text" id="theme" name="theme" 
+                    <label htmlFor="theme" className="back-ground">Back ground</label>
+                    <input onChange={this.handleChange} className="form-control" type="text" id="theme" name="theme" 
                         value={ this.state.theme } />
                 </div>
                 <button

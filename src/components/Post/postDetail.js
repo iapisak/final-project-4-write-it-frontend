@@ -21,7 +21,11 @@ class postDetail extends Component {
     render () {
         return (
             <div className="posts-detail d-flex">
+
+                { this.props.detail.photo ? 
                 <img className="posts-detail-image" src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
+                : null }
+                
                 <div className="posts-content-box">
                     <a href={`/post/${this.props.detail._id}`}>
                         <h4>{this.props.detail.title}</h4>

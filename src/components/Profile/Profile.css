@@ -7,7 +7,7 @@
     border-radius: 5px;
 }
 
-.profile-box h2 {
+.profile-box h3 {
     font-family: 'Abril Fatface', cursive;
 }
 
@@ -21,7 +21,7 @@
 
 .profile-wrap {
     flex: 1;
-    background-color: rgba(0, 0, 0, 0.233);
+    background-color: rgba(0, 0, 0, 0.287);
     color: white;
     font-size: 110%;
 }
@@ -30,36 +30,69 @@
     margin-top: 20px;
 }
 
+.profile-img {
+    /* background-color: rgba(0, 0, 0, 0.287); */
+}
+
 .profile-img img {
     width: 130px;
     margin: 20px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.profile-img button {
+    display: block;
+    margin-left: 65px;
+    margin-top: 0;
 }
 
 .profile-info {
     padding: 20px;
     padding-left: 0;
+    font-weight: 400;
+    text-shadow: 0.5px 0.5px rgb(0, 0, 0);
+}
+
+.profile-info .total {
+    font-size: 90%;
+    color: chocolate;
+}
+
+.profile-info .number {
+    color: rgb(195, 194, 194);
 }
 
 .edit-profile-form {
-    flex: 1.3;
+    /* flex: 1.3; */
     background-color: rgba(0, 0, 0, 0.233);
     padding: 10px;
-    animation-duration: 1s;
-    animation-name: fadeInDown;
+    animation-duration: 2s;
+    animation-name: slideLeft;
 }
 
-.edit-profile-form h2 {
+.edit-profile-form h3 {
     font-family: 'Abril Fatface', cursive;
-    width: 300px;
+    width: 250px;
 }
 
 .edit-profile-form label {
     display: inline;
-    margin-right: 10px;
+    margin: 0 10px;
+    font-size: 100%;
+    font-weight: 900;
 }
 
 .edit-profile-form input {
     margin-bottom: 10px;
+}
+
+.last-name {
+    width: 130px;
+}
+
+.back-ground {
+    width: 130px;
 }
 
 .profile-post-container {
@@ -89,20 +122,34 @@
 }
 
 .profile-post-detail {
+    width: 100%;
     padding: 20px;
     padding-left: 0;
 }
 
 .profile-comment-container {
+    padding-top: 10px;
     padding-left: 20px;
     color: rgba(31, 29, 29, 0.856);
     font-size: 95%;
+    border-top: 1px solid gray;
 }
 
 .profile-comment-container .date {
     color: tomato;
     font-weight: 600;
-    padding: 0 10px;
+    padding: 0 5px;
+    margin-bottom: 5px;
+}
+
+.comment-link {
+    padding-bottom: 5px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.comment-comment {
+    margin: 0;
 }
 
 .profile-comment-container a {
@@ -183,14 +230,39 @@
   }
 
 @media only screen and (max-width: 1200px) {
+    .history-box {
+        padding: 0;
+    }
+
     .profile-post-container img {
         display: none;
+    }
+
+    .profile-comment-history {
+        padding: 0;
+    }
+
+    .profile-comment-container {
+        padding-left: 0;
+        padding-top: 0;
     }
 
 
 }
 
 @media only screen and (max-width: 700px) {
+
+    .history-box {
+        padding: 0;
+    }
+
+    .profile-img img {
+        margin-left: 0;
+    }
+
+    .profile-img button {
+        margin-left: 0;
+    }
 
     .profile-box {
         height: inherit;
@@ -199,16 +271,13 @@
 
     .profile-wrap {
         flex-direction: column;
-        text-align: center;
+        padding-left: 30px;
     }
 
     .edit-profile-form {
         background-color: rgba(0, 0, 0, 0.233);
     }
 
-    .profile-comment-container {
-        padding-left: 0;
-        padding-top: 0;
-    }
+
 }
 

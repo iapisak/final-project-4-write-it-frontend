@@ -25,12 +25,10 @@
 }
 
 .slogan {
-    position: absolute;
-    left: 50%;
-    bottom: 0%;
-    transform: translate(-50%, -50%);
-    color: rgba(31, 29, 29, 0.856);
-    font-size: 110%;
+    font-family: 'Abril Fatface', cursive;
+    color: tomato;
+    text-shadow: 1px 1px black;
+    margin-bottom: 20px;
 }
 
 .nav-menu {
