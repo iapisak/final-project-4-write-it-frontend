@@ -91,9 +91,15 @@ class Signup extends Component {
     }
   };
 
+  handleOneClick = () => {
+    this.setState(initialState)
+    this.props.signupToggle()
+  }
+
   render() {
     return (
-        <form id="signup" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={this.handleSubmit}>
+      <div className="signup-box" style={{ display: this.props.toggle ? 'block': 'none' }} >
+        <form id="signup" className="container" onSubmit={this.handleSubmit}>
             <h1>Sign up</h1>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="email" name="email" placeholder="Email" value={this.state.email} />
@@ -121,6 +127,8 @@ class Signup extends Component {
             </div>
             <button className="btn btn-info" type="submit">Sign up</button>
         </form>
+        <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
+      </div>
     );
   }
 }

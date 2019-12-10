@@ -50,23 +50,36 @@ class ProfileContainer extends Component {
                 </div>
                 <div className="profile-box-post-comment d-flex">
                     <div className="profile-post-history">
-                        <div className="prolie-history d-flex">
+                        <div className="profile-history d-flex">
                             <h2>Posts history</h2>
                         </div>
-                        { this.state.posts.map( posts => (
-                            <ProfilePosts 
-                                posts= { posts }
-                            />
-                        )) }
+                        
+                        { this.state.posts <= 0 ? <h5>You have 0 post</h5> :
+                            <>
+                                {this.state.posts.map( posts => (
+                                    <ProfilePosts 
+                                        posts= { posts }
+                                    />
+                                )) }
+                            </>
+                        }
+                            
                     </div>
                     <div className="profile-comment-history">
                         <div className="history-box">
                             <h2>Comments history</h2>
                         </div>
-                        { this.state.comments.map( comments => (
-                            <ProfileComments 
-                                comments= { comments } />
-                        ))}
+
+                        { this.state.comments <= 0 ? <h5>You have 0 comment</h5> :
+                            <>
+                                { this.state.comments.map( comments => (
+                                    <ProfileComments 
+                                        comments= { comments } />
+                                ))}
+                            </>
+                        }
+
+
                     </div>
                 </div>
             </div>

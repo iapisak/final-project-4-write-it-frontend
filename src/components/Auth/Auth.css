@@ -1,14 +1,3 @@
-#login {
-    margin: 40px auto;
-    width: 35%;
-    padding: 2%;
-    background-color: rgba(31, 29, 29, 0.856);
-    font-size: 100%;
-    border-radius: 5px;
-    animation-duration: 1s;
-    animation-name: fadeInDown;
-}
-
 #login h1 {
     font-family: 'Abril Fatface', cursive;
     margin-bottom: 20px;
@@ -34,7 +23,27 @@
     padding-left: 0;
 }
 
-#signup {
+.login-box {
+    position: relative;
+    margin: 40px auto;
+    width: 35%;
+    padding: 2%;
+    background-color: rgba(31, 29, 29, 0.856);
+    font-size: 100%;
+    border-radius: 5px;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+}
+
+.delete-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.signup-box {
+    position: relative;
     margin: 40px auto;
     width: 35%;
     padding: 2%;

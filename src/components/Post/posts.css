@@ -58,6 +58,7 @@
 }
 
 .posts-create-container {
+    position: relative;
     background-color: whitesmoke;
     width: 70%;
     margin: 20px auto;

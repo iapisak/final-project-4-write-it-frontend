@@ -7,7 +7,7 @@
     flex: 1.5;
 }
 
-.prolie-history {
+.profile-history {
     border-bottom: 1px solid gray;
     padding-bottom: 2px;
 }
@@ -25,6 +25,14 @@
     font-family: 'Abril Fatface', cursive;
     color: tomato;
     text-shadow: 0.5px 0.5px rgb(99, 88, 88);
+}
+
+.profile-post-history h5 {
+    padding-top: 20px;
+}
+
+.profile-comment-history h5 {
+    padding-left: 30px;
 }
 
 .history-box {
@@ -55,16 +63,16 @@
 
     .profile-comment-history {
         border: none;
-        padding: 20px;
+        padding: 0x;
+    }
+
+    .history-box {
+        padding: 0;
     }
 }
 
 @media only screen and (max-width: 700px) {
     .profile-box-post-comment {
         flex-direction: column;
-    }
-
-    .profile-comment-history {
-        padding: 0;
     }
 }
