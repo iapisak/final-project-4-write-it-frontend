@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+import './Auth.css'
+
 const initialState = {
     name: '',
     lastName: '',
@@ -37,7 +39,7 @@ class Signup extends Component {
 
     if (lastName === '') {
         lastNameError = `This field can not be empty`
-      } else if (name.length < 3 && name !== Number ) {
+      } else if (lastName.length < 3 && name !== Number ) {
         lastNameError = `Last Name must be at least 3 characters`
       }
 
@@ -89,34 +91,44 @@ class Signup extends Component {
     }
   };
 
+  handleOneClick = () => {
+    this.setState(initialState)
+    this.props.signupToggle()
+  }
+
   render() {
     return (
-        <form id="signup" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={this.handleSubmit}>
+      <div className="signup-box" style={{ display: this.props.toggle ? 'block': 'none' }} >
+        <form id="signup" className="container" onSubmit={this.handleSubmit}>
+            <h1>Sign up</h1>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="email" name="email" placeholder="Email" value={this.state.email} />
                 <div className='alert'>{this.state.emailError}</div>
             </div>
             <div className="form-group">
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" placeholder="Name" value={this.state.name} />
-                <div className='alert'>{this.state.nameError}</div>
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" placeholder="Profile-Name" value={this.state.slug} />
+                <div className='alert'></div>
             </div>
             <div className="form-group">
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" placeholder="Profile-Name" value={this.state.slug} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" placeholder="First name" value={this.state.name} />
+                <div className='alert'>{this.state.nameError}</div>
             </div>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="lastName" name="lastName" placeholder="Last name" value={this.state.lastName} />
                 <div className='alert'>{this.state.lastNameError}</div>
             </div>
             <div className="form-group">
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password" name="password" placeholder="Password" value={this.state.password} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password-1" name="password" placeholder="Password" value={this.state.password} />
                 <div className='alert'>{this.state.passwordError}</div>
             </div>
             <div className="form-group">
-                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password2" name="password2" placeholder="Confirm your password" value={this.state.password2} />
+                <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password-2" name="password2" placeholder="Confirm your password" value={this.state.password2} />
                 <div className='alert'>{this.state.password2Error}</div>
             </div>
-            <button className="btn btn-primary float-right" type="submit">Sign up</button>
+            <button className="btn btn-info" type="submit">Sign up</button>
         </form>
+        <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
+      </div>
     );
   }
 }

@@ -4,27 +4,33 @@ import { withRouter } from 'react-router-dom';
 import Routes from './config/Routes';
 import Navbar from './components/Navbar/Navbar';
 
+import './App.css'
+
 class App extends Component {
   state = {
     currentUser: localStorage.getItem('uid'),
     username: localStorage.getItem('username'),
     userSlug: localStorage.getItem('slug'),
+    userPhoto: localStorage.getItem('photo'),
     loginToggle: false,
     signupToggle: false,
     mainToggle: true,
     channel: [],
   }
 
-  setCurrentUser = (userId, username, userSlug) => {
-    this.setState({ currentUser: userId, username, userSlug });
+  setCurrentUser = (userId, username, userSlug, userPhoto) => {
+    this.setState({ currentUser: userId, username, userSlug, userPhoto });
     localStorage.setItem('uid', userId);
     localStorage.setItem('username', username);
     localStorage.setItem('slug', userSlug);
+    localStorage.setItem('photo', userPhoto);
   };
 
   logout = () => {
     localStorage.removeItem('uid');
     localStorage.removeItem('username');
+    localStorage.removeItem('slug')
+    localStorage.removeItem('photo')
     axios.delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true }
     ).then(res => {
       this.setState({ currentUser: null, username: '' });
@@ -56,6 +62,7 @@ class App extends Component {
   }
 
   render() {
+    
     return (
       <>
       <Navbar 
@@ -69,7 +76,7 @@ class App extends Component {
         signupToggle={ this.signupToggle } 
         category={ this.state.channel } />
 
-        <main className="container" style={{ display: this.state.mainToggle ? 'block': 'none' }}>
+        <main style={{ display: this.state.mainToggle ? 'block': 'none' }}>
           <Routes 
             currentUser={ this.state.currentUser } 
             username={ this.state.username }

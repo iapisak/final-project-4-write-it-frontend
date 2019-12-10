@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 
+import './Auth.css'
+
 const initialState = {
     email: '',
     password: '',
@@ -46,7 +48,7 @@ class Login extends Component {
             axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state, { withCredentials: true })
             .then((res) => {
                 console.log(res.data.data)
-                this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug)
+                this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug, res.data.data.photo)
                 this.setState(initialState)
                 this.props.loginToggle()
                 this.props.history.push('/')
@@ -55,23 +57,32 @@ class Login extends Component {
         }
     }
 
+    handleOneClick = () => {
+        this.setState(initialState)
+        this.props.loginToggle()
+    }
+
     render () {
         const { emailError, passwordError } = this.state
 
         return (
-            <form id="login" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={ this.handleOnSubmit }>
-                <div className="form-label-group">
-                    <label htmlFor="email-address">Email address</label>
-                    <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
-                    <div className='alert'>{emailError}</div>
-                </div>
-                <div className="form-label-group">
-                    <label htmlFor="password">Password</label>
-                    <input onChange={ this.handleOnChange } type="password" name='password' id="password" className="form-control" value={ this.state.password } />
-                    <div className='alert'>{passwordError}</div>
-                </div>
-                <button type="submit" className="btn btn-primary">Log in</button>
-            </form>
+            <div className="login-box" style={{ display: this.props.toggle ? 'block': 'none' }}>
+                <form id="login" className="container" onSubmit={ this.handleOnSubmit }>
+                    <h1>Sign in</h1>
+                    <div className="form-label-group">
+                        <label htmlFor="email-address">Email address</label>
+                        <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
+                        <div className='alert'>{emailError}</div>
+                    </div>
+                    <div className="form-label-group">
+                        <label htmlFor="password">Password</label>
+                        <input onChange={ this.handleOnChange } type="password" name='password' id="password" className="form-control" value={ this.state.password } />
+                        <div className='alert'>{passwordError}</div>
+                    </div>
+                    <button type="submit" className="btn btn-info">Submit</button>
+                </form>
+                <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
+            </div>
         )
     }
 }

@@ -1,0 +1,124 @@
+.posts-detail {
+    margin-bottom: 30px;
+    /* padding: 20px; */
+}
+
+.channel {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 90%;
+    color: rgb(231, 111, 41);
+}
+.posts-detail a {
+    font-family: 'Abril Fatface', cursive;
+    color: #1a1a1a;
+}
+
+.posts-detail a:hover {
+    text-decoration: none;
+    color: tomato;
+}
+
+.posts-detail img {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.profile-slug {
+    color: rgba(31, 29, 29, 0.856);
+    font-weight: 300;
+}
+
+.profile-slug span{
+    font-family: 'Merriweather', serif;
+    color: tomato;
+    font-weight: 400;
+    padding: 0 3px;
+}
+
+.profile-slug .user-slug:hover {
+    color: red;
+}
+
+.posts-content-box {
+    margin-left: 20px;
+}
+
+.posts-content {
+    color: rgba(80, 76, 76, 0.856);
+}
+
+/* Create Posts */
+.create-wrap {
+    background-color: rgba(31, 29, 29, 0.856);
+    margin-bottom: 20px;
+    padding: 20px;
+    animation-duration: 1.5s;
+    animation-name: fadeInDown;
+}
+
+.posts-create-container {
+    position: relative;
+    background-color: whitesmoke;
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    animation-duration: 1.5s;
+    animation-name: fadeInDown;
+}
+
+.posts-create-container h3 {
+    font-family: 'Abril Fatface', cursive;
+    color: tomato;
+    text-shadow: 0.5px 0.5px rgb(99, 88, 88);
+}
+
+.posts-create-container input, .posts-create-container textarea {
+    font-size: 100%;
+    color: gray;
+}
+
+.posts-create-container label {
+    font-weight: 700;
+    color: rgba(31, 29, 29, 0.856);
+}
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+@media only screen and (max-width: 700px) {
+    .posts-detail {
+        flex-direction: column;
+        border-bottom: 2px solid rgb(224, 220, 220);
+    }
+
+    .posts-detail-image {
+        display: none;
+    }
+
+    .posts-create-container {
+        width: 95%;
+    }
+}
+

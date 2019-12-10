@@ -1,22 +1,20 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Merriweather&display=swap');
+
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+    background-color: whitesmoke;
+    font-family: 'Merriweather', serif;
+    font-size: 90%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.alert {
+    color: rgb(236, 80, 24);
+    padding: 10px 15px;
+    padding-bottom: 0;
+    
 }

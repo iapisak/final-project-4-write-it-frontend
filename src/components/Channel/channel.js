@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './channel.css'
+
 const Channel = (props) => {
     return (
-        <div>
+        <div className="channel-link">
             <a href={`/${props.name}`}>{props.name}</a>
         </div>
     )

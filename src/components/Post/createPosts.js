@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import './posts.css'
+
 const initialState = {
       title : '',
       content : '',
@@ -46,7 +48,8 @@ class CreatePosts extends Component{
         const user = this.props.currentUser
         const userSlug = this.props.userSlug
         const channel = this.props.channel
-        const newPosts = {...this.state, user, userSlug, channel}
+        const date = Date.now()
+        const newPosts = {...this.state, user, userSlug, channel, date}
 
         if (postValidation) {
           this.props.handleSubmit(e, newPosts);
@@ -54,33 +57,39 @@ class CreatePosts extends Component{
         }
     }
 
+
   render() {
     return (
       <>
-      {this.props.currentUser ? 
-        <form style={{ display: this.props.toggle ? 'block': 'none' }}>
-        <div className="form-group">
-            <label htmlFor="exampleFormControlInput1">Title</label>
-            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />
-            <div>{this.state.titleError}</div>
+      {this.props.currentUser ?
+      <div className="create-wrap" style={{ display: this.props.toggle ? 'block': 'none' }}>
+        <div className="posts-create-container">
+          <form>
+            <h3 className="text-center">Create post</h3>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput1">Title</label>
+                <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />
+                <div className="alert">{this.state.titleError}</div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput2">Photo</label>
+                <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput2" name="photo" value={this.state.photo} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlTextarea1">Contents</label>
+                <textarea onChange={this.handleChange} className="form-control" id="exampleFormControlTextarea1" name="content" value={this.state.content} rows="3"></textarea>
+                <div className="alert">{this.state.contentError}</div>
+            </div>
+            <button
+                type="submit"
+                onClick={ this.handleSubmit }
+                className={`btn btn-info ${this.state.disable}`}
+                disabled={this.state.disabled}>Submit</button>
+          </form>
         </div>
-        <div className="form-group">
-            <label htmlFor="exampleFormControlInput1">Photo</label>
-            <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="photo" value={this.state.photo} />
-        </div>
-        <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">Contents</label>
-            <textarea onChange={this.handleChange} className="form-control" id="exampleFormControlTextarea1" name="content" value={this.state.content} rows="3"></textarea>
-            <div>{this.state.contentError}</div>
-        </div>
-        <button
-            type="submit"
-            onClick={this.handleSubmit}
-            className={`btn btn-primary ${this.state.disable}`}
-            disabled={this.state.disabled}>Submit</button>
-        </form>
-
+      </div>
         : null }
+      
       </>
       );
     }

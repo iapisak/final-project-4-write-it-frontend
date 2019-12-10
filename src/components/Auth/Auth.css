@@ -1,0 +1,108 @@
+#login h1 {
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: 20px;
+    color: tomato;
+    text-shadow: 0.5px 0.5px rgb(99, 88, 88);
+}
+
+#login label {
+    font-size: 110%;
+    color: rgba(245, 245, 245, 0.945);
+}
+
+#login input {
+    font-size: 100%;
+}
+
+#login button {
+    font-size: 100%;
+    font-weight: 400;
+}
+
+#login .alert {
+    padding-left: 0;
+}
+
+.login-box {
+    position: relative;
+    margin: 40px auto;
+    width: 35%;
+    padding: 2%;
+    background-color: rgba(31, 29, 29, 0.856);
+    font-size: 100%;
+    border-radius: 5px;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+}
+
+.delete-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.signup-box {
+    position: relative;
+    margin: 40px auto;
+    width: 35%;
+    padding: 2%;
+    background-color: rgba(31, 29, 29, 0.856);
+    border-radius: 5px;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+}
+
+#signup input {
+    font-size: 100%;
+}
+
+#signup label {
+    font-size: 110%;
+    color: rgba(245, 245, 245, 0.945);
+}
+
+#signup h1 {
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: 50px;
+    color: tomato;
+    text-shadow: 0.5px 0.5px rgb(99, 88, 88);
+}
+
+#signup button {
+    font-size: 100%;
+    font-weight: 400;
+}
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    #login {
+        width: 90%;
+    } 
+
+    #signup {
+        width: 90%;
+    }
+}
