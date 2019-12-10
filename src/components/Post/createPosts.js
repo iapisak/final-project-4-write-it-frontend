@@ -63,7 +63,7 @@ class CreatePosts extends Component{
       {this.props.currentUser ?
       <div className="create-wrap" style={{ display: this.props.toggle ? 'block': 'none' }}>
         <form className="posts-create-container">
-          <h1 className="text-center">Create post</h1>
+          <h3 className="text-center">Create post</h3>
           <div className="form-group">
               <label htmlFor="exampleFormControlInput1">Title</label>
               <input onChange={this.handleChange} type="text" className="form-control" id="exampleFormControlInput1" name="title" value={this.state.title} />

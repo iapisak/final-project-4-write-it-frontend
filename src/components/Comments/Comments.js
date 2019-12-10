@@ -45,7 +45,6 @@ class Comments extends Component {
 
     render() {
         const userPhoto = localStorage.getItem('photo')
-        console.log(userPhoto)
         return (            
             <div className="comment-box">
                 <p className="text-center">Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>

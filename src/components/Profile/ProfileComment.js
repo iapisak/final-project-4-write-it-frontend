@@ -9,11 +9,12 @@ class ProfileComments extends Component {
         console.log(this.props.comments.comment.length)
         return (
             <div className="profile-comment-container">
-                <p className="date">Date { new Date(this.props.comments.date).toLocaleDateString() }</p>
                 <p >{ this.props.comments.comment }
+                <span className="date">{ new Date(this.props.comments.date).toLocaleDateString() }</span>        
                     <Link to={`/post/${this.props.comments.post }`}>
-                        <span>  more...</span>
-                    </Link>            
+                        <span>See this comment...</span>
+                    </Link>    
+                    
                 </p>
    
             </div>

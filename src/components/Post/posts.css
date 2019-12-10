@@ -25,7 +25,7 @@
 }
 
 .profile-slug {
-    color: #1a1a1a;
+    color: rgba(31, 29, 29, 0.856);
     font-weight: 300;
 }
 
@@ -45,12 +45,12 @@
 }
 
 .posts-content {
-    color: rgb(173, 173, 173);
+    color: rgba(80, 76, 76, 0.856);
 }
 
 /* Create Posts */
 .create-wrap {
-    background-color: rgba(0, 0, 0, 0.534);
+    background-color: rgba(31, 29, 29, 0.856);
     margin-bottom: 20px;
     padding: 20px;
     animation-duration: 1.5s;
@@ -58,7 +58,7 @@
 }
 
 .posts-create-container {
-    background-color: rgb(233, 231, 231);
+    background-color: whitesmoke;
     width: 70%;
     margin: 20px auto;
     padding: 20px;
@@ -67,9 +67,10 @@
     animation-name: fadeInDown;
 }
 
-.posts-create-container h1 {
+.posts-create-container h3 {
     font-family: 'Abril Fatface', cursive;
-    color: rgb(90, 80, 90);
+    color: tomato;
+    text-shadow: 0.5px 0.5px rgb(99, 88, 88);
 }
 
 .posts-create-container input, .posts-create-container textarea {
@@ -79,7 +80,7 @@
 
 .posts-create-container label {
     font-weight: 700;
-    color: rgb(107, 101, 107);
+    color: rgba(31, 29, 29, 0.856);
 }
 
 @keyframes fadeInDown {

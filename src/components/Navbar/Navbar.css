@@ -1,8 +1,7 @@
 .nav-container {
-    background-image: url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80');
+    background-image: url('https://images.unsplash.com/photo-1494319827402-c4b839aed26b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 .nav-header {
@@ -16,11 +15,12 @@
 
 .nav-sub-header h2 {
     font-family: 'Abril Fatface', cursive;
-    text-shadow: 2px 2px #141111;
+    text-shadow: 1px 1px black;
 }
 
 .display-3 {
-    padding-top: 40px;
+    padding-top: 60px;
+    /* color: rgba(31, 29, 29, 0.856); */
     color: tomato;
 }
 
@@ -29,12 +29,12 @@
     left: 50%;
     bottom: 0%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: rgba(31, 29, 29, 0.856);
     font-size: 110%;
 }
 
 .nav-menu {
-    background-color: rgba(19, 14, 14, 0.781);
+    background-color: rgba(3, 3, 3, 0.123);
     z-index: 1;
 }
 
@@ -48,7 +48,7 @@
 .nav-box a {
     text-decoration: none;
     cursor: pointer;
-    color: tomato;
+    color: rgba(31, 29, 29, 0.856);
 }
 
 .nav-box a:hover {
@@ -57,7 +57,7 @@
 
 .nav-link {
     cursor: pointer;
-    color: tomato !important;
+    color: rgba(31, 29, 29, 0.856) !important;
 }
 
 .nav-link:hover {
@@ -73,7 +73,7 @@
 .dropbtn {
     /* background-color: #4CAF50; */
     background: none;
-    color: tomato;
+    color: rgba(31, 29, 29, 0.856);
     font-weight: 600;
     padding: 5px;
     font-size: 16px;
@@ -93,7 +93,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: black;
+    background-color: rgb(180, 176, 176);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -101,7 +101,7 @@
   
   /* Links inside the dropdown */
   .dropdown-content a {
-    color: tomato;
+    color: rgba(31, 29, 29, 0.856);
     font-size: 100%;
     padding: 5px;
     text-decoration: none;
@@ -109,7 +109,7 @@
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: rgb(58, 55, 55);}
+  .dropdown-content a:hover {background-color: rgb(199, 196, 196);}
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block;}

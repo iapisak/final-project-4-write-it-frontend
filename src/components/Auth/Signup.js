@@ -101,6 +101,7 @@ class Signup extends Component {
             </div>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="slug" name="slug" placeholder="Profile-Name" value={this.state.slug} />
+                <div className='alert'></div>
             </div>
             <div className="form-group">
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="text" id="name" name="name" placeholder="First name" value={this.state.name} />
@@ -118,7 +119,7 @@ class Signup extends Component {
                 <input onChange={this.handleChange} className="form-control form-control-lg" type="password" id="password-2" name="password2" placeholder="Confirm your password" value={this.state.password2} />
                 <div className='alert'>{this.state.password2Error}</div>
             </div>
-            <button className="btn btn-info float-right" type="submit">Sign up</button>
+            <button className="btn btn-info" type="submit">Sign up</button>
         </form>
     );
   }

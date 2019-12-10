@@ -61,10 +61,8 @@ class Login extends Component {
         const { emailError, passwordError } = this.state
 
         return (
-            // <div className="container">
-                
                 <form id="login" style={{ display: this.props.toggle ? 'block': 'none' }} className="container" onSubmit={ this.handleOnSubmit }>
-                    <h1>Login</h1>
+                    <h1>Sign in</h1>
                     <div className="form-label-group">
                         <label htmlFor="email-address">Email address</label>
                         <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
@@ -75,9 +73,8 @@ class Login extends Component {
                         <input onChange={ this.handleOnChange } type="password" name='password' id="password" className="form-control" value={ this.state.password } />
                         <div className='alert'>{passwordError}</div>
                     </div>
-                    <button type="submit" className="btn btn-info float-right">Log in</button>
+                    <button type="submit" className="btn btn-info">Submit</button>
                 </form>
-            // </div>
         )
     }
 }

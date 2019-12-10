@@ -63,14 +63,13 @@
 }
 
 .profile-post-container {
-    border-bottom: 1px solid gray;
     color: gray;
 }
 
 .profile-post-container a {
     text-decoration: none;
     font-family: 'Abril Fatface', cursive;
-    color: black;
+    color: rgba(31, 29, 29, 0.856);
 }
 
 .profile-post-container a:hover {
@@ -84,7 +83,7 @@
 }
 
 .profile-post-container .post-date {
-    color: coral;
+    color: tomato;
     font-size: 85%;
     font-weight: 600;
 }
@@ -95,17 +94,23 @@
 }
 
 .profile-comment-container {
-    padding-top: 20px;
     padding-left: 20px;
-    border-bottom: 1px solid gray;
-    color: rgb(146, 138, 138);
-    font-size: 85%;
+    color: rgba(31, 29, 29, 0.856);
+    font-size: 95%;
 }
 
 .profile-comment-container .date {
-    color: black;
+    color: tomato;
     font-weight: 600;
+    padding: 0 10px;
 }
+
+.profile-comment-container a {
+    text-decoration: none;
+    text-size-adjust: 90%;
+}
+
+
 /* 
 .overflow {
     width: 50em;
