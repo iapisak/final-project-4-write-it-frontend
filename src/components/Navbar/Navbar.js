@@ -47,9 +47,9 @@ class Navbar extends Component {
             <div className="nav-container">
                 <div className="nav-header">
                     <div className="nav-sub-header container">
-                        <h1 className="display-3">Write-It</h1>
+                        <h2 className="display-3">Write-It</h2>
                     </div>
-                    <p className="slogan container text-right">This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                    {/* <p className="slogan container text-right">This is a template for a simple marketing or informational website.</p> */}
                 </div>
                 
                 <nav className="nav-menu navbar navbar-expand-md navbar-dark">

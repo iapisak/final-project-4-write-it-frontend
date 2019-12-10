@@ -48,7 +48,7 @@ class ProfileContainer extends Component {
                         user_Id = { this.props.id }
                         user= { this.state.profile }/>
                 </div>
-                <div className="d-flex">
+                <div className="profile-box-post-comment d-flex">
                     <div className="profile-post-history">
                         <div className="d-flex">
                             <h2>Posts history</h2>

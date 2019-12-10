@@ -21,14 +21,14 @@ class postDetail extends Component {
     render () {
         return (
             <div className="posts-detail d-flex">
-                <img className="posts-deatil-image" src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
+                <img className="posts-detail-image" src={ this.props.detail.photo } alt={ this.props.detail.photo} / >
                 <div className="posts-content-box">
                     <a href={`/post/${this.props.detail._id}`}>
-                        <h3>{this.props.detail.title}</h3>
+                        <h4>{this.props.detail.title}</h4>
                     </a>    
                         <p className="profile-slug">By : 
                             <Link to={`/profile/${this.props.detail.user}`}>
-                            <span>{this.props.detail.userSlug}</span>
+                            <span className="user-slug">{this.props.detail.userSlug}</span>
                             </Link> 
                             
                             | <span>{ new Date(this.props.detail.date).toLocaleDateString() }</span>
@@ -39,8 +39,6 @@ class postDetail extends Component {
                         </p>
                         <p className="posts-content">{this.props.detail.content}</p>
                     </div>
-                
-                
             </div>
         )
     }

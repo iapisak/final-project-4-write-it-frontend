@@ -17,6 +17,7 @@
 
 .profile-post-history h2, .profile-comment-history h2 {
     font-family: 'Abril Fatface', cursive;
+    color: coral;
 }
 
 .history-box {
@@ -32,5 +33,31 @@
     to {
       margin-left: 0%;
       width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-box-post-comment {
+        flex-direction: column;
+    }
+
+    .profile-comment-history {
+        border: none;
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .profile-box-post-comment {
+        flex-direction: column;
+    }
+
+    .profile-comment-history {
+        padding: 0;
     }
 }

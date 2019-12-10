@@ -15,29 +15,29 @@
 
 .posts-detail a:hover {
     text-decoration: none;
-    color: rgb(231, 111, 41);
+    color: tomato;
 }
-
-
 
 .posts-detail img {
     width: 300px;
     height: auto;
+    border-radius: 5px;
 }
 
 .profile-slug {
-    color: rgb(172, 171, 171);
+    color: #1a1a1a;
     font-weight: 300;
 }
 
-.profile-slug span {
+.profile-slug span{
     font-family: 'Merriweather', serif;
-    color: rgb(231, 111, 41);
+    color: tomato;
     font-weight: 400;
+    padding: 0 3px;
 }
 
-.profile-slug span:hover {
-    color: rgb(150, 126, 82);
+.profile-slug .user-slug:hover {
+    color: red;
 }
 
 .posts-content-box {
@@ -45,14 +45,22 @@
 }
 
 .posts-content {
-    color: gray;
+    color: rgb(173, 173, 173);
 }
 
 /* Create Posts */
+.create-wrap {
+    background-color: rgba(0, 0, 0, 0.534);
+    margin-bottom: 20px;
+    padding: 20px;
+    animation-duration: 1.5s;
+    animation-name: fadeInDown;
+}
+
 .posts-create-container {
     background-color: rgb(233, 231, 231);
-    width: 80%;
-    margin: 30px auto;
+    width: 70%;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
     animation-duration: 1.5s;
@@ -96,4 +104,19 @@
       transform: none;
     }
   }
+
+@media only screen and (max-width: 700px) {
+    .posts-detail {
+        flex-direction: column;
+        border-bottom: 2px solid rgb(224, 220, 220);
+    }
+
+    .posts-detail-image {
+        display: none;
+    }
+
+    .posts-create-container {
+        width: 95%;
+    }
+}
 

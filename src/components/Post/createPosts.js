@@ -61,7 +61,8 @@ class CreatePosts extends Component{
     return (
       <>
       {this.props.currentUser ?
-        <form className="posts-create-container" style={{ display: this.props.toggle ? 'block': 'none' }}>
+      <div className="create-wrap" style={{ display: this.props.toggle ? 'block': 'none' }}>
+        <form className="posts-create-container">
           <h1 className="text-center">Create post</h1>
           <div className="form-group">
               <label htmlFor="exampleFormControlInput1">Title</label>
@@ -83,8 +84,9 @@ class CreatePosts extends Component{
               className={`btn btn-info ${this.state.disable}`}
               disabled={this.state.disabled}>Submit</button>
         </form>
-
+      </div>
         : null }
+      
       </>
       );
     }

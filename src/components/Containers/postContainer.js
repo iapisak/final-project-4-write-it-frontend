@@ -36,17 +36,18 @@ class PostContainer extends Component {
     render () {
         return (
             <>
-                <div className="flex-grow-1" >
+                <div className="main-container" >
                     <div className="topic-container" style={{ backgroundImage:`url('${ this.props.channelPhoto}')` }}>
                         <h2>{ this.props.channelName } Topic</h2>
                         <p className="channel-detail text-right">{ this.props.channelDetail }</p>
                         <div className="post-button-option">
                         {this.props.currentUser ? 
-                            <button onClick={ this.isToggle } className="btn-warning"> Create post </button>
+                            <button onClick={ this.isToggle } className="btn-primary"> Create post </button>
                             : 
                             <button className="btn-primary">You must be log in before post</button>}
                         </div>
                     </div>
+                
                     <CreatePosts 
                         toggle={ this.state.isToggle }
                         currentUser={ this.props.currentUser }
