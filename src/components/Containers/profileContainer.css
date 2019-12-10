@@ -10,6 +10,7 @@
 .profile-comment-history {
     padding: 30px 0;
     flex: 1;
+    flex-wrap: wrap;
     border-left: 2px solid gray;
     border-top: 2px solid gray;
 }
@@ -20,4 +21,16 @@
 
 .history-box {
     padding-left: 20px;
+}
+
+@keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%; 
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
 }

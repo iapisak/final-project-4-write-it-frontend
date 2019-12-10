@@ -4,6 +4,8 @@
     padding: 7%;
     background-color: rgba(228, 225, 224, 0.425);
     font-size: 100%;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
 }
 
 #login h1 {
@@ -25,6 +27,8 @@
     width: 50%;
     padding: 7%;
     background-color: rgba(228, 225, 224, 0.425);
+    animation-duration: 1s;
+    animation-name: fadeInDown;
 }
 
 #signup input {
@@ -35,3 +39,26 @@
     font-family: 'Abril Fatface', cursive;
     margin-bottom: 50px;
 }
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }

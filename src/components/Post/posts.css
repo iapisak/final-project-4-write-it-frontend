@@ -55,6 +55,8 @@
     margin: 30px auto;
     padding: 20px;
     border-radius: 5px;
+    animation-duration: 1.5s;
+    animation-name: fadeInDown;
 }
 
 .posts-create-container h1 {
@@ -71,4 +73,27 @@
     font-weight: 700;
     color: rgb(107, 101, 107);
 }
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 

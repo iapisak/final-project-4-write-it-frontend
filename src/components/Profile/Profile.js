@@ -101,9 +101,9 @@ class Profile extends Component {
             <div className="profile-box d-flex" style={{ backgroundImage:`url(${this.state.theme})` }} >
                 <div className="profile-wrap d-flex">
                     <div className="profile-img">
-                        <img src={ this.state.photo } alt=""/>
+                        <img src={ this.state.photo } alt="" />
                     </div>
-                    <div>
+                    <div className="profile-info">
                         <h2>Profile<span> : {this.state.slug}</span></h2>
                         <div>Name : {this.state.name}-{this.props.user.lastName}</div>
                         <div>Email : {this.state.email}</div>
@@ -114,7 +114,7 @@ class Profile extends Component {
                         { currentUser === this.props.user_Id 
                         ?
                             <button
-                                className="btn btn-info"
+                                className="btn btn-danger"
                                 onClick={ this.handdleOnEdit }
                                 >Edit Profile</button>
                         :
@@ -161,11 +161,11 @@ class Profile extends Component {
                 <div className="d-flex">
                     <label htmlFor="theme">Back ground</label>
                     <input onChange={this.handleChange} className="back-ground form-control" type="text" id="theme" name="theme" 
-                        value={ this.state.photo } />
+                        value={ this.state.theme } />
                 </div>
                 <button
                     type="submit"
-                    className="btn btn-info float-right"
+                    className="btn btn-warning float-right"
                     disabled={ this.state.disabled }
                     onClick={ this.handleEditSubmit }
                     >Save</button>

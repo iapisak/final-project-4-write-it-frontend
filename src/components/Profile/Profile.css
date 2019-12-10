@@ -3,8 +3,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 10px;
-    padding: 10px;
+    /* padding: 10px; */
     height: 40vh;
+    border-radius: 5px;
 }
 
 .profile-box h2 {
@@ -21,15 +22,31 @@
 
 .profile-wrap {
     flex: 1;
+    background-color: rgba(0, 0, 0, 0.233);
+    color: white;
+    font-size: 110%;
+}
+
+.profile-wrap button {
+    margin-top: 20px;
 }
 
 .profile-img img {
     width: 130px;
-    margin-right: 20px;
+    margin: 20px;
+}
+
+.profile-info {
+    padding: 20px;
+    padding-left: 0;
 }
 
 .edit-profile-form {
     flex: 1.3;
+    background-color: rgba(252, 250, 250, 0.705);
+    padding: 10px;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
 }
 
 .edit-profile-form h2 {
@@ -44,10 +61,6 @@
 
 .edit-profile-form input {
     margin-bottom: 10px;
-}
-
-.edit-profile-form .last-name {
-    /* width: 120px; */
 }
 
 .profile-post-container {
@@ -90,3 +103,75 @@
     color: black;
     font-weight: 600;
 }
+/* 
+.overflow {
+    width: 50em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+} */
+
+
+@keyframes animatetop {
+    from {top: -200px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+  
+  @keyframes slideLeft {
+    from {left: -200px; opacity: 0}
+    to {left: 0; opacity: 1}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+  }
+  
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes spin {
+      from {
+          transform:rotate(0deg);
+      }
+      to {
+          transform:rotate(360deg);
+      }
+  }
+  
+
