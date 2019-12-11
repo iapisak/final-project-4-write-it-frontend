@@ -22,4 +22,4 @@ https://www.lucidchart.com/documents/edit/3d9b25b7-7984-4259-965c-125713754eb3/0
 
 ---
 ### Tech :
-React, JavaScript, HTML/CSS
+React, JavaScript, Node JS, Express, Mongo DB, Bootstap, HTML/CSS
