@@ -4,19 +4,20 @@ In the project directory, you can run:
 
 ### About 
 
-
+## Data Base Chart
 <img src="public/image/erd.png" width=600 height=auto>
 
+## Wireframe :
 <img src="public/image/auth.png" width=300 height=auto>
-
 <img src="public/image/landing.png" width=300 height=auto>
-
 <img src="public/image/post.png" width=300 height=auto>
 
 
 
 
 User can share their experience
+
+[Project](https://fathomless-escarpment-12751.herokuapp.com)
 
 ## Project :
 https://fathomless-escarpment-12751.herokuapp.com
