@@ -5,13 +5,13 @@ In the project directory, you can run:
 ### About 
 
 
-<img src="public/image/erd.png" width=600 height=auto>
+<img src="public/image/erd.png" width=300 height=auto>
 
-<img src="public/image/auth.png" width=600 height=auto>
+<img src="public/image/auth.png" width=300 height=auto>
 
-<img src="public/image/landing.png" width=600 height=auto>
+<img src="public/image/landing.png" width=300 height=auto>
 
-<img src="public/image/post.png" width=600 height=auto>
+<img src="public/image/post.png" width=300 height=auto>
 
 
 
