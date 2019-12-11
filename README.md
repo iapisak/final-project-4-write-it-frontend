@@ -5,7 +5,7 @@ In the project directory, you can run:
 ### About 
 
 
-
+<img src="public/image/erd.png" width=600 height=auto>
 
 
 
