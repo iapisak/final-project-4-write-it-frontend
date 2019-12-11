@@ -3,7 +3,7 @@
 In the project directory, you can run:
 
 ### About 
-User can share their experience
+- Write-It is social Blog with different communities that users can join. In these communities, users can create posts to share their experiences with other users or comment on other user's posts. The goal of this site is to create an online community for users to share their interests and ideas.
 
 ## Data Base Chart
 <img src="public/image/erd.png" width=600 height=auto>
