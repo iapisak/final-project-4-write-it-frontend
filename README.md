@@ -9,7 +9,7 @@ In the project directory, you can run:
 <img src="public/image/ard.png" width=600 height=auto>
 
 ### Wireframe :
-<img src="public/image/auth.png" width=300 height=auto>
+<img src="public/image/auth.png" width=300 height=auto display=inline>
 <img src="public/image/landing.png" width=300 height=auto>
 <img src="public/image/post.png" width=300 height=auto>
 
