@@ -5,6 +5,9 @@ import PostDetailsContainer from '../components/Containers/postDetailsContainer'
 import ProfileContainer from '../components/Containers/profileContainer';
 
 export default ({ currentUser, userSlug, category }) => {
+
+    // const Newcategory = category.sort()
+
     return (
         <Switch>
             <Route exact path='/'
