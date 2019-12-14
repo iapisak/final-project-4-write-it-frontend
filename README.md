@@ -13,7 +13,7 @@ In the project directory, you can run:
 User can share their experience
 
 ## Project :
-https://fathomless-escarpment-12751.herokuapp.com
+https://project-write-it.herokuapp.com/
 ## Scope : 
 https://docs.google.com/document/d/1MHM0yUAD5a4YymbfHaHQsuVMXIFw37IsY4p9Lqk3t0I/edit
 ## Wireframe : 
