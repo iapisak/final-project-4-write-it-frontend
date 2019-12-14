@@ -14,7 +14,7 @@ In the project directory, you can run:
 <img src="public/image/post.png" width=300 height=auto>
 
 ### Project :
-https://fathomless-escarpment-12751.herokuapp.com
+https://project-write-it.herokuapp.com/
 ### Scope : 
 https://docs.google.com/document/d/1MHM0yUAD5a4YymbfHaHQsuVMXIFw37IsY4p9Lqk3t0I/edit
 ### Wireframe : 
