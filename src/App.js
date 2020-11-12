@@ -31,8 +31,8 @@ class App extends Component {
     localStorage.removeItem('username');
     localStorage.removeItem('slug')
     localStorage.removeItem('photo')
-    axios.delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true }
-    ).then(res => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/logout`)
+    .then(res => {
       this.setState({ currentUser: null, username: '' });
       this.props.history.push('/');
       })
