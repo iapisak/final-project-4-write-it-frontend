@@ -76,7 +76,7 @@ class PostDetailsContainer extends Component {
     // ==== Handle on Posts ==== //
     handleDelete = () => {
         const post_Id = this.state.postId
-        axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`,{withCredentials:true})
+        axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`)
         .then(() => {
             this.props.history.push(`/${ this.state.channel }`)
             this.setState({ channelloaded: !this.state.channelloaded })
