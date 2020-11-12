@@ -77,8 +77,7 @@ class Signup extends Component {
     const formValidation = this.formValidation()
 
     if (formValidation) {
-        let headers = {"Access-Control-Allow-Origin": "*"}
-        axios.post(`${process.env.REACT_APP_API_URL}/signup`, headers, this.state,)
+        axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state,)
         .then((res) => {
             if (res.data.status === 201) {
             this.setState(initialState)
