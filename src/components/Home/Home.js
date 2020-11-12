@@ -9,7 +9,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <section className="d-flex">
                     <PostContainer 
                         currentUser={ this.props.currentUser } 

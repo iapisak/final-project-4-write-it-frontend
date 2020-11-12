@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Merriweather&display=swap');
-
 * {
     box-sizing: border-box;
     text-decoration: none;
@@ -7,9 +5,11 @@
 }
 
 body {
-    background-color: whitesmoke;
-    font-family: 'Merriweather', serif;
-    font-size: 90%;
+    font-family: 'Raleway', sans-serif;
+    background-image: url("https://d3d71ba2asa5oz.cloudfront.net/73000874/images/fd24136%20first%20pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .alert {

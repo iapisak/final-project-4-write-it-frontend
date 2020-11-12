@@ -1,7 +1,7 @@
 .nav-container {
-    background-image: url('https://images.unsplash.com/photo-1494319827402-c4b839aed26b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80');
-    background-size: cover;
-    background-repeat: no-repeat;
+    /* background-image: url('https://images.unsplash.com/photo-1494319827402-c4b839aed26b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80'); */
+    /* background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 .nav-header {
@@ -14,8 +14,8 @@
 }
 
 .nav-sub-header h2 {
-    font-family: 'Abril Fatface', cursive;
-    text-shadow: 1px 1px black;
+    /* font-family: 'Abril Fatface', cursive; */
+    /* text-shadow: 1px 1px black; */
 }
 
 .display-3 {
