@@ -45,7 +45,7 @@ class Login extends Component {
         e.preventDefault()
         const formValidation = this.formValidation()
         if (formValidation) {
-            axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state, { withCredentials: true })
+            axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state)
             .then((res) => {
                 console.log(res.data.data)
                 this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug, res.data.data.photo)
