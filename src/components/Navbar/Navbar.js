@@ -22,7 +22,7 @@ class Navbar extends Component {
 
         const isGuest = (
             <>
-                <li className="nav-link" onClick={ this.props.loginToggle }>Log in</li>
+                <li className="nav-link" onClick={ this.props.loginToggle }>Sign in</li>
                 <li className="nav-link" onClick={ this.props.signupToggle }>Register</li>
             </>
         );
@@ -45,7 +45,16 @@ class Navbar extends Component {
         return (
             <>
             <div className="nav-container-fluid">
-                <nav className="nav-menu navbar navbar-expand-md nav-dark fixed-top">
+                <div className="nav-header">
+                    <div className="nav-sub-header container-fluid">
+                        <div className="float-right" style={{ textAlign: "right", marginRight: "60px" }}>
+                            <h2 className="display-3">Write-It</h2>
+                            <h4>A simple of writing</h4>
+                            <h4>Here you will find news, and share your experiences.</h4>
+                        </div>
+                    </div>
+                </div>
+                <nav className="nav-menu navbar navbar-expand-md nav-dark">
                     <div className="nav-box container-fluid">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" style={{ width:20, height:20 }}></span>
@@ -73,13 +82,8 @@ class Navbar extends Component {
                         </div>
                     </div>
                 </nav>
-                <div className="nav-header">
-                    <div className="nav-sub-header container-fluid">
-                        <h2 className="display-3">Write-It</h2>
-                        <h4>Here you will find news, interesting posts, and share your experiences.</h4>
-                    </div>
-                </div>
             </div>
+            
             <Login 
                 currentUser={ this.props.currentUser }
                 username={ this.props.username }

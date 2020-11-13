@@ -20,7 +20,7 @@ class Home extends Component {
                         channelPhoto={ this.props.channelPhoto } />
 
                     <div className="channel-container">
-                        <h4>Channels</h4>
+                        <h5>Channels</h5>
                         {this.props.category.map((channel) => (
                         <Channel name={ channel.name } key={ channel._id } />
                     ))}

@@ -83,7 +83,7 @@ class CreatePosts extends Component{
             <button
                 type="submit"
                 onClick={ this.handleSubmit }
-                className={`btn btn-info ${this.state.disable}`}
+                className={`btn btn-dark ${this.state.disable}`}
                 disabled={this.state.disabled}>Submit</button>
           </form>
         </div>

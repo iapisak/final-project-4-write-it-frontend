@@ -1,34 +1,36 @@
-.nav-header {
+.nav-container-fluid {
     position: relative;
 }
 
 .nav-sub-header {
-    background-image: url("https://cdn.shopify.com/s/files/1/2656/8500/products/rasch-portfolio-xii-green-leaf-wallpaper-214628_1024x.jpg?v=1569315319");
-    background-position: center;
+    background-image: url("https://i.pinimg.com/originals/ce/f0/ac/cef0ac309fbb3d00344554a27cf2136a.jpg");
+    background-size: 100%;
     position: relative;
-    height: 45vh;
+    height: 30vh;
+    align-content: right;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
+    font-weight: 900;
 }
 
 .nav-sub-header h4 {
-    font-weight: 900;
+    font-family: 'Special Elite', cursive;
     font-size: 19px;
-    padding-left: 50px;
-    color: rgb(23, 41, 23);
-    text-shadow: 1px 1px #f5faf665;
 }
 
 .display-3 {
-    padding-top: 210px;
-    padding-left: 40px;
-    font-weight: 900;
-    font-size: 90;
-    color: rgb(23, 41, 23);
-    text-shadow: 1px 1px #7e888065;
+    font-family: 'Special Elite', cursive;
+    padding-top: 40px;
+    font-size: 3rem;
 }
 
 .nav-menu {
-    background-color: rgba(17, 20, 19, 0.356);
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1.3px;
+    font-weight: 900;
     z-index: 1;
+    border-top-style: double;
+    border-bottom-style: double;
 }
 
 .nav-box {
@@ -36,25 +38,18 @@
     padding: 0 50px;
 }
 
-.nav-box a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav-box a:hover {
-    transform: scale(1.1)
-}
-
-.nav-link {
+.nav-link, .nav-link a {
     margin-right: 5px;
     padding: 0;
     cursor: pointer;
     font-weight: 900;
-    color: black !important;
+    color: rgb(110, 106, 106);
+    text-decoration: none;
 }
 
-.nav-link:hover {
-    transform: scale(1.1);
+.nav-link:hover, .nav-link a:hover {
+    transform: scale(1.05);
+    color: black;
 }
 
 .nav-authorized {
@@ -64,15 +59,16 @@
 
 /* Dropdown Button */
 .dropbtn {
+    letter-spacing: 1.5px;
     background: none;
     font-weight: 900;
-    color: black !important;
+    color: rgb(110, 106, 106);
     border: none;
     padding: 0;
 }
 
 .dropbtn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     color: rgb(28, 37, 27);
 }
   
@@ -84,25 +80,28 @@
   
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-display: none;
-position: absolute;
-background-color: rgb(180, 176, 176);
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: white;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    min-width: 250px;
+    z-index: 1;
 }
   
 /* Links inside the dropdown */
 .dropdown-content a {
     color: rgba(31, 29, 29, 0.856);
-    font-size: 100%;
     padding: 5px;
     text-decoration: none;
     display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: rgb(199, 196, 196);}
+.dropdown-content a:hover {
+    color: whitesmoke;
+    background-color: black;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}

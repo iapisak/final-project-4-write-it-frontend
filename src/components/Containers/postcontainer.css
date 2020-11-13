@@ -8,28 +8,30 @@
     background-size: cover;
     background-position: center;
     background-repeat: none;
-    padding: 20px;
-    margin: 20px 0;
+    margin: 20px 0 40px 0;
     color: white;
     font-size: 105%;
     border-radius: 5px;
+    color: rgb(110, 106, 106);
 }
 
 .topic-container h2 {
-    font-weight: 900;
-    color: rgba(246, 248, 246, 0.63);
+    font-family: 'Special Elite', cursive;
+    font-size: 25px;
+    color: rgb(23, 41, 23);
     text-shadow: 1px 1px #7e888065;
 }
 
 .channel-detail {
-    margin: 40px 0 30px 0;
-    color: rgb(226, 221, 221);
+    font-family: 'Special Elite', cursive;
 }
 
 .post-button-option {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    font-weight: 900;
+    color: white;
+    right: 10px;
+    top: -10px;
 }
 
 .post-button-option button {
