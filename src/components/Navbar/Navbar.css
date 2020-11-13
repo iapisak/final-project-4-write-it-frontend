@@ -1,65 +1,60 @@
-.nav-container {
-    /* background-image: url('https://images.unsplash.com/photo-1494319827402-c4b839aed26b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80'); */
-    /* background-size: cover;
-    background-repeat: no-repeat; */
-}
-
 .nav-header {
     position: relative;
 }
 
 .nav-sub-header {
+    background-image: url("https://cdn.shopify.com/s/files/1/2656/8500/products/rasch-portfolio-xii-green-leaf-wallpaper-214628_1024x.jpg?v=1569315319");
+    background-position: center;
     position: relative;
-    height: 35vh;
+    height: 45vh;
 }
 
-.nav-sub-header h2 {
-    /* font-family: 'Abril Fatface', cursive; */
-    /* text-shadow: 1px 1px black; */
+.nav-sub-header h4 {
+    font-weight: 900;
+    font-size: 19px;
+    padding-left: 50px;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #f5faf665;
 }
 
 .display-3 {
-    padding-top: 60px;
-    /* color: rgba(31, 29, 29, 0.856); */
-    color: tomato;
-}
-
-.slogan {
-    font-family: 'Abril Fatface', cursive;
-    color: tomato;
-    text-shadow: 1px 1px black;
-    margin-bottom: 20px;
+    padding-top: 210px;
+    padding-left: 40px;
+    font-weight: 900;
+    font-size: 90;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
 }
 
 .nav-menu {
-    background-color: rgba(3, 3, 3, 0.123);
+    background-color: rgba(17, 20, 19, 0.356);
     z-index: 1;
 }
 
 .nav-box {
     position: relative;
     padding: 0 50px;
-    font-size: 110%;
-    font-weight: 800;
 }
 
 .nav-box a {
     text-decoration: none;
     cursor: pointer;
-    color: rgba(31, 29, 29, 0.856);
 }
 
 .nav-box a:hover {
-    color: rgb(248, 41, 4);
+    transform: scale(1.1)
 }
 
 .nav-link {
+    margin-right: 5px;
+    padding: 0;
     cursor: pointer;
-    color: rgba(31, 29, 29, 0.856) !important;
+    font-weight: 900;
+    color: black !important;
 }
 
 .nav-link:hover {
-    color: rgb(248, 41, 4) !important;
+    transform: scale(1.1);
 }
 
 .nav-authorized {
@@ -69,55 +64,67 @@
 
 /* Dropdown Button */
 .dropbtn {
-    /* background-color: #4CAF50; */
     background: none;
-    color: rgba(31, 29, 29, 0.856);
-    font-weight: 600;
-    padding: 5px;
-    font-size: 16px;
+    font-weight: 900;
+    color: black !important;
     border: none;
-  }
+    padding: 0;
+}
+
 .dropbtn:hover {
-    color: rgb(248, 41, 4);
+    transform: scale(1.1);
+    color: rgb(28, 37, 27);
 }
   
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
     position: relative;
     display: inline-block;
-  }
+}
   
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgb(180, 176, 176);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: rgb(180, 176, 176);
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
   
-  /* Links inside the dropdown */
-  .dropdown-content a {
+/* Links inside the dropdown */
+.dropdown-content a {
     color: rgba(31, 29, 29, 0.856);
     font-size: 100%;
     padding: 5px;
     text-decoration: none;
     display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: rgb(199, 196, 196);}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background: none;}
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgb(199, 196, 196);}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background: none;}
 
 @media only screen and (max-width: 700px) {
     .nav-authorized {
         position: relative;
         right: 0;
+    }
+
+    .nav-box a:hover {
+        transform: scale(1)
+    }
+
+    .nav-link:hover {
+        transform: scale(1);
+    }
+
+    .dropbtn:hover {
+        transform: scale(1);
     }
 }

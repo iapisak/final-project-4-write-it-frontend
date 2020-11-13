@@ -1,8 +1,6 @@
 /* PostDetail */
 .main-container {
-    width: 850px;
-    padding-right: 30px;
-    border-right: 2px solid rgb(224, 220, 220);
+    flex: 1;
 }
 
 .topic-container {
@@ -18,15 +16,13 @@
 }
 
 .topic-container h2 {
-    font-family: 'Abril Fatface', cursive;
-    text-shadow: 2px 2px #141111;
-    /* color: rgb(226, 221, 221); */
-    color: whitesmoke;
+    font-weight: 900;
+    color: rgba(246, 248, 246, 0.63);
+    text-shadow: 1px 1px #7e888065;
 }
 
 .channel-detail {
     margin: 40px 0 30px 0;
-    text-shadow: 2px 2px #141111;
     color: rgb(226, 221, 221);
 }
 
@@ -175,7 +171,7 @@
 
 @media only screen and (max-width: 1600px) {
     .main-container {
-        width: 90%;
+        width: 100%;
         padding-right: 0;
         border: none;
     } 

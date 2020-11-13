@@ -22,8 +22,8 @@ class Navbar extends Component {
 
         const isGuest = (
             <>
-                <li className="nav-link" onClick={ this.props.loginToggle }>Sign In</li>
-                <li className="nav-link" onClick={ this.props.signupToggle }>Sign Up</li>
+                <li className="nav-link" onClick={ this.props.loginToggle }>Log in</li>
+                <li className="nav-link" onClick={ this.props.signupToggle }>Register</li>
             </>
         );
     
@@ -44,18 +44,11 @@ class Navbar extends Component {
     render() {
         return (
             <>
-            <div className="nav-container">
-                <div className="nav-header">
-                    <div className="nav-sub-header container">
-                        <h2 className="display-3">Write-It</h2>
-                    </div>
-                    <h4 className="slogan container">Share Information, Share Experience.</h4>
-                </div>
-                
-                <nav className="nav-menu navbar navbar-expand-md navbar-dark">
-                    <div className="nav-box container">
+            <div className="nav-container-fluid">
+                <nav className="nav-menu navbar navbar-expand-md nav-dark fixed-top">
+                    <div className="nav-box container-fluid">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" style={{ width:20, height:20 }}></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarCollapse">
                             <ul className="navbar-nav">
@@ -64,7 +57,7 @@ class Navbar extends Component {
                                 </li>
                             </ul>
                             <div className="dropdown">
-                                <button className="dropbtn">Channel</button>
+                                <button className="dropbtn">Channels</button>
                                 <div className="dropdown-content">
                                     {this.props.category.map(channel=>{
                                         return <a href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
@@ -80,6 +73,12 @@ class Navbar extends Component {
                         </div>
                     </div>
                 </nav>
+                <div className="nav-header">
+                    <div className="nav-sub-header container-fluid">
+                        <h2 className="display-3">Write-It</h2>
+                        <h4>Here you will find news, interesting posts, and share your experiences.</h4>
+                    </div>
+                </div>
             </div>
             <Login 
                 currentUser={ this.props.currentUser }

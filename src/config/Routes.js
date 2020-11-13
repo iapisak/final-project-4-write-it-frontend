@@ -16,7 +16,7 @@ export default ({ currentUser, userSlug, category }) => {
                                 userSlug={ userSlug }
                                 channel="5fadad8b99d1600017502810" 
                                 channelName="General-Article"
-                                channelPhoto="https://html5box.com/html5lightbox/images/skynight.jpg"
+                                channelPhoto="https://w.wallhaven.cc/full/5w/wallhaven-5wx3r3.png"
                                 channelDetail="You should be able to describe every aspect surrounding your topic without discrimination. A good description should be able to bring the reader of your essay to the real happening of events. The reader should not question themselves or be left in suspense in a way; you should ensure that you exhaust your descriptions. Every point has to come out clearly in your writing. To come up with a good essay, "
                                 category={ category } />} />
 
