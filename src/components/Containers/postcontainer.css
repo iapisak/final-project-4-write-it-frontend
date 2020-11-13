@@ -1,8 +1,6 @@
 /* PostDetail */
 .main-container {
-    width: 850px;
-    padding-right: 30px;
-    border-right: 2px solid rgb(224, 220, 220);
+    flex: 1;
 }
 
 .topic-container {
@@ -10,30 +8,30 @@
     background-size: cover;
     background-position: center;
     background-repeat: none;
-    padding: 20px;
-    margin: 20px 0;
+    margin: 20px 0 40px 0;
     color: white;
     font-size: 105%;
     border-radius: 5px;
+    color: rgb(110, 106, 106);
 }
 
 .topic-container h2 {
-    font-family: 'Abril Fatface', cursive;
-    text-shadow: 2px 2px #141111;
-    /* color: rgb(226, 221, 221); */
-    color: whitesmoke;
+    font-family: 'Special Elite', cursive;
+    font-size: 25px;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
 }
 
 .channel-detail {
-    margin: 40px 0 30px 0;
-    text-shadow: 2px 2px #141111;
-    color: rgb(226, 221, 221);
+    font-family: 'Special Elite', cursive;
 }
 
 .post-button-option {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    font-weight: 900;
+    color: white;
+    right: 10px;
+    top: -10px;
 }
 
 .post-button-option button {
@@ -47,17 +45,16 @@
     position: relative;
     margin: 30px 0;
     color: rgb(95, 93, 93);
+    font-family: 'Special Elite', cursive;
 }
 
 .postsDetail-container a {
     text-decoration: none;
-    font-family: 'Abril Fatface', cursive;
     font-size: 120%;
     color: rgb(245, 65, 46);
 }
 
-.postsDetail-container h3 {
-    font-family: 'Abril Fatface', cursive;
+.postsDetail-container h5 {
     color: rgb(49, 48, 48);
 }
 
@@ -97,17 +94,17 @@
 }
 
 .comment-form-container {
-    background-image: url('https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3367&q=80');
+    background-image: url('https://i.pinimg.com/originals/a2/aa/14/a2aa147908af06cb3ce0a3e1c5fecba2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-attachment: fixed; */
     margin: 20px 0;
     padding: 5% 0;
 }
 
-.comment-form-container h1 {
-    font-family: 'Abril Fatface', cursive;
-    color: rgb(47, 45, 45);
+.comment-form-container h3 {
+    font-family: 'Special Elite', cursive;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
 }
 
 .comment-form {
@@ -119,30 +116,30 @@
 
 /* postDetail Form */
 .post-edit-form-container {
-    margin: 30px auto;
-    padding: 3% 0;
-    background-color: rgba(31, 29, 29, 0.856);
-    border-radius: 5px;
-    width: 50%;
-    animation-duration: 1s;
-    animation-name: fadeInDown;
+    background-image: url("https://i.pinimg.com/originals/a2/aa/14/a2aa147908af06cb3ce0a3e1c5fecba2.jpg");
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    height: 65vh;
+    padding: 40px;
 }
 
-.post-edit-form-container h1 {
-    font-family: 'Abril Fatface', cursive;
+.post-edit-form-container h3 {
     margin-bottom: 20px;
-    color: tomato;
-    text-shadow: 0.5px 0.5px rgb(99, 88, 88);
+    font-family: 'Special Elite', cursive;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
+    border-bottom-style: solid;
 }
 
 .post-edit-form {
     margin: 40px auto;
-    width: 75%;
-}
-
-.post-edit-form label {
-    font-size: 110%;
-    color: rgba(245, 245, 245, 0.945);
+    width: 45%;
+    font-family: 'Special Elite', cursive;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
 }
 
 .post-edit-form input, .post-edit-form textarea {
@@ -175,7 +172,7 @@
 
 @media only screen and (max-width: 1600px) {
     .main-container {
-        width: 90%;
+        width: 100%;
         padding-right: 0;
         border: none;
     } 

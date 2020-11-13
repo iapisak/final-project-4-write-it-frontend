@@ -37,14 +37,14 @@ class PostContainer extends Component {
         return (
             <>
                 <div className="main-container" >
-                    <div className="topic-container" style={{ backgroundImage:`url('${ this.props.channelPhoto}')` }}>
+                    <div className="topic-container">
                         <h2>{ this.props.channelName } Topic</h2>
-                        <p className="channel-detail text-right">{ this.props.channelDetail }</p>
+                        <p className="channel-detail">{ this.props.channelDetail }</p>
                         <div className="post-button-option">
                         {this.props.currentUser ? 
-                            <button onClick={ this.isToggle } className="btn-primary"> Create post </button>
-                            : 
-                            <button className="btn-primary">You must be log in before post</button>}
+                            <button onClick={ this.isToggle } className="btn-dark"> Create post </button>
+                            :
+                            null}
                         </div>
                     </div>
                 
@@ -55,12 +55,15 @@ class PostContainer extends Component {
                         channel={ this.props.channel }
                         handleSubmit={ this.handleSubmit } 
                         postLoaded={ this.state.postLoaded } />
-                
-                {this.state.posts.map(post => (
-                    <PostDetail 
-                        channel={ this.props.channelName }
-                        detail={ post }/>
-                ))}
+
+                    <div>
+                        {this.state.posts.map((post, index) => (
+                            <PostDetail 
+                                key={ index }
+                                channel={ this.props.channelName }
+                                detail={ post }/>
+                        ))}
+                    </div>
                 </div>
             </>
         )

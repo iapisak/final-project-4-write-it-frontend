@@ -76,7 +76,7 @@ class PostDetailsContainer extends Component {
     // ==== Handle on Posts ==== //
     handleDelete = () => {
         const post_Id = this.state.postId
-        axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`,{withCredentials:true})
+        axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`)
         .then(() => {
             this.props.history.push(`/${ this.state.channel }`)
             this.setState({ channelloaded: !this.state.channelloaded })
@@ -125,9 +125,9 @@ class PostDetailsContainer extends Component {
 
         return (
             this.state.editing ?
-            <div className="post-edit-form-container container">
-                <h1 className="text-center">Update your post</h1>
+            <div className="post-edit-form-container">
                 <form className="post-edit-form">
+                    <h3 className="text-center">Update your post</h3>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Title</label>
                         <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput1" name="title" value={ title } />
@@ -144,10 +144,10 @@ class PostDetailsContainer extends Component {
                     </div>
                     <button
                         type="submit"
-                        className="btn btn-info float-right"
+                        className="btn btn-dark float-right"
                         onClick={ this.handleEditSubmit }
                         disabled={ this.state.disabled }
-                        >Save</button>
+                        >Update</button>
                 </form>
             </div>
             :
@@ -159,7 +159,7 @@ class PostDetailsContainer extends Component {
                             | <span>{ new Date(this.state.date).toDateString() }</span>
                             | <span>{ new Date(this.state.date).toLocaleTimeString() }</span>
                         </p>
-                        <h3>{ title }</h3> 
+                        <h5>{ title }</h5> 
                         <p>
                             <span className="icons" role="img" aria-label="comment">
                                 &#128172; { this.state.comments.length }
@@ -190,7 +190,7 @@ class PostDetailsContainer extends Component {
                 {this.props.currentUser ?
 
                 <div className="comment-form-container">
-                    <h1 className="text-center">Comment on this article</h1>
+                    <h3 className="text-center">Comment on this article</h3>
                     <div className="comment-form container">
                         <Comments
                             numberComment={ this.state.comments.length }

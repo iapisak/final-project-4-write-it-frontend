@@ -28,16 +28,16 @@ class postDetail extends Component {
                 
                 <div className="posts-content-box">
                     <a href={`/post/${this.props.detail._id}`}>
-                        <h4>{this.props.detail.title}</h4>
+                        <h6>{this.props.detail.title}</h6>
                     </a>    
                         <p className="profile-slug">By : 
                             <Link to={`/profile/${this.props.detail.user}`}>
                             <span className="user-slug">{this.props.detail.userSlug}</span>
                             </Link> 
                             
-                            | <span>{ new Date(this.props.detail.date).toLocaleDateString() }</span>
+                            | <span style={{ fontSize: "12px"}}>{ new Date(this.props.detail.date).toLocaleDateString() }</span>
                             
-                            | <span role="img" aria-label="comment">&#128172; { this.state.comment.length } 
+                            | <span  style={{ fontSize: "12px"}} role="img" aria-label="comment">&#128172; { this.state.comment.length } 
                                 { this.state.comment.length <= 1 ? " comment" : " comments" }
                             </span>
                         </p>

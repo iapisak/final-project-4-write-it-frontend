@@ -15,7 +15,7 @@ class ProfilePosts extends Component {
                 
                 <div className="profile-post-detail">
                     <Link to={`/post/${this.props.posts._id}`}>
-                        <h4>{ this.props.posts.title }</h4>
+                        <h6>{ this.props.posts.title }</h6>
                     </Link>
                     <p>{ this.props.posts.content }</p>
                     <div className="post-date float-right">Date { new Date(this.props.posts.date).toLocaleDateString() }</div>

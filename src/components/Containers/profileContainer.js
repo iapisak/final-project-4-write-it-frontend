@@ -40,7 +40,7 @@ class ProfileContainer extends Component {
 
     render () {
         return (
-            <div className="profile-container container">
+            <div className="container-fluid profile-container">
                 <div>
                     <Profile 
                         posts={ this.state.posts.length}
@@ -48,10 +48,10 @@ class ProfileContainer extends Component {
                         user_Id = { this.props.id }
                         user= { this.state.profile }/>
                 </div>
-                <div className="profile-box-post-comment d-flex">
+                <div className="profile-box-post-comment container d-flex">
                     <div className="profile-post-history">
                         <div className="profile-history d-flex">
-                            <h2>Posts history</h2>
+                            <h2>Recently Posted</h2>
                         </div>
                         
                         { this.state.posts <= 0 ? <h5>You have 0 post</h5> :
@@ -67,7 +67,7 @@ class ProfileContainer extends Component {
                     </div>
                     <div className="profile-comment-history">
                         <div className="history-box">
-                            <h2>Comments history</h2>
+                            <h2>Recently Commented</h2>
                         </div>
 
                         { this.state.comments <= 0 ? <h5>You have 0 comment</h5> :
@@ -78,7 +78,6 @@ class ProfileContainer extends Component {
                                 ))}
                             </>
                         }
-
 
                     </div>
                 </div>

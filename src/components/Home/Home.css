@@ -1,17 +1,23 @@
 .channel-container {
-    position: fixed;
-    right: 230px;
-    margin: 20px;
-    padding: 0 20px;
+    background-image: url("https://i.pinimg.com/originals/41/b9/83/41b983c46efa9e59083eab9d8123c6de.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+    height: 80vh;
+    margin: 20px 0 20px 10px;
+    padding: 100px 50px;
+    border-radius: 5px;
+    font-family: 'Special Elite', cursive;
 }
 
-.channel-container h4 {
-    font-family: 'Abril Fatface', cursive;
-    color: tomato;
-    margin-bottom: 20px;
+.channel-container h5 {
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
+    margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1000px) {
     .channel-container {
         display: none;
     } 

@@ -45,9 +45,8 @@ class Login extends Component {
         e.preventDefault()
         const formValidation = this.formValidation()
         if (formValidation) {
-            axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state, { withCredentials: true })
+            axios.post(`${process.env.REACT_APP_API_URL}/login`, this.state)
             .then((res) => {
-                console.log(res.data.data)
                 this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug, res.data.data.photo)
                 this.setState(initialState)
                 this.props.loginToggle()
@@ -68,7 +67,7 @@ class Login extends Component {
         return (
             <div className="login-box" style={{ display: this.props.toggle ? 'block': 'none' }}>
                 <form id="login" className="container" onSubmit={ this.handleOnSubmit }>
-                    <h1>Sign in</h1>
+                    <h3>Sign in</h3>
                     <div className="form-label-group">
                         <label htmlFor="email-address">Email address</label>
                         <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
@@ -79,9 +78,9 @@ class Login extends Component {
                         <input onChange={ this.handleOnChange } type="password" name='password' id="password" className="form-control" value={ this.state.password } />
                         <div className='alert'>{passwordError}</div>
                     </div>
-                    <button type="submit" className="btn btn-info">Submit</button>
+                    <button type="submit" className="btn btn-dark">Submit</button>
+                    <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
                 </form>
-                <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
             </div>
         )
     }

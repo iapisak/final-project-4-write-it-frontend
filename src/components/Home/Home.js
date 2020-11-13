@@ -9,7 +9,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <section className="d-flex">
                     <PostContainer 
                         currentUser={ this.props.currentUser } 
@@ -19,8 +19,8 @@ class Home extends Component {
                         channelDetail={ this.props.channelDetail } 
                         channelPhoto={ this.props.channelPhoto } />
 
-                    <div className="channel-container col-2">
-                        <h4>Channel</h4>
+                    <div className="channel-container">
+                        <h5>Channels</h5>
                         {this.props.category.map((channel) => (
                         <Channel name={ channel.name } key={ channel._id } />
                     ))}

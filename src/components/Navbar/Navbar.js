@@ -13,6 +13,7 @@ class Navbar extends Component {
     authenticated = (currentUser) => {
         const isUser = (
             <>
+                <li className="welcome">Welcome <img src={ this.props.userPhoto } alt="" width="25" height="25"/> { this.props.slug }</li>
                 <li className="nav-link">
                     <a href={`/profile/${this.props.currentUser}`}>Profile</a>
                 </li>
@@ -22,8 +23,9 @@ class Navbar extends Component {
 
         const isGuest = (
             <>
-                <li className="nav-link" onClick={ this.props.loginToggle }>Sign In</li>
-                <li className="nav-link" onClick={ this.props.signupToggle }>Sign Up</li>
+                <li className="welcome">Welcome you are guess!</li>
+                <li className="nav-link" onClick={ this.props.loginToggle }>Sign in</li>
+                <li className="nav-link" onClick={ this.props.signupToggle }>Register</li>
             </>
         );
     
@@ -44,18 +46,21 @@ class Navbar extends Component {
     render() {
         return (
             <>
-            <div className="nav-container">
+            <div className="nav-container-fluid">
                 <div className="nav-header">
-                    <div className="nav-sub-header container">
-                        <h2 className="display-3">Write-It</h2>
+                    <div className="nav-sub-header container-fluid">
+                        <div className="float-right web-name" style={{ textAlign: "right" }}>
+                            <h2 className="display-3">Write-It</h2>
+                            <h4>A simple of writing</h4>
+                            <h4>Here you will find news, and share your experiences.</h4>
+                            <h4 style={{ color: "red"}}>For Testing: User= test@gmail.com, password=test</h4>
+                        </div>
                     </div>
-                    <h4 className="slogan container">Share Information, Share Experience.</h4>
                 </div>
-                
-                <nav className="nav-menu navbar navbar-expand-md navbar-dark">
-                    <div className="nav-box container">
+                <nav className="nav-menu navbar navbar-expand-md nav-dark">
+                    <div className="nav-box container-fluid">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" style={{ width:20, height:20 }}></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarCollapse">
                             <ul className="navbar-nav">
@@ -64,7 +69,7 @@ class Navbar extends Component {
                                 </li>
                             </ul>
                             <div className="dropdown">
-                                <button className="dropbtn">Channel</button>
+                                <button className="dropbtn">Channels</button>
                                 <div className="dropdown-content">
                                     {this.props.category.map(channel=>{
                                         return <a href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
@@ -81,6 +86,7 @@ class Navbar extends Component {
                     </div>
                 </nav>
             </div>
+            
             <Login 
                 currentUser={ this.props.currentUser }
                 username={ this.props.username }

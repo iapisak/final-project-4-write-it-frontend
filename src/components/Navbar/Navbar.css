@@ -1,65 +1,67 @@
-.nav-container {
-    background-image: url('https://images.unsplash.com/photo-1494319827402-c4b839aed26b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.nav-header {
+.nav-container-fluid {
     position: relative;
 }
 
 .nav-sub-header {
+    background-image: url("https://i.pinimg.com/originals/ce/f0/ac/cef0ac309fbb3d00344554a27cf2136a.jpg");
+    background-size: 100%;
     position: relative;
-    height: 35vh;
+    height: 30vh;
+    align-content: right;
+    color: rgb(23, 41, 23);
+    text-shadow: 1px 1px #7e888065;
+    font-weight: 900;
 }
 
-.nav-sub-header h2 {
-    font-family: 'Abril Fatface', cursive;
-    text-shadow: 1px 1px black;
+.web-name {
+    margin-right: 60px;
+}
+
+.welcome {
+    color: black;
+    display: block;
+    margin-right: 5px;
+    padding: 0;
+    font-weight: 900;
+}
+
+.nav-sub-header h4 {
+    font-family: 'Special Elite', cursive;
+    font-size: 19px;
 }
 
 .display-3 {
-    padding-top: 60px;
-    /* color: rgba(31, 29, 29, 0.856); */
-    color: tomato;
-}
-
-.slogan {
-    font-family: 'Abril Fatface', cursive;
-    color: tomato;
-    text-shadow: 1px 1px black;
-    margin-bottom: 20px;
+    font-family: 'Special Elite', cursive;
+    padding-top: 40px;
+    font-size: 3rem;
 }
 
 .nav-menu {
-    background-color: rgba(3, 3, 3, 0.123);
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1.3px;
+    font-weight: 900;
     z-index: 1;
+    border-top-style: double;
+    border-bottom-style: double;
 }
 
 .nav-box {
     position: relative;
     padding: 0 50px;
-    font-size: 110%;
-    font-weight: 800;
 }
 
-.nav-box a {
+.nav-link, .nav-link a {
+    margin-right: 5px;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 900;
+    color: rgb(110, 106, 106);
     text-decoration: none;
-    cursor: pointer;
-    color: rgba(31, 29, 29, 0.856);
 }
 
-.nav-box a:hover {
-    color: rgb(248, 41, 4);
-}
-
-.nav-link {
-    cursor: pointer;
-    color: rgba(31, 29, 29, 0.856) !important;
-}
-
-.nav-link:hover {
-    color: rgb(248, 41, 4) !important;
+.nav-link:hover, .nav-link a:hover {
+    transform: scale(1.05);
+    color: black;
 }
 
 .nav-authorized {
@@ -69,55 +71,75 @@
 
 /* Dropdown Button */
 .dropbtn {
-    /* background-color: #4CAF50; */
+    letter-spacing: 1.5px;
     background: none;
-    color: rgba(31, 29, 29, 0.856);
-    font-weight: 600;
-    padding: 5px;
-    font-size: 16px;
+    font-weight: 900;
+    color: rgb(110, 106, 106);
     border: none;
-  }
+    padding: 0;
+}
+
 .dropbtn:hover {
-    color: rgb(248, 41, 4);
+    transform: scale(1.05);
+    color: rgb(28, 37, 27);
 }
   
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
     position: relative;
     display: inline-block;
-  }
+}
   
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(180, 176, 176);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: white;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    min-width: 250px;
     z-index: 1;
-  }
+}
   
-  /* Links inside the dropdown */
-  .dropdown-content a {
+/* Links inside the dropdown */
+.dropdown-content a {
     color: rgba(31, 29, 29, 0.856);
-    font-size: 100%;
     padding: 5px;
     text-decoration: none;
     display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: rgb(199, 196, 196);}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background: none;}
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    color: whitesmoke;
+    background-color: black;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background: none;}
 
 @media only screen and (max-width: 700px) {
     .nav-authorized {
         position: relative;
         right: 0;
+    }
+
+    .nav-box a:hover {
+        transform: scale(1)
+    }
+
+    .nav-link:hover {
+        transform: scale(1);
+    }
+
+    .dropbtn:hover {
+        transform: scale(1);
+    }
+
+    .nav-sub-header .web-name {
+        margin-right: 10px;
     }
 }
