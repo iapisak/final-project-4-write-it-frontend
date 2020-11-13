@@ -7,6 +7,7 @@ fieldset {
     box-shadow: 14px 14px 14px #888888;
     border-radius: 5px;
     color: rgb(77, 73, 73);
+    font-family: 'Special Elite', cursive;
 }
 
 legend {
@@ -45,6 +46,7 @@ fieldset button {
 }
 
 .comment-box {
+    font-family: 'Special Elite', cursive;
     margin: 20px auto;
     padding: 8% 5%;
 }

@@ -97,15 +97,14 @@ class Profile extends Component {
     render() {
         const currentUser = localStorage.getItem('uid')
         return (
-            
-            <div className="profile-box d-flex" style={{ backgroundImage:`url(${this.state.theme})` }} >
+            <div className="profile-box d-flex container">
                 <div className="profile-wrap d-flex">
                     <div className="profile-img">
                         <img src={ this.state.photo } alt="" />
                         { currentUser === this.props.user_Id 
                         ?
                             <button
-                                className="btn-danger"
+                                className="btn-dark"
                                 onClick={ this.handdleOnEdit }
                                 >Edit Profile</button>
                         :
@@ -113,20 +112,18 @@ class Profile extends Component {
                         }
                     </div>
                     <div className="profile-info">
-                        <h3>Profile<span> : {this.state.slug}</span></h3>
+                        <div>Nick<span> : {this.state.slug}</span></div>
                         <div>Name : {this.state.name}-{this.props.user.lastName}</div>
                         <div>Email : {this.state.email}</div>
                         <div>Member : {new Date(this.props.user.signup_date).toDateString()}</div>
-                        <div><span className="total">Post : 
+                        <div><span className="total">Post : { this.props.posts }
                                 <span className="number">
-                                    { this.props.posts } 
                                     { this.props.posts <=1 ? " post" : " posts" }
                                 </span>
                             </span>
                         </div>
-                        <div><span className="total">Comment : 
+                        <div><span className="total">Comment : {this.props.comments } 
                                 <span className="number">
-                                    { this.props.comments } 
                                     { this.props.comments <=1 ? " comment" : " comments" }
                                 </span>
                             </span>
@@ -138,8 +135,8 @@ class Profile extends Component {
     
             <form className="edit-profile-form">
                 <div className="d-flex">
-                    <h3>Edit profile</h3>
-
+                    {/* <h5>Edit profile</h5> */}
+                    <label htmlFor="slug">Nick</label>
                     <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" 
                         value={ this.state.slug }/>
                     <div>{ this.state.slugError }</div>
@@ -169,14 +166,9 @@ class Profile extends Component {
                         value={ this.state.email }/>
                     <div>{this.state.emailError}</div>
                 </div>
-                <div className="d-flex">
-                    <label htmlFor="theme" className="back-ground">Back ground</label>
-                    <input onChange={this.handleChange} className="form-control" type="text" id="theme" name="theme" 
-                        value={ this.state.theme } />
-                </div>
                 <button
                     type="submit"
-                    className="btn btn-warning float-right"
+                    className="btn btn-dark float-right"
                     disabled={ this.state.disabled }
                     onClick={ this.handleEditSubmit }
                     >Save</button>
