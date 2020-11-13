@@ -68,6 +68,8 @@ class App extends Component {
       <Navbar 
         currentUser={ this.state.currentUser }
         username={ this.state.username }
+        userPhoto={ this.state.userPhoto }
+        slug={ this.state.userSlug }
         setCurrentUser={ this.setCurrentUser }
         logout={ this.logout }
         login={ this.state.loginToggle }

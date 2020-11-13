@@ -13,6 +13,18 @@
     font-weight: 900;
 }
 
+.web-name {
+    margin-right: 60px;
+}
+
+.welcome {
+    color: black;
+    display: block;
+    margin-right: 5px;
+    padding: 0;
+    font-weight: 900;
+}
+
 .nav-sub-header h4 {
     font-family: 'Special Elite', cursive;
     font-size: 19px;
@@ -125,5 +137,9 @@
 
     .dropbtn:hover {
         transform: scale(1);
+    }
+
+    .nav-sub-header .web-name {
+        margin-right: 10px;
     }
 }

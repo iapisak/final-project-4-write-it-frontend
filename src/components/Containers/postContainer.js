@@ -57,9 +57,9 @@ class PostContainer extends Component {
                         postLoaded={ this.state.postLoaded } />
 
                     <div>
-                        {this.state.posts.map(post => (
+                        {this.state.posts.map((post, index) => (
                             <PostDetail 
-                                key={ this.props.channel_Id }
+                                key={ index }
                                 channel={ this.props.channelName }
                                 detail={ post }/>
                         ))}

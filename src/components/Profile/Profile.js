@@ -83,12 +83,12 @@ class Profile extends Component {
         })
     }
 
-    handleEditSubmit = (e) => {
+    handleEditSubmit = async (e) => {
         e.preventDefault()
         const validation = this.formValidation()
         if (validation) {
         const user_Id = localStorage.getItem('uid')
-        axios.put(`${process.env.REACT_APP_API_URL}/profile/edit/${user_Id}`, this.state)
+        await axios.put(`${process.env.REACT_APP_API_URL}/profile/edit/${user_Id}`, this.state)
         .then((res) => {
             this.setState({ editing: !this.state.editing });
          })}
@@ -135,7 +135,6 @@ class Profile extends Component {
     
             <form className="edit-profile-form">
                 <div className="d-flex">
-                    {/* <h5>Edit profile</h5> */}
                     <label htmlFor="slug">Nick</label>
                     <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" 
                         value={ this.state.slug }/>
