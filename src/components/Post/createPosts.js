@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './posts.css'
+// import './posts.css'
 
 const initialState = {
       title : '',

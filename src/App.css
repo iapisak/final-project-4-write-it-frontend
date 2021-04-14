@@ -1,9 +1,3 @@
-* {
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: none;
-}
-
 .alert {
     color: rgb(236, 80, 24);
     padding: 10px 15px;
