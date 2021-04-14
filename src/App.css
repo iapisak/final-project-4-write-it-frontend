@@ -4,10 +4,6 @@
     outline: none;
 }
 
-body {
-    font-family: 'Raleway', sans-serif;
-}
-
 .alert {
     color: rgb(236, 80, 24);
     padding: 10px 15px;

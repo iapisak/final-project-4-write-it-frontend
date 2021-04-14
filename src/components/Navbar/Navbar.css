@@ -9,8 +9,6 @@
     height: 30vh;
     align-content: right;
     color: rgb(23, 41, 23);
-    text-shadow: 1px 1px #7e888065;
-    font-weight: 900;
 }
 
 .web-name {
@@ -25,19 +23,7 @@
     font-weight: 900;
 }
 
-.nav-sub-header h4 {
-    font-family: 'Special Elite', cursive;
-    font-size: 19px;
-}
-
-.display-3 {
-    font-family: 'Special Elite', cursive;
-    padding-top: 40px;
-    font-size: 3rem;
-}
-
 .nav-menu {
-    font-family: 'Special Elite', cursive;
     letter-spacing: 1.3px;
     font-weight: 900;
     z-index: 1;
