@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
-
+import moment from 'moment'
 import Comments from '../Comments/Comments';
-import CommentDetails from '../Comments/CommentDetails';
-
-import './postcontainer.css'
 
 class PostDetailsContainer extends Component {
     state = {
@@ -124,87 +121,89 @@ class PostDetailsContainer extends Component {
         const { content, photo, title } = this.state
 
         return (
-            this.state.editing ?
-            <div className="post-edit-form-container">
-                <form className="post-edit-form">
-                    <h3 className="text-center">Update your post</h3>
-                    <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">Title</label>
-                        <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput1" name="title" value={ title } />
-                        <div className="alert">{this.state.titleError}</div>
+                <div className="col-md-8 mx-auto p-0">
+                    <div className="px-3 px-md-0">
+                        <a className="text-dark" href={`/${this.state.channel}`}><h3>{ this.state.channel } channel </h3></a>
+                        <p className="text-secondary">By <a href={`/profile/${this.state.userId}`}><span>{this.state.userSlug}</span></a> | { moment(this.state.date).format('MMMM D, YYYY')} | { moment(this.state.date).fromNow() }</p>                            
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleFormControlInput2">Photo</label>
-                        <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput2" value={ photo } name="photo" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleFormControlTextarea1">Contents</label>
-                        <textarea onChange={ this.handleChange } className="form-control" id="exampleFormControlTextarea1" name="content" value={ content } rows="3"></textarea>
-                        <div className="alert">{this.state.contentError}</div>
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-dark float-right"
-                        onClick={ this.handleEditSubmit }
-                        disabled={ this.state.disabled }
-                        >Update</button>
-                </form>
-            </div>
-            :
-            <>
-                <section className="container">
-                    <div className="postsDetail-container">
-                        <a href={`/${this.state.channel}`}>{ this.state.channel } channel</a>
-                        <p>By <a href={`/profile/${this.state.userId}`}><span>{this.state.userSlug}</span></a>
-                            | <span>{ new Date(this.state.date).toDateString() }</span>
-                            | <span>{ new Date(this.state.date).toLocaleTimeString() }</span>
-                        </p>
-                        <h5>{ title }</h5> 
-                        <p>
-                            <span className="icons" role="img" aria-label="comment">
-                                &#128172; { this.state.comments.length }
-                                { this.state.comments.length <= 1 ? " comment" : " comments"}
-                            </span> |
-                            <span className="contents">{ content }</span>
-                        </p>
-                        { this.props.currentUser === this.state.userId ? 
+                    <div className="d-md-flex">
+                        <div className="col-md-7 p-md-0 mr-md-3 mb-0 mb-md-5">
+                            <h2>{ title }</h2> 
+                            <p className="text-secondary">{ content }</p>
+                            <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } />
+                            { this.props.currentUser === this.state.userId ? 
                             <div className="button-container">
                                 <button onClick={ this.handleEditChange } className="post-btn-edit btn btn-info">Edit</button>
                                 <button onClick={ this.handleDelete } className="post-btn-delete btn btn-danger">Delete</button>
                             </div>
-                        : null }
-                        
-                        <img src={ this.state.photo } alt={ this.state.title } / >
-                    </div>
-                    <div className="comment-container">
-                        {this.state.comments.map((comment, index) => (
-                            <CommentDetails 
-                                index={ index }
-                                currentUser= { this.props.currentUser }
-                                detail={ comment }
-                            />
-                        ))}
-                    </div>
-                </section>
-
-                {this.props.currentUser ?
-
-                <div className="comment-form-container">
-                    <h3 className="text-center">Comment on this article</h3>
-                    <div className="comment-form container">
-                        <Comments
-                            numberComment={ this.state.comments.length }
-                            currentUser={ this.props.currentUser }
-                            userSlug={ this.props.userSlug }
-                            post_Id={ this.state.postId }
-                            handleCommentSubmit={ this.handleCommentSubmit }
-                        />
+                            : null }
+                            { this.state.editing ? 
+                            <form className="post-edit-form">
+                                <h3 className="text-center">Update your post</h3>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlInput1">Title</label>
+                                    <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput1" name="title" value={ title } />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlInput2">Photo</label>
+                                    <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput2" value={ photo } name="photo" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlTextarea1">Contents</label>
+                                    <textarea onChange={ this.handleChange } className="form-control" id="exampleFormControlTextarea1" name="content" value={ content } rows="3"></textarea>
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="btn btn-dark float-right"
+                                    onClick={ this.handleEditSubmit }
+                                    disabled={ this.state.disabled }
+                                    >Update</button>
+                            </form>
+                            : null }
+                            { this.props.currentUser ?
+                            <div className="my-5 p-0">
+                                <h3>Comment on this article</h3>
+                                <p>Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>
+                                <Comments
+                                    numberComment={ this.state.comments.length }
+                                    currentUser={ this.props.currentUser }
+                                    userSlug={ this.props.userSlug }
+                                    post_Id={ this.state.postId }
+                                    handleCommentSubmit={ this.handleCommentSubmit } />
+                            </div>
+                            : null }
+                        </div>
+                        <div className="col-md-5 my-3 m-md-0">
+                            <div className="blog-post">
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h2 className="blog-post-title">Comment</h2>
+                                    <p className="text-dark m-0"><span className="icons" role="img" aria-label="comment">💬</span> { this.state.comments.length } { this.state.comments.length <= 1 ? " comment" : " comments"}</p>
+                                </div>
+                                <hr className="mt-0"/>
+                                { this.state.comments.map(comment => {
+                                    return  <div className="text-secondary" key={ comment._id}>
+                                                <div className="d-flex justify-content-between">
+                                                    <p className="mb-1">By <a href={`/profile/${comment.user}`}>{ comment.userSlug }</a></p>
+                                                    <p className="mb-1">{moment(comment.date).fromNow()}</p>
+                                                </div>
+                                                <p className="text-secondary mb-1">{ comment.comment }</p>
+                                                { this.props.currentUser === comment.user ?
+                                                <div>
+                                                    <p className="text-danger text-right mb-1"
+                                                       onClick={()=> {
+                                                            axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete/${comment._id}`)
+                                                            .then(res => window.location.reload())
+                                                            .catch(err => console.log(err));
+                                                        }}>Delete</p>
+                                                </div>
+                                                : null }
+                                                <hr />
+                                            </div>
+                                })}
+                          </div>
+                        </div>
                     </div>
                 </div>
-
-                : null }
-            
-            </>
         )
     }
 }

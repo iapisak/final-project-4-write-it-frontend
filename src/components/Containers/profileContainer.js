@@ -5,7 +5,7 @@ import Profile from '../Profile/Profile';
 import ProfilePosts from '../Profile/ProflePosts';
 import ProfileComments from '../Profile/ProfileComment';
 
-import './profileContainer.css'
+// import './profileContainer.css'
 
 class ProfileContainer extends Component {
     state = {

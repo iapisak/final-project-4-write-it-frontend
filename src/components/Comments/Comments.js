@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import './Comment.css'
-
 const initialState = {
     comment: '',
     commentError: '',
@@ -45,35 +43,21 @@ class Comments extends Component {
 
     render() {
         const userPhoto = localStorage.getItem('photo')
-        return (            
-            <div className="comment-box">
-                <p className="text-center">Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>
-                <h6>
-                <span className="icons" role="img" aria-label="comment">
-                    &#128172;
-                </span>
-                { this.props.numberComment } {this.props.numberComment <=1 ? "comment" : "comments" }
-                </h6>
-                <form>
-                    <div className="d-flex">
-                        <div className="current-photo">
-                            <img src={ userPhoto } alt="" />
-                        </div>
-                        <div className="form-group comment-textarea">
-                            <textarea onChange={this.handleChange} className="form-control" name="comment"  rows="3" value={ this.state.comment } placeholder="Join the discussion..."></textarea>
-                            <div className="alert">{this.state.commentError}</div>
-                        </div>
+        return <div className="d-flex mb-2 align-items-center">
+                    <div className="mx-2">
+                        <img src={ userPhoto } alt={ this.props.userSlug } style={{ width: '50px', borderRadius: '50%' }}/>
                     </div>
-                
-                <button
-                    type="submit"
-                    className="btn btn-info float-right"
-                    onClick={ this.handleSubmit }
-                    disabled={ this.state.disabled } >
-                    Send your comment</button>
-                </form>
-            </div>
-        )
+                    <form className="flex-shrink-1 w-100">
+                        <div className="form-group d-flex m-0">
+                            <input onChange={this.handleChange} className="form-control" name="comment"
+                                        value={ this.state.comment } placeholder="Join the discussion..." />
+                        <div>
+                            <button type="submit" className="btn btn-primary ml-2" onClick={ this.handleSubmit }
+                                    disabled={ this.state.disabled } >Summit</button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
     }
 }
 

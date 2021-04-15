@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 
-import './Auth.css'
+// import './Auth.css'
 
 const initialState = {
     email: '',

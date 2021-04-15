@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import './Comment.css'
+// import './Comment.css'
 
 const CommentDetails = (props) => {
     return (
@@ -31,7 +31,7 @@ const CommentDetails = (props) => {
                         .then(res => window.location.reload())
                         .catch(err => console.log(err));
                     } }
-                    className="btn-danger">
+                    className="btn btn-danger">
                     Delete</button>
                 : null }
             </fieldset>

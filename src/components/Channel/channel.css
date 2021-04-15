@@ -1,9 +1,0 @@
-.channel-link a {
-    text-decoration: none;
-    color: rgb(110, 106, 106);
-    font-weight: 600;
-}
-
-.channel-link a:hover {
-    color: black;
-}

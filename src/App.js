@@ -78,13 +78,13 @@ class App extends Component {
         signupToggle={ this.signupToggle } 
         category={ this.state.channel } />
 
-        <main style={{ display: this.state.mainToggle ? 'block': 'none' }}>
+        {/* <main style={{ display: this.state.mainToggle ? 'block': 'none' }}> */}
           <Routes 
             currentUser={ this.state.currentUser } 
             username={ this.state.username }
             userSlug={ this.state.userSlug}
             category={ this.state.channel } />
-        </main>
+        {/* </main> */}
       </>
     );
   }
