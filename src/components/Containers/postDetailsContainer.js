@@ -75,7 +75,9 @@ class PostDetailsContainer extends Component {
         const post_Id = this.state.postId
         axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`)
         .then(() => {
-            this.props.history.push(`/${ this.state.channel }`)
+            if (this.state.channel === "General-Article") {
+                this.props.history.push(`/`)
+            } else this.props.history.push(`/${ this.state.channel }`)
             this.setState({ channelloaded: !this.state.channelloaded })
         })
         .catch(err => console.log(err));
@@ -123,43 +125,46 @@ class PostDetailsContainer extends Component {
         return (
                 <div className="col-md-8 mx-auto p-0">
                     <div className="px-3 px-md-0">
-                        <a className="text-dark" href={`/${this.state.channel}`}><h3>{ this.state.channel } channel </h3></a>
+                        <a className="text-info" href={ this.state.channel === "General-Article" ? "/": `/${this.state.channel}`}><h3>{ this.state.channel } channel </h3></a>
                         <p className="text-secondary">By <a href={`/profile/${this.state.userId}`}><span>{this.state.userSlug}</span></a> | { moment(this.state.date).format('MMMM D, YYYY')} | { moment(this.state.date).fromNow() }</p>                            
                     </div>
                     <div className="d-md-flex">
                         <div className="col-md-7 p-md-0 mr-md-3 mb-0 mb-md-5">
-                            <h2>{ title }</h2> 
-                            <p className="text-secondary">{ content }</p>
-                            <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } />
-                            { this.props.currentUser === this.state.userId ? 
-                            <div className="button-container">
-                                <button onClick={ this.handleEditChange } className="post-btn-edit btn btn-info">Edit</button>
-                                <button onClick={ this.handleDelete } className="post-btn-delete btn btn-danger">Delete</button>
-                            </div>
-                            : null }
                             { this.state.editing ? 
                             <form className="post-edit-form">
-                                <h3 className="text-center">Update your post</h3>
+                                <h2>Update Article</h2>
                                 <div className="form-group">
-                                    <label htmlFor="exampleFormControlInput1">Title</label>
-                                    <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput1" name="title" value={ title } />
+                                    <label htmlFor="editPosts-1">Title</label>
+                                    <input onChange={ this.handleChange } type="text" className={ !this.state.titleError ? "form-control" : "alert"}
+                                           id="editPosts-1" name="title" value={ title } 
+                                           placeholder={ this.state.titleError ? this.state.titleError : "type your title here" }/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="exampleFormControlInput2">Photo</label>
-                                    <input onChange={ this.handleChange } type="text" className="form-control" id="exampleFormControlInput2" value={ photo } name="photo" />
+                                    <label htmlFor="editPosts-2">Contents</label>
+                                    <textarea onChange={ this.handleChange } className={ !this.state.contentError ? "form-control" : "textarea-alert"}  
+                                              id="editPosts-2" name="content" value={ content } rows="10"
+                                              placeholder={ this.state.contentError ? this.state.contentError : "Description" }></textarea>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="exampleFormControlTextarea1">Contents</label>
-                                    <textarea onChange={ this.handleChange } className="form-control" id="exampleFormControlTextarea1" name="content" value={ content } rows="3"></textarea>
+                                    <label htmlFor="editPosts-3">Photo</label>
+                                    <input onChange={ this.handleChange } type="text" className="form-control" id="editPosts-3" value={ photo } name="photo" />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-dark float-right"
-                                    onClick={ this.handleEditSubmit }
-                                    disabled={ this.state.disabled }
-                                    >Update</button>
+                                <div className="d-flex justify-content-end">
+                                    <button type="submit" className="btn btn-primary" onClick={ this.handleEditSubmit } disabled={ this.state.disabled }>Update</button>
+                                </div>
                             </form>
-                            : null }
+                            :   <>
+                                    <h2>{ title }</h2> 
+                                    <p className="text-secondary">{ content }</p>
+                                    <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } />
+                                    { this.props.currentUser === this.state.userId ? 
+                                    <div className="py-3 d-flex justify-content-end">
+                                        <button onClick={ this.handleEditChange } className="btn btn-primary mr-1" style={{ width: '80px'}}>Edit</button>
+                                        <button onClick={ this.handleDelete } className="btn btn-danger" style={{ width: '80px'}}>Delete</button>
+                                    </div>
+                                    : null }
+                                </>
+                            }
                             { this.props.currentUser ?
                             <div className="my-5 p-0">
                                 <h3>Comment on this article</h3>
@@ -190,6 +195,7 @@ class PostDetailsContainer extends Component {
                                                 { this.props.currentUser === comment.user ?
                                                 <div>
                                                     <p className="text-danger text-right mb-1"
+                                                       style={{ cursor: 'pointer' }}
                                                        onClick={()=> {
                                                             axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete/${comment._id}`)
                                                             .then(res => window.location.reload())

@@ -45,7 +45,7 @@ class Navbar extends Component {
             <>
             <nav className="navbar navbar-expand-lg">
                 <a className="nav-link" href="/">Write-it</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-expanded="false" >
                     <span className="navbar-toggler-icon" style={{ width:20, height:20 }}></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarsExample09">
@@ -54,22 +54,22 @@ class Navbar extends Component {
                     </ul>
                 </div>
             </nav>
-            <div className="jumbotron">
+            {/* <div className="jumbotron">
                 <div className="col-sm-8 mx-auto">
                     <h1>Write-It</h1>
                     <p>A simple of writing</p>
                     <p>Here you will find news, and share your experiences.</p>
                     <p>For Testing: User= test@gmail.com, password=test</p>
                 </div>
-            </div>
+            </div> */}
             <div className="d-none d-md-block">
                 <nav className="navbar navbar-expand-md justify-content-center">
                     <ul className="navbar-nav d-flex">
                         <li className="nav-item">
-                            <div className="nav-link">Channel</div>
+                            <a className="nav-link" href="/">Home</a>
                         </li>
                         {this.props.category.map(channel=>{
-                            return  <li className="nav-item">
+                            return  <li className="nav-item" key={ channel._id }>
                                         <a className="nav-link" href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
                                     </li>
                         })}

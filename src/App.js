@@ -55,14 +55,14 @@ class App extends Component {
 
   componentDidMount () {
     axios.get(`${process.env.REACT_APP_API_URL}/channel`)
-    .then(res => {
-        this.setState({ channel: res.data.data });
-        })
+    .then(async res => {
+      const channels = await res.data.data.filter(item => item._id !== '5fadad8b99d1600017502810')
+      this.setState({ channel: channels});
+    })
     .catch(err => console.log(err));
   }
 
   render() {
-    
     return (
       <>
       <Navbar 
@@ -77,14 +77,12 @@ class App extends Component {
         loginToggle={ this.loginToggle }
         signupToggle={ this.signupToggle } 
         category={ this.state.channel } />
-
-        {/* <main style={{ display: this.state.mainToggle ? 'block': 'none' }}> */}
-          <Routes 
-            currentUser={ this.state.currentUser } 
-            username={ this.state.username }
-            userSlug={ this.state.userSlug}
-            category={ this.state.channel } />
-        {/* </main> */}
+        
+      <Routes 
+        currentUser={ this.state.currentUser } 
+        username={ this.state.username }
+        userSlug={ this.state.userSlug}
+        category={ this.state.channel } />
       </>
     );
   }

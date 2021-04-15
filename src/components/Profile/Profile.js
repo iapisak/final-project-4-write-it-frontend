@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment'
 
-import './Profile.css'
+// import './Profile.css'
 
 class Profile extends Component {
     state = {
@@ -12,8 +13,6 @@ class Profile extends Component {
         photo: '',
         theme: '',
         disabled: false,
-        editing: false,
-
         nameError: '',
         lastNameError: '',
         emailError: '',
@@ -63,11 +62,6 @@ class Profile extends Component {
         this.setState({ [e.target.name]: e.target.value, }, this.postValidation)
     };
 
-    handdleOnEdit = () => {
-        this.setState({ editing: !this.state.editing });
-        setTimeout(1000)
-    }
-
     componentDidMount () {
         const user_Id = this.props.user_Id
         axios.get(`${process.env.REACT_APP_API_URL}/profile/${user_Id}`)
@@ -96,87 +90,80 @@ class Profile extends Component {
 
     render() {
         const currentUser = localStorage.getItem('uid')
+        const { name, lastName, email, photo, signup_date, slug } = this.state
+        
         return (
-            <div className="profile-box d-flex container">
-                <div className="profile-wrap d-flex">
-                    <div className="profile-img">
-                        <img src={ this.state.photo } alt="" />
-                        { currentUser === this.props.user_Id 
-                        ?
-                            <button
-                                className="btn-dark"
-                                onClick={ this.handdleOnEdit }
-                                >Edit Profile</button>
-                        :
-                        null
-                        }
-                    </div>
-                    <div className="profile-info">
-                        <div>Nick<span> : {this.state.slug}</span></div>
-                        <div>Name : {this.state.name}-{this.props.user.lastName}</div>
-                        <div>Email : {this.state.email}</div>
-                        <div>Member : {new Date(this.props.user.signup_date).toDateString()}</div>
-                        <div><span className="total">Post : { this.props.posts }
-                                <span className="number">
-                                    { this.props.posts <=1 ? " post" : " posts" }
-                                </span>
-                            </span>
+            <>
+            <div className="overflow-hidden shadow-sm">
+                <div className="px-4 pt-0 pb-4 cover">
+                    <div className="col-md-8 mx-auto p-0 media align-items-end profile-head" style={{ zIndex: '999'}}>
+                        <div className="profile mr-3">
+                            <img src={ photo } alt={ photo } width="150" className="rounded mb-2 img-thumbnail" />
+                            { currentUser === this.props.user_Id ?
+                            <button className="btn btn-outline-primary btn-block" 
+                                    type="button" data-toggle="collapse" data-target="#edit-profile" aria-expanded="false">Edit profile</button>
+                            : <div className="d-block text-light">{ name }</div> }
                         </div>
-                        <div><span className="total">Comment : {this.props.comments } 
-                                <span className="number">
-                                    { this.props.comments <=1 ? " comment" : " comments" }
-                                </span>
-                            </span>
+                        <div className="media-body mb-5 text-light">
+                            <h2 className="mt-0 mb-0">{ name + ' ' + lastName }</h2>
+                            <p className="m-0">Email : { email }</p>
+                            <p className="m-0">Created : { moment(signup_date).format("MMMM D, YYYY") }</p>
+                            <p className="mb-4">Call me { slug }</p>
                         </div>
                     </div>
                 </div>
-
-            { this.state.editing ? 
-    
-            <form className="edit-profile-form">
-                <div className="d-flex">
-                    <label htmlFor="slug">Nick</label>
-                    <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" 
-                        value={ this.state.slug }/>
-                    <div>{ this.state.slugError }</div>
-                </div>
-                <div className="d-flex">
-                    <label htmlFor="photo">Photo</label>
-                    <input onChange={ this.handleChange } className="form-control" type="text" id="photo" name="photo" 
-                        value={ this.state.photo } />
-                </div>
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex">
-                        <label htmlFor="name">Name</label>
-                        <input onChange={ this.handleChange } className="form-control" type="text" id="name" name="name" 
-                            value={ this.state.name }/>
-                        <div>{ this.state.nameError }</div>
-                    </div>
-                    <div className="d-flex">
-                        <label htmlFor="lastName" className="last-name">Last Name</label>
-                        <input onChange={ this.handleChange } className="form-control" type="text" id="lastName" name="lastName" 
-                        value={ this.state.lastName }/>
-                        <div>{ this.state.lastNameError }</div>
+                <div className="p-4">
+                    <div className="col-md-8 mx-auto p-0 d-flex justify-content-end text-center">
+                        <ul className="list-inline mb-0">
+                            <li className="list-inline-item">
+                                <h3 className="font-weight-bold mb-0 d-block">{ this.props.posts }</h3>
+                                <small className="text-muted">{ this.props.posts > 1 ? 'Articles' : 'Article' }</small>
+                            </li>
+                            <li className="list-inline-item">
+                                <h3 className="font-weight-bold mb-0 d-block">{ this.props.comments }</h3>
+                                <small className="text-muted">{ this.props.comments > 1 ? 'Comments' : 'Comment' }</small>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div className="d-flex">
-                    <label htmlFor="email">Email</label>
-                    <input onChange={this.handleChange} className="form-control" type="text" id="email" name="email" 
-                        value={ this.state.email }/>
-                    <div>{this.state.emailError}</div>
-                </div>
-                <button
-                    type="submit"
-                    className="btn btn-dark float-right"
-                    disabled={ this.state.disabled }
-                    onClick={ this.handleEditSubmit }
-                    >Save</button>
-            </form>
-            :
-            null
-            }
             </div>
-        )
+            <div className="col-md-8 mx-auto p-0 collapse navbar-collapse" id="edit-profile">
+                <form className="edit-profile-form d-md-flex py-3">
+                    <div className="col-md-6">
+                        <div className="mb-3">
+                            <label htmlFor="name">Name</label>
+                            <input onChange={ this.handleChange } className="form-control" type="text" id="name" name="name" value={ this.state.name }/>
+                            <div>{ this.state.nameError }</div>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="lastName" className="last-name">Last Name</label>
+                            <input onChange={ this.handleChange } className="form-control" type="text" id="lastName" name="lastName" value={ this.state.lastName }/>
+                            <div>{ this.state.lastNameError }</div>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="email">Email</label>
+                            <input onChange={this.handleChange} className="form-control" type="text" id="email" name="email" value={ this.state.email }/>
+                            <div>{this.state.emailError}</div>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="mb-3">
+                            <label htmlFor="photo">Photo</label>
+                            <input onChange={ this.handleChange } className="form-control" type="text" id="photo" name="photo" value={ this.state.photo } />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="slug">Nick</label>
+                            <input onChange={ this.handleChange } className="form-control" type="text" id="slug" name="slug" value={ this.state.slug }/>
+                            <div>{ this.state.slugError }</div>
+                        </div>
+                        <div className="mb-3">
+                            <button type="submit" className="btn btn-primary" style={{ width: '80px'}} disabled={ this.state.disabled } onClick={ this.handleEditSubmit }>Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </>
+            )
     }
 }
 

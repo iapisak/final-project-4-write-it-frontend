@@ -92,13 +92,14 @@ class Home extends Component {
                                     <h4>{post.title}</h4>
                                 </a>    
                                 <p className="text-secondary">{ moment(post.date).format('MMMM D YYYY') } By <Link to={`/profile/${post.user}`}> { post.userSlug }</Link></p>
+                                <hr className="mt-0"/>
                                 <p className="text-secondary">{post.content}</p>
-                                <hr />
                             </div>
                         </div>
                     )) }
 
                     { this.props.currentUser ? 
+                    <div className="col-md-10 mx-auto p-0">
                     <form id="create-post" className="p-3">
                         <div className="d-flex">
                             <h3>Create new topic</h3>
@@ -124,6 +125,7 @@ class Home extends Component {
                         <button type="submit" onClick={ this.handleSubmit } className="btn btn-primary float-right mb-3"
                                 disabled={ this.state.disabled }>Submit</button>
                     </form>
+                    </div>
                     : null }
                 </div>
     }

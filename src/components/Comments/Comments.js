@@ -13,17 +13,15 @@ class Comments extends Component {
         const { comment } = this.state
         let commentError = ''
 
-        if (comment === '') {
-            commentError = `This field is empty`
-        }
+        if (comment === '') commentError = `This field is empty`
 
         if (commentError) {
             this.setState({ commentError, disabled: true })
             return false
         }
         if (comment !== '') {
-        this.setState({ disabled: false, commentError })
-        return true
+            this.setState({ disabled: false, commentError })
+            return true
         }
     }
 
@@ -50,7 +48,7 @@ class Comments extends Component {
                     <form className="flex-shrink-1 w-100">
                         <div className="form-group d-flex m-0">
                             <input onChange={this.handleChange} className="form-control" name="comment"
-                                        value={ this.state.comment } placeholder="Join the discussion..." />
+                                   value={ this.state.comment } placeholder="Join the discussion..." />
                         <div>
                             <button type="submit" className="btn btn-primary ml-2" onClick={ this.handleSubmit }
                                     disabled={ this.state.disabled } >Summit</button>

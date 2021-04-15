@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import moment from 'moment'
 import Profile from '../Profile/Profile';
-import ProfilePosts from '../Profile/ProflePosts';
-import ProfileComments from '../Profile/ProfileComment';
-
-// import './profileContainer.css'
 
 class ProfileContainer extends Component {
     state = {
-        profile: [],
+        profile: {},
         posts: [],
         comments: [],
         profileLoaded: false,
@@ -40,48 +36,60 @@ class ProfileContainer extends Component {
 
     render () {
         return (
-            <div className="container-fluid profile-container">
-                <div>
-                    <Profile 
-                        posts={ this.state.posts.length}
-                        comments={ this.state.comments.length}
-                        user_Id = { this.props.id }
-                        user= { this.state.profile }/>
-                </div>
-                <div className="profile-box-post-comment container d-flex">
-                    <div className="profile-post-history">
-                        <div className="profile-history d-flex">
-                            <h2>Recently Posted</h2>
-                        </div>
-                        
-                        { this.state.posts <= 0 ? <h5>You have 0 post</h5> :
-                            <>
-                                {this.state.posts.map( posts => (
-                                    <ProfilePosts 
-                                        posts= { posts }
-                                    />
-                                )) }
-                            </>
-                        }
-                            
+            <>
+            <Profile 
+                posts={ this.state.posts.length}
+                comments={ this.state.comments.length}
+                user_Id = { this.props.id }
+                user= { this.state.profile }/> 
+            <div className="col-md-8 mx-auto p-0 my-3">
+                <h2 className="px-3 px-md-0 font-weight-bold">My History</h2>
+                <hr />
+                <div className="d-md-flex">
+                    <div className="col-md-7 p-0 mr-md-3">
+                        { this.state.posts.map((post, index) => (
+                            <div key={ post.photo}>
+                                <a className="text-dark lead" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}>
+                                    <h4 className="px-3 px-md-0">{ index + 1 }. { post.title }</h4> 
+                                </a>
+                                <p className="text-secondary px-3 px-md-0">{ post.content }</p>
+                                <img className="img-fluid img-thumbnail shadow-sm" src={ post.photo } alt={ post.title } />
+                                <div className="d-flex justify-content-end px-3 px-md-0">
+                                    <p className="text-secondary mt-3">On { moment(post.date).format('MMM D, YYYY') } | <span className="text-info">{ moment(post.date).fromNow() }</span></p>
+                                </div>
+                                <hr className="mt-0"/>
+                            </div> )) }
                     </div>
-                    <div className="profile-comment-history">
-                        <div className="history-box">
-                            <h2>Recently Commented</h2>
+                    <div className="col-md-5 my-3 m-md-0">
+                        <div className="blog-post">
+                            <h4 className="blog-post-title">Commented</h4>
+                            <hr className="mt-0"/>
+                            { this.state.comments.map(comment => {
+                                return  <div className="text-secondary" key={ comment._id}>
+                                            <div className="d-flex justify-content-between">
+                                                <p className="mb-1"><a href={`/post/${ comment.post }`}>See the article</a></p>
+                                                <p className="mb-1">{moment(comment.date).fromNow()}</p>
+                                            </div>
+                                            <p className="text-secondary mb-1">{ comment.comment }</p>
+                                            { this.props.currentUser === comment.user ?
+                                            <div>
+                                                <p className="text-danger text-right mb-1"
+                                                    style={{ cursor: 'pointer' }}
+                                                    onClick={()=> {
+                                                        axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete/${comment._id}`)
+                                                        .then(res => window.location.reload())
+                                                        .catch(err => console.log(err));
+                                                    }}>Delete</p>
+                                            </div>
+                                            : null }
+                                            <hr />
+                                        </div>
+                            })}
                         </div>
-
-                        { this.state.comments <= 0 ? <h5>You have 0 comment</h5> :
-                            <>
-                                { this.state.comments.map( comments => (
-                                    <ProfileComments 
-                                        comments= { comments } />
-                                ))}
-                            </>
-                        }
-
                     </div>
                 </div>
             </div>
+        </>
         )
     }
 }
