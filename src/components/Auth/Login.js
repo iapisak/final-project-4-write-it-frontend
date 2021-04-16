@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 
-// import './Auth.css'
+import './navbar.css'
 
 const initialState = {
     email: '',
     password: '',
     emailError: '',
-    passwordError: '',
-    messageError: '',
+    passwordError: ''
 }
 
 class Login extends Component {
@@ -21,13 +20,14 @@ class Login extends Component {
         let passwordError = ''
 
         if (email === '') {
-            emailError = `Please input your Email`
+            emailError = `Required`
         } else if (email !== '' && !email.includes('@')) {
+            this.setState({ email: '' })
             emailError = `Email must includes '@'`
         }
 
         if (password === '') {
-            passwordError = `Please input your Password`
+            passwordError = `Required`
         }
 
         if (emailError || passwordError) {
@@ -49,40 +49,37 @@ class Login extends Component {
             .then((res) => {
                 this.props.setCurrentUser(res.data.data.id, res.data.data.name, res.data.data.slug, res.data.data.photo)
                 this.setState(initialState)
-                this.props.loginToggle()
                 this.props.history.push('/')
             })
-            .catch((err) => this.setState({passwordError: `Invalid password`, emailError: ''}))
+            .catch(() => this.setState({ email: '', password: '', passwordError: 'password',
+                                         emailError: 'Invalid Email or Password Please try again'}))
         }
     }
 
-    handleOneClick = () => {
-        this.setState(initialState)
-        this.props.loginToggle()
-    }
-
     render () {
-        const { emailError, passwordError } = this.state
 
-        return (
-            <div className="login-box" style={{ display: this.props.toggle ? 'block': 'none' }}>
-                <form id="login" className="container" onSubmit={ this.handleOnSubmit }>
-                    <h3>Sign in</h3>
-                    <div className="form-label-group">
-                        <label htmlFor="email-address">Email address</label>
-                        <input onChange={ this.handleOnChange } type="text" name='email' id="email-address" className="form-control"  value={this.state.email} />
-                        <div className='alert'>{emailError}</div>
-                    </div>
-                    <div className="form-label-group">
-                        <label htmlFor="password">Password</label>
-                        <input onChange={ this.handleOnChange } type="password" name='password' id="password" className="form-control" value={ this.state.password } />
-                        <div className='alert'>{passwordError}</div>
-                    </div>
-                    <button type="submit" className="btn btn-dark">Submit</button>
-                    <p onClick={ this.handleOneClick } className="delete-button" type="text"><span role="img" aria-label="delete">&#10060;</span></p>
-                </form>
-            </div>
-        )
+        return  <div className="py-0 py-md-4 px-md-0" id="login">
+                    <form onSubmit={ this.handleOnSubmit } className="card mx-auto border-0 rounded-0">
+                        <h1 className="font-weight-bold">Welcome</h1>
+                        <small className="m-0 text-secondary">Please login with your account</small>
+                        <hr className="mb-1" style={{ borderColor: "gray" }}/>
+                        <small className="mb-0 mt-3">Email</small> 
+                        <input onChange={ this.handleOnChange } type="text" name="email" value={this.state.email}
+                               className={ this.state.emailError ? "control mb-3" : "mb-3"}
+                               placeholder={ this.state.emailError ? this.state.emailError : "john@gmail.com" } /> 
+                        <small className="mb-0">Password</small> 
+                        <input onChange={ this.handleOnChange } type="password" name="password" value={ this.state.password }
+                               className={ this.state.passwordError ? "control" : null}
+                               placeholder={ this.state.passwordError ? this.state.passwordError : 'password' } />
+                        <div className="row justify-content-center mt-4"> 
+                            <button type="submit" className="btn btn-primary px-5">Login</button> 
+                        </div>
+                        <div className="row justify-content-center my-3">
+                            <small>or <a href="/register" className="text-secondary">Register</a></small>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1508776781619-132e6a483b60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt=""/>
+                    </form> 
+                </div>
     }
 }
 

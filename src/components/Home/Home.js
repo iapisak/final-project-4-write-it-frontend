@@ -69,65 +69,80 @@ class Home extends Component {
     }
 
     render () {
-        return  <div className="col-md-8 mx-auto p-0 my-3" id="main-channel">
+        return  <>
+                <div className="position-relative overflow-hidden p-3 p-md-4 text-center bg-light">
+                    <div className="col-md-5 p-lg-5 mx-auto my-5">
+                        <h1 className="display-4 font-weight-normal">Punny headline</h1>
+                        <p className="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+                    </div>
+                </div>
+                <div className="col-md-8 mx-auto p-0 my-3">
                     <div className="p-3 pl-md-0">
                         <div className="d-flex">
-                            <h2>{ this.props.channelName } Channel</h2>
-                            { this.props.currentUser ? <a href="#create-post" className="ml-auto" > Create post </a>
-                                : null }
+                            { this.props.channelName === "General-Article" 
+                                ? <h2>Open Topic</h2>
+                                : <h2>{ this.props.channelName } Channel</h2>
+                            }
+                            { this.props.currentUser 
+                                ? <a href="#create-post" className="ml-auto text-info" > Create post </a>
+                                : null 
+                            }
                         </div>
-                        <p className="text-secondary">{ this.props.channelDetail }</p>
+                        <p className="text-secondary" style={{ fontWeight: "300"}}>{ this.props.channelDetail }</p>
                     </div>
-                    { this.state.posts.map(post => (
-                        <div className="d-md-flex" key={ post.photo }>
-                            <div className="col-md-4 p-0 mb-3">
-                                { post.photo ? 
-                                <a href={`/post/${post._id}`}>
-                                    <img className="img-fluid rounded" src={ post.photo } alt={ post.photo} / >
-                                </a>
-                                : null }
-                            </div>
-                            <div className="col-md-8 mb-3">
-                                <a className="text-dark lead" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}>
-                                    <h4>{post.title}</h4>
-                                </a>    
-                                <p className="text-secondary">{ moment(post.date).format('MMMM D YYYY') } By <Link to={`/profile/${post.user}`}> { post.userSlug }</Link></p>
-                                <hr className="mt-0"/>
-                                <p className="text-secondary">{post.content}</p>
-                            </div>
-                        </div>
-                    )) }
+                    { this.state.posts.map(post => {
+                        let content 
+                        if (post.content.length > 500) {
+                            content = `${post.content.substring(0, 500)} ... `
+                        } else content = post.content
+
+                        return  <div className="d-md-flex" key={ post.photo }>
+                                    <div className="col-md-4 p-0 mb-3">
+                                        { post.photo ? 
+                                        <a href={`/post/${post._id}`}>
+                                            <img className="img-fluid" src={ post.photo } alt={ post.photo} / >
+                                        </a>
+                                        : null }
+                                    </div>
+                                    <div className="col-md-8 mb-3">
+                                        <a className="text-dark lead" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}>
+                                            <h4>{post.title}</h4>
+                                        </a>    
+                                        <p className="text-secondary mb-2">{ moment(post.date).format('MMM D, YYYY') } By <Link to={`/profile/${post.user}`}> <small>{ post.userSlug }</small></Link></p>
+                                        <hr className=" mt-0 mb-2"/>
+                                        <p className="text-secondary" style={{ fontWeight: "300"}}>{ content }</p>
+                                    </div>
+                                </div>
+                    }) }
 
                     { this.props.currentUser ? 
-                    <div className="col-md-10 mx-auto p-0">
-                    <form id="create-post" className="p-3">
-                        <div className="d-flex">
-                            <h3>Create new topic</h3>
-                            <a className="ml-auto" href="#main-channel">Back to the Top</a>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="input1">Title</label>
-                            <input onChange={this.handleChange} type="search" className={ !this.state.titleError ? "form-control" : "alert"} 
-                                id="input1" name="title" value={this.state.title}
-                                placeholder={ this.state.titleError ? this.state.titleError : "type your title here" } />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="input2">Photo</label>
-                            <input onChange={this.handleChange} type="text" className="form-control" placeholder="example https://photo.com" id="input2" name="photo" value={this.state.photo} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="input3">Contents</label>
-                            <textarea onChange={this.handleChange} className={ !this.state.contentError ? "form-control" : "textarea-alert"}  
-                                    id="input3" name="content" value={ this.state.content } rows="3"
-                                    placeholder={ this.state.contentError ? this.state.contentError : "Description" }>
-                            </textarea>
-                        </div>
-                        <button type="submit" onClick={ this.handleSubmit } className="btn btn-primary float-right mb-3"
-                                disabled={ this.state.disabled }>Submit</button>
-                    </form>
+                    <div className="col-md-10 mx-auto p-0 my-5 bg-light shadow rounded">
+                        <form id="create-post" className="p-3">
+                            <div className="d-flex">
+                                <h3>Create new topic</h3>
+                                <a className="ml-auto text-info" href="#top">Back to the Top</a>
+                            </div>
+                            <div className="form-group px-md-4">
+                                <label className="mt-3" htmlFor="input1">Title</label>
+                                <input onChange={this.handleChange} type="search" className={ !this.state.titleError ? "form-control" : "alert"} 
+                                    id="input1" name="title" value={this.state.title}
+                                    placeholder={ this.state.titleError ? this.state.titleError : "type your title here" } />
+                                <label className="mt-3" htmlFor="input2">Photo</label>
+                                <input onChange={this.handleChange} type="text" className="form-control" placeholder="example https://photo.com" id="input2" name="photo" value={this.state.photo} />
+                                <label className="mt-3" htmlFor="input3">Contents</label>
+                                <textarea onChange={this.handleChange} className={ !this.state.contentError ? "form-control" : "textarea-alert"}  
+                                        id="input3" name="content" value={ this.state.content } rows="3"
+                                        placeholder={ this.state.contentError ? this.state.contentError : "Description" }>
+                                </textarea>
+                                <button type="submit" onClick={ this.handleSubmit } className="btn btn-primary float-right my-3"
+                                        disabled={ this.state.disabled }>Submit</button>
+                            </div>
+
+                        </form>
                     </div>
                     : null }
                 </div>
+                </>
     }
 }
 

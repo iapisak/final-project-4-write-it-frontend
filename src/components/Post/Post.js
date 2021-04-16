@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment'
-import Comments from '../Comments/Comments';
+import Comments from './Comments';
 
-class PostDetailsContainer extends Component {
+class Post extends Component {
     state = {
         channel: '',
         userId: '',
@@ -99,14 +99,9 @@ class PostDetailsContainer extends Component {
         }
 
         axios.put(`${process.env.REACT_APP_API_URL}/posts/edit/${post_Id}`, newState)
-        .then((res) => {
+        .then(() => {
             this.setState({ editing: !this.state.editing });
          })
-    }
-
-    handleEditChange = (e) => {
-        e.preventDefault();
-        this.setState({ editing: !this.state.editing });
     }
 
     // ==== Handle on Comment ==== //
@@ -121,17 +116,20 @@ class PostDetailsContainer extends Component {
 
     render () {
         const { content, photo, title } = this.state
-
-        return (
-                <div className="col-md-8 mx-auto p-0">
+        
+        return  <div className="col-md-8 mx-auto p-0 mt-4 mb-3">
                     <div className="px-3 px-md-0">
-                        <a className="text-info" href={ this.state.channel === "General-Article" ? "/": `/${this.state.channel}`}><h3>{ this.state.channel } channel </h3></a>
-                        <p className="text-secondary">By <a href={`/profile/${this.state.userId}`}><span>{this.state.userSlug}</span></a> | { moment(this.state.date).format('MMMM D, YYYY')} | { moment(this.state.date).fromNow() }</p>                            
+                        <a className="text-dark" href={ this.state.channel === "General-Article" ? "/": `/${this.state.channel}`}>
+                            { this.state.channel === "General-Article" 
+                                ? <h3>Open Topic</h3>
+                                : <h3>{ this.state.channel } Channel</h3>
+                            }
+                        </a>
+                        <p className="text-secondary">By <a href={`/profile/${this.state.userId}`}><span>{this.state.userSlug}</span></a> | { moment(this.state.date).format('MMMM D, YYYY')} | <small>{ moment(this.state.date).fromNow() }</small></p>                            
                     </div>
                     <div className="d-md-flex">
-                        <div className="col-md-7 p-md-0 mr-md-3 mb-0 mb-md-5">
-                            { this.state.editing ? 
-                            <form className="post-edit-form">
+                        <div className="col-md-7 p-md-0 mr-md-3 mb-0 mb-md-5 d-flex flex-column">
+                            <div className="post-edit-form collapse navbar-collapse mb-4 p-3 bg-light shadow-sm rounded" id="post-edit">
                                 <h2>Update Article</h2>
                                 <div className="form-group">
                                     <label htmlFor="editPosts-1">Title</label>
@@ -150,25 +148,54 @@ class PostDetailsContainer extends Component {
                                     <input onChange={ this.handleChange } type="text" className="form-control" id="editPosts-3" value={ photo } name="photo" />
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    <button type="submit" className="btn btn-primary" onClick={ this.handleEditSubmit } disabled={ this.state.disabled }>Update</button>
+                                    <button className="btn btn-primary mr-1" data-toggle="collapse" data-target="#post-edit" aria-expanded="false"
+                                            onClick={ this.handleEditSubmit } disabled={ this.state.disabled }>Update</button>
+                                    <button className="btn btn-danger" data-toggle="collapse" data-target="#post-edit" aria-expanded="false">Cancel</button>
                                 </div>
-                            </form>
-                            :   <>
-                                    <h2>{ title }</h2> 
-                                    <p className="text-secondary">{ content }</p>
-                                    <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } />
-                                    { this.props.currentUser === this.state.userId ? 
-                                    <div className="py-3 d-flex justify-content-end">
-                                        <button onClick={ this.handleEditChange } className="btn btn-primary mr-1" style={{ width: '80px'}}>Edit</button>
-                                        <button onClick={ this.handleDelete } className="btn btn-danger" style={{ width: '80px'}}>Delete</button>
-                                    </div>
-                                    : null }
-                                </>
-                            }
+                            </div>
+                            <h2 className="display-5">{ title }</h2> 
+                            <img className="img-fluid mt-2" src={ this.state.photo } alt={ this.state.title } />
+                            { this.props.currentUser === this.state.userId ? 
+                            <div className="d-flex justify-content-end">
+                                <p className="m-0 p-2 text-primary" data-toggle="collapse" data-target="#post-edit" aria-expanded="false" style={{ cursor: 'pointer' }}>Edit</p>
+                                <p className="m-0 p-2 text-danger" onClick={ this.handleDelete } style={{ cursor: 'pointer' }}>Delete</p>
+                            </div>
+                            : null }
+                            <p className="text-secondary mt-3" style={{ whiteSpace: 'pre-line', fontWeight: '300' }}>{ content }</p>
+                            <a href="#top" className="text-center">- Back to the top -</a>
+                        </div>
+                        <div className="col-md-5 my-3 m-md-0 bg-light shadow-sm rounded">
+                            <div className="blog-post">
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <h2 className="blog-post-title mt-3">Comment</h2>
+                                    <p className="text-dark m-0"><span className="icons" role="img" aria-label="comment">💬</span> <small>{ this.state.comments.length } { this.state.comments.length <= 1 ? " comment" : " comments"}</small></p>
+                                </div>
+                                <hr className="mt-0"/>
+                                { this.state.comments.map(comment => {
+                                    return  <div className="text-secondary" key={ comment._id}>
+                                                <div className="d-flex justify-content-between">
+                                                    <small className="mb-1">By <a href={`/profile/${comment.user}`}>{ comment.userSlug }</a></small>
+                                                    <small className="mb-1 text-info">{moment(comment.date).fromNow()}</small>
+                                                </div>
+                                                <p className="text-secondary mb-1" style={{ fontSize: '0.9rem', fontWeight: '300' }}>{ comment.comment }</p>
+                                                { this.props.currentUser === comment.user ?
+                                                <div>
+                                                    <p className="text-danger text-right mb-1"
+                                                       style={{ cursor: 'pointer' }}
+                                                       onClick={()=> {
+                                                            axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete/${comment._id}`)
+                                                            .then(() => window.location.reload())
+                                                            .catch(err => console.log(err));
+                                                        }}><small>Delete</small></p>
+                                                </div>
+                                                : null }
+                                                <hr />
+                                            </div>
+                                })}
                             { this.props.currentUser ?
-                            <div className="my-5 p-0">
+                            <div className="my-4 p-0">
                                 <h3>Comment on this article</h3>
-                                <p>Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>
+                                <p className="text-secondary" style={{ fontSize: '0.8rem'}}>Write-It moderates comments to facilitate an informed, substantive, civil conversation. Abusive, profane, self-promotional, misleading, incoherent or off-topic comments will be rejected.</p>
                                 <Comments
                                     numberComment={ this.state.comments.length }
                                     currentUser={ this.props.currentUser }
@@ -177,41 +204,11 @@ class PostDetailsContainer extends Component {
                                     handleCommentSubmit={ this.handleCommentSubmit } />
                             </div>
                             : null }
-                        </div>
-                        <div className="col-md-5 my-3 m-md-0">
-                            <div className="blog-post">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <h2 className="blog-post-title">Comment</h2>
-                                    <p className="text-dark m-0"><span className="icons" role="img" aria-label="comment">💬</span> { this.state.comments.length } { this.state.comments.length <= 1 ? " comment" : " comments"}</p>
-                                </div>
-                                <hr className="mt-0"/>
-                                { this.state.comments.map(comment => {
-                                    return  <div className="text-secondary" key={ comment._id}>
-                                                <div className="d-flex justify-content-between">
-                                                    <p className="mb-1">By <a href={`/profile/${comment.user}`}>{ comment.userSlug }</a></p>
-                                                    <p className="mb-1">{moment(comment.date).fromNow()}</p>
-                                                </div>
-                                                <p className="text-secondary mb-1">{ comment.comment }</p>
-                                                { this.props.currentUser === comment.user ?
-                                                <div>
-                                                    <p className="text-danger text-right mb-1"
-                                                       style={{ cursor: 'pointer' }}
-                                                       onClick={()=> {
-                                                            axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete/${comment._id}`)
-                                                            .then(res => window.location.reload())
-                                                            .catch(err => console.log(err));
-                                                        }}>Delete</p>
-                                                </div>
-                                                : null }
-                                                <hr />
-                                            </div>
-                                })}
                           </div>
                         </div>
                     </div>
                 </div>
-        )
     }
 }
 
-export default withRouter(PostDetailsContainer)
+export default withRouter(Post)

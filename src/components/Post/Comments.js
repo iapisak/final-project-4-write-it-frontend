@@ -14,7 +14,6 @@ class Comments extends Component {
         let commentError = ''
 
         if (comment === '') commentError = `This field is empty`
-
         if (commentError) {
             this.setState({ commentError, disabled: true })
             return false

@@ -29,7 +29,7 @@ a {
 }
 
 .alert::placeholder {
-    color: rgb(236, 80, 24);    
+    color: rgb(236, 80, 24); 
 }
 
 .textarea-alert {

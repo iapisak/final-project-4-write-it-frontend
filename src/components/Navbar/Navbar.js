@@ -1,93 +1,72 @@
 import React, { Component } from 'react';
-import Login from '../Auth/Login';
-import Signup from '../Auth/Signup';
 
 class Navbar extends Component {
-    state = {
-        dropdown: '',
-        change: false,
-    }
 
     authenticated = (currentUser) => {
         const isUser = (
             <>
-                <li className="nav-link"><img src={ this.props.userPhoto } alt="" width="25" height="25"/> { this.props.slug }</li>
-                <li className="nav-link">
+                <li className="nav-item d-none d-md-block">
+                    <div className="py-2 ">
+                        <img className="rounded-circle mr-2" src={ this.props.userPhoto } alt="" width="25" height="25"/> 
+                        { this.props.slug } :
+                    </div>
+                </li>
+                <li className="nav-item">
                     <a className="nav-link" href={`/profile/${this.props.currentUser}`}>Profile</a>
                 </li>
-                <li className="nav-link" onClick={ this.props.logout }>Sign out</li>
+                <li className="nav-item" onClick={ this.props.logout }>
+                    <div className="nav-link" style={{ cursor: 'pointer' }}>Sign out</div>
+                </li>
             </>
         )
 
         const isGuest = (
             <>
-                <li className="nav-link" onClick={ this.props.loginToggle }>Sign in</li>
-                <li className="nav-link" onClick={ this.props.signupToggle }>Register</li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/login">Log in</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/register">Register</a>
+                </li>
             </>
         );
     
-        if (currentUser !== null) {
-          return isUser
-        } else {
-          return isGuest
-        }
-    }
-
-    handleDropdown = (e) =>{
-        this.setState({
-          dropdown: e.target.value,
-          changed: true
-        })
+        if (currentUser !== null) return isUser
+        else return isGuest
     }
 
     render() {
-        return (
-            <>
-            <nav className="navbar navbar-expand-lg">
-                <a className="nav-link" href="/">Write-it</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-expanded="false" >
-                    <span className="navbar-toggler-icon" style={{ width:20, height:20 }}></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarsExample09">
-                    <ul className="navbar-nav">
-                        { this.authenticated(this.props.currentUser) }
-                    </ul>
-                </div>
-            </nav>
-            {/* <div className="jumbotron">
-                <div className="col-sm-8 mx-auto">
-                    <h1>Write-It</h1>
-                    <p>A simple of writing</p>
-                    <p>Here you will find news, and share your experiences.</p>
-                    <p>For Testing: User= test@gmail.com, password=test</p>
-                </div>
-            </div> */}
-            <div className="d-none d-md-block">
-                <nav className="navbar navbar-expand-md justify-content-center">
-                    <ul className="navbar-nav d-flex">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
-                        </li>
-                        {this.props.category.map(channel=>{
-                            return  <li className="nav-item" key={ channel._id }>
-                                        <a className="nav-link" href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
+        const channels = this.props.category.sort((a, b) => {
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+        })
+
+        return  <div className="bg-light sticky-top shadow">
+                    <div className="col-md-8 mx-auto">
+                        <nav className="navbar navbar-expand-lg navbar-light rounded">
+                            <a className="navbar-brand" href="/">Write-it</a>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbar-1">
+                                <ul className="navbar-nav mr-auto">
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/">Home</a>
                                     </li>
-                        })}
-                    </ul>
-                </nav>
-            </div>
-            
-            <Login 
-                currentUser={ this.props.currentUser }
-                username={ this.props.username }
-                setCurrentUser={ this.props.setCurrentUser }
-                toggle={ this.props.login }
-                loginToggle={ this.props.loginToggle } />
-            <Signup 
-                toggle={ this.props.signup }
-                signupToggle={ this.props.signupToggle } />
-            </>
-        )
+                                    { channels.map(channel=>{
+                                        return  <li className="nav-item" key={ channel._id }>
+                                                    <a className="nav-link" href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
+                                                </li>
+                                    }) }
+                                </ul>
+                                <ul className="navbar-nav ml-auto">
+                                    { this.authenticated(this.props.currentUser) }
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
     }
 }
 
