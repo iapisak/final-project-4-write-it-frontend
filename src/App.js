@@ -29,7 +29,7 @@ class App extends Component {
     localStorage.removeItem('slug')
     localStorage.removeItem('photo')
     axios.delete(`${process.env.REACT_APP_API_URL}/logout`)
-    .then(res => {
+    .then(() => {
       this.setState({ currentUser: null, username: '' });
       this.props.history.push('/');
       })
@@ -46,23 +46,20 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <>
-      <Navbar 
-        currentUser={ this.state.currentUser }
-        userPhoto={ this.state.userPhoto }
-        slug={ this.state.userSlug }
-        logout={ this.logout }
-        category={ this.state.channel } />
-        
-      <Routes 
-        currentUser={ this.state.currentUser } 
-        username={ this.state.username }
-        userSlug={ this.state.userSlug}
-        setCurrentUser={ this.setCurrentUser }
-        category={ this.state.channel } />
-      </>
-    );
+    return <>
+            { this.state.currentUser 
+              ? <Navbar currentUser={ this.state.currentUser } logout={ this.logout } category={ this.state.channel } />
+              : null
+            }
+              
+            <Routes 
+              currentUser={ this.state.currentUser } 
+              username={ this.state.username }
+              userSlug={ this.state.userSlug}
+              setCurrentUser={ this.setCurrentUser }
+              category={ this.state.channel } />
+            </>
+    
   }
 }
 

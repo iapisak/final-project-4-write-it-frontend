@@ -1,38 +1,18 @@
 import React, { Component } from 'react';
+import './navbar.css'
 
 class Navbar extends Component {
 
-    authenticated = (currentUser) => {
-        const isUser = (
-            <>
-                <li className="nav-item d-none d-md-block">
-                    <div className="py-2 ">
-                        <img className="rounded-circle mr-2" src={ this.props.userPhoto } alt="" width="25" height="25"/> 
-                        { this.props.slug } :
-                    </div>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href={`/profile/${this.props.currentUser}`}>Profile</a>
-                </li>
-                <li className="nav-item" onClick={ this.props.logout }>
-                    <div className="nav-link" style={{ cursor: 'pointer' }}>Sign out</div>
-                </li>
-            </>
-        )
-
-        const isGuest = (
-            <>
-                <li className="nav-item">
-                    <a className="nav-link" href="/login">Log in</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/register">Register</a>
-                </li>
-            </>
-        );
-    
-        if (currentUser !== null) return isUser
-        else return isGuest
+    componentDidUpdate() {
+        const nav = document.querySelector('.navbar-sticky-top')
+        function lightNav() {
+            if (window.scrollY > 1) {
+                nav.classList.add('light-nav')
+            } else {
+                nav.classList.remove('light-nav')
+            }
+        }
+        window.addEventListener('scroll', lightNav)
     }
 
     render() {
@@ -42,26 +22,31 @@ class Navbar extends Component {
             return 0;
         })
 
-        return  <div className="bg-light sticky-top shadow">
+        return  <div className="navbar-sticky-top">
                     <div className="col-md-8 mx-auto">
-                        <nav className="navbar navbar-expand-lg navbar-light rounded">
-                            <a className="navbar-brand" href="/">Write-it</a>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
+                        <nav id="nav-top" className="navbar navbar-expand-lg navbar-dark rounded px-md-0">
+                            {/* <h3 className="navbar-item text-warning">Write-it</h3> */}
+                            <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbar-1">
                                 <ul className="navbar-nav mr-auto">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/">Home</a>
+                                        <a className="nav-link text-light" href="/home">Home</a>
                                     </li>
                                     { channels.map(channel=>{
                                         return  <li className="nav-item" key={ channel._id }>
-                                                    <a className="nav-link" href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
+                                                    <a className="nav-link text-light" href={ `/${channel.name}` } key={ channel.name}>{ channel.name }</a>
                                                 </li>
                                     }) }
                                 </ul>
                                 <ul className="navbar-nav ml-auto">
-                                    { this.authenticated(this.props.currentUser) }
+                                <li className="nav-item">
+                                    <a className="nav-link text-light" href={`/profile/${this.props.currentUser}`}>Profile</a>
+                                </li>
+                                <li className="nav-item" onClick={ this.props.logout }>
+                                    <div className="nav-link text-light" style={{ cursor: 'pointer' }}>Sign out</div>
+                                </li>
                                 </ul>
                             </div>
                         </nav>

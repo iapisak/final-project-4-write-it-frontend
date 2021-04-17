@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+import './auth.css'
+
 const initialState = {
     name: '',
     lastName: '',
@@ -88,7 +90,7 @@ class Signup extends Component {
         axios.post(`${process.env.REACT_APP_API_URL}/signup`, this.state,)
         .then(() => {
             this.setState(initialState)
-            this.props.history.push('/login')
+            this.props.history.push('/')
         })
         .catch(() => {
           this.setState({ email: '',
@@ -105,45 +107,42 @@ class Signup extends Component {
 
   render() {
 
-    return (
-      <div className="py-0 py-md-4 px-md-0" id="signup" >
-          <form onSubmit={this.handleSubmit} className="card mx-auto border-0 rounded-0">
-            <h1 className="font-weight-bold">Register</h1>
-            <small className="mb-0 text-secondary">Enter your details below</small>
-            <hr className="mb-1" style={{ borderColor: "gray" }}/>
-            <small className="mb-0 mt-3">Name</small>
-            <input onChange={this.handleChange} type="text" name="name" value={this.state.name}
-                  className={ this.state.nameError ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.nameError ? this.state.nameError : "John" } />
-            <small className="mb-0">Last Name</small>
-            <input onChange={this.handleChange} type="text" name="lastName" value={this.state.lastName}
-                  className={ this.state.lastNameError ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.lastNameError ? this.state.lastNameError : "Smith" } />
-            <small className="mb-0">Email</small>
-            <input onChange={this.handleChange} type="text" name="email" value={this.state.email}
-                    className={ this.state.emailError ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.emailError ? this.state.emailError : "john@gmail.com" } />
-            <small className="mb-0">Profile Name</small>
-            <input onChange={this.handleChange} type="text" name="slug" value={this.state.slug}
-                    className={ this.state.slugError ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.slugError ? this.state.slugError : "Jonh Smith" }/>
-            <small className="mb-0">Password</small>
-            <input onChange={this.handleChange} type="password" name="password" value={this.state.password}
-                   className={ this.state.passwordError ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.passwordError ? this.state.passwordError : 'password' } />
-            <small className="mb-0">Confirm your password</small>
-            <input onChange={this.handleChange} type="password" name="password2" value={this.state.password2}
-                   className={ this.state.password2Error ? "control mb-3" : "mb-3"}
-                    placeholder={ this.state.password2Error ? this.state.password2Error : 'password' } />
-            <small className="text-muted">Min length is 4 characters</small>
-            <div className="row px-3 my-4 d-flex align-items-center">
-              <button type="submit" className="btn btn-primary px-3 mr-2">Register</button>
-              <small>or <a href="/login" className="text-secondary">Log in</a></small>
-            </div>
-            <img src="https://images.unsplash.com/photo-1508776781619-132e6a483b60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt=""/>
-          </form>
-      </div>
-    );
+    return  <div id="signup" >
+              <form onSubmit={this.handleSubmit} className="card mx-auto border-0 rounded-0" style={{ backgroundColor: 'transparent' }}>
+                <h1 className="font-weight-bold">Register</h1>
+                <small className="mb-0">Please enter your details below</small>
+                <hr className="mb-1"/>
+                <small className="mb-0 mt-3">Name</small>
+                <input onChange={this.handleChange} type="text" name="name" value={this.state.name}
+                      className={ this.state.nameError ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.nameError ? this.state.nameError : "John" } />
+                <small className="mb-0">Last Name</small>
+                <input onChange={this.handleChange} type="text" name="lastName" value={this.state.lastName}
+                      className={ this.state.lastNameError ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.lastNameError ? this.state.lastNameError : "Smith" } />
+                <small className="mb-0">Email</small>
+                <input onChange={this.handleChange} type="text" name="email" value={this.state.email}
+                        className={ this.state.emailError ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.emailError ? this.state.emailError : "john@gmail.com" } />
+                <small className="mb-0">Profile Name</small>
+                <input onChange={this.handleChange} type="text" name="slug" value={this.state.slug}
+                        className={ this.state.slugError ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.slugError ? this.state.slugError : "Jonh Smith" }/>
+                <small className="mb-0">Password</small>
+                <input onChange={this.handleChange} type="password" name="password" value={this.state.password}
+                      className={ this.state.passwordError ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.passwordError ? this.state.passwordError : 'password' } />
+                <small className="mb-0">Confirm your password</small>
+                <input onChange={this.handleChange} type="password" name="password2" value={this.state.password2}
+                      className={ this.state.password2Error ? "control mb-3" : "mb-3"}
+                        placeholder={ this.state.password2Error ? this.state.password2Error : 'password' } />
+                <small className="text-muted">Min length is 4 characters</small>
+                <div className="row px-3 my-4 d-flex align-items-center">
+                  <button type="submit" className="btn btn-primary px-3 mr-2">Register</button>
+                  <small>or <a href="/" className="text-secondary">Log in</a></small>
+                </div>
+              </form>
+          </div>
   }
 }
 

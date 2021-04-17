@@ -108,7 +108,7 @@ class Post extends Component {
     handleCommentSubmit = (e, newState) => {
         e.preventDefault()
         axios.put(`${process.env.REACT_APP_API_URL}/comment/create`, newState)
-        .then((res) => {
+        .then(() => {
             this.componentDidMount()
          })
         .catch(err => console.log(err))
@@ -119,7 +119,7 @@ class Post extends Component {
         
         return  <div className="col-md-8 mx-auto p-0 mt-4 mb-3">
                     <div className="px-3 px-md-0">
-                        <a className="text-dark" href={ this.state.channel === "General-Article" ? "/": `/${this.state.channel}`}>
+                        <a className="text-dark" href={ this.state.channel === "General-Article" ? "/home": `/${this.state.channel}`}>
                             { this.state.channel === "General-Article" 
                                 ? <h3>Open Topic</h3>
                                 : <h3>{ this.state.channel } Channel</h3>
