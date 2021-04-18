@@ -26,7 +26,7 @@ export default ({ currentUser, userSlug, category, username, setCurrentUser  }) 
                                         // channel="5ded57c5fc9751e68f2819f3"
                                         channelName="General-Article"
                                         channelDetail="You should be able to describe every aspect surrounding your topic without discrimination. A good description should be able to bring the reader of your essay to the real happening of events. The reader should not question themselves or be left in suspense in a way; you should ensure that you exhaust your descriptions. Every point has to come out clearly in your writing. To come up with a good essay, "
-                                        channelPhoto="https://images.unsplash.com/photo-1508776781619-132e6a483b60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" /> }} />
+                                        channelPhoto="https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2391&q=80" /> }} />
 
                 { category.map(channel => {
                     return <Route path={`/${channel.name}`} key={ channel._id}

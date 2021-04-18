@@ -48,7 +48,8 @@ class App extends Component {
   render() {
     return <>
             { this.state.currentUser 
-              ? <Navbar currentUser={ this.state.currentUser } logout={ this.logout } category={ this.state.channel } />
+              ? <Navbar currentUser={ this.state.currentUser } userSlug={ this.state.userSlug} userPhoto={ this.state.userPhoto}
+                        logout={ this.logout } category={ this.state.channel } />
               : null
             }
               
