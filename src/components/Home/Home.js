@@ -104,10 +104,10 @@ class Home extends Component {
                         } else content = post.content
 
                         return  <div className="d-md-flex" key={ post.photo }>
-                                    <div className="col-md-3 p-0 mb-3 py-md-1">
+                                    <div className="col-md-3 p-0 mb-3 py-md-1" style={{ height: "210px", overflow: "hidden" }}>
                                         { post.photo ? 
                                         <a href={`/post/${post._id}`}>
-                                            <img className="img-fluid border" src={ post.photo } alt={ post.photo} / >
+                                            <img className="img-fluid" src={ post.photo } alt={ post.photo} / >
                                         </a>
                                         : null }
                                     </div>
