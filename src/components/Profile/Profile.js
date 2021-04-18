@@ -35,6 +35,8 @@ class Profile extends Component {
     }
 
     render () {
+        const commentsLength = this.state.comments.length
+
         return (
             <>
             <Header
@@ -59,9 +61,11 @@ class Profile extends Component {
                                                     <p className="mb-2 text-dark" style={{ fontWeight: '300', fontSize: '13px' }}>Post on { moment(post.date).format('MMMM D, YYYY') }</p> 
                                                     <small className="">{ moment(post.date).fromNow() }</small>
                                                 </div>
-                                                <a href={`/post/${post._id}`}>
-                                                    <img className="img-fluid mb-3" src={ post.photo } alt={ post.title } />
-                                                </a>
+                                                <div className="mb-3" style={{ height: "250px", overflow: "hidden" }}>
+                                                    <a href={`/post/${post._id}`}>
+                                                        <img className="img-fluid" src={ post.photo } alt={ post.title } />
+                                                    </a>
+                                                </div>
                                                 <a className="text-dark lead mb-2" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}><h5 className="display-5">{ index + 1 }. { post.title }</h5></a>
                                                 <p className="text-secondary" style={{ fontWeight: '100', fontSize: '14px' }}>{ content } { template }</p>
                                                 <hr className=""/>
@@ -75,7 +79,7 @@ class Profile extends Component {
                         <h2 className="font-weight-bold">Comment History</h2>
                         <div className="blog-post p-3 flex-grow-1" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                             { this.state.comments && this.state.comments.length 
-                                ? this.state.comments.map(comment => {
+                                ? this.state.comments.map((comment, index) => {
                                     return  <div className="text-secondary" key={ comment._id}>
                                                 <div className="d-flex justify-content-between">
                                                     <small className="mb-1"><a href={`/post/${ comment.post }`}>Read the Article...</a></small>
@@ -91,7 +95,7 @@ class Profile extends Component {
                                                             .catch(err => console.log(err));
                                                         }}>Delete</small>
                                                     : null }
-                                                <hr />
+                                                { index !== (commentsLength - 1) ? <hr /> : null}
                                             </div>
                                 })
                             : <div><p className="text-secondary mb-1" style={{ fontWeight: '100', fontSize: '14px' }}>No comment found</p></div>

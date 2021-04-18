@@ -118,11 +118,12 @@ class Post extends Component {
 
     render () {
         const { content, photo, title } = this.state
+        const commentsLength = this.state.comments.length
         
         return  <>
                 <div className="post-headline"></div>
                 <div className="post-container mt-5">
-                    <div className="col-md-8 mx-auto p-0 py-4 mt-3 mb-3 bg-white shadow p-md-3">
+                    <div className="col-md-8 mx-auto p-0 py-4 mt-3 mb-3 bg-white shadow p-md-3 border">
                         <div className="px-3 px-md-0">
                             <a className="text-dark" href={ this.state.channel === "General-Article" ? "/home": `/${this.state.channel}`}>
                                 { this.state.channel === "General-Article" 
@@ -133,29 +134,32 @@ class Post extends Component {
                             <p className="text-secondary">By <a href={`/profile/${this.state.userId}`}><span><small>{this.state.userSlug}</small></span></a> | { moment(this.state.date).format('MMMM D, YYYY')} | <small>{ moment(this.state.date).fromNow() }</small></p>
                         </div>
                         <div className="d-md-flex">
-                            <div className="col-md-6 p-md-0 pr-md-3 mb-0 mb-md-5 d-flex flex-column">
-                                <div className="post-edit-form collapse navbar-collapse mb-4 p-3 bg-light shadow-sm rounded" id="post-edit">
-                                    <h2>Update Article</h2>
-                                    <div className="form-group">
-                                        <label htmlFor="editPosts-1">Title</label>
-                                        <input onChange={ this.handleChange } type="text" className={ !this.state.titleError ? "form-control" : "alert"}
-                                            id="editPosts-1" name="title" value={ title } 
-                                            placeholder={ this.state.titleError ? this.state.titleError : "type your title here" }/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="editPosts-2">Contents</label>
-                                        <textarea onChange={ this.handleChange } className={ !this.state.contentError ? "form-control" : "textarea-alert"}  
-                                                id="editPosts-2" name="content" value={ content } rows="10"
-                                                placeholder={ this.state.contentError ? this.state.contentError : "Description" }></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="editPosts-3">Photo</label>
-                                        <input onChange={ this.handleChange } type="text" className="form-control" id="editPosts-3" value={ photo } name="photo" />
-                                    </div>
-                                    <div className="d-flex justify-content-end">
-                                        <button className="btn btn-primary mr-1" data-toggle="collapse" data-target="#post-edit" aria-expanded="false"
-                                                onClick={ this.handleEditSubmit } disabled={ this.state.disabled }><small>Update</small></button>
-                                        <button className="btn btn-danger" data-toggle="collapse" data-target="#post-edit" aria-expanded="false"><small>Cancel</small></button>
+                            <div className="col-md-6 p-md-0 pr-md-3 mb-0 mb-5 d-flex flex-column">
+                                <div className="collapse navbar-collapse mb-4" id="post-edit">
+                                    <h2 className="ml-2 font-weight-bold">Update Article</h2>
+                                    <div className="shadow border p-3 flex-grow-1" style={{ backgroundColor: 'rgba(248,187,208 ,0.05)' }}>
+                                        <div className="form-group">
+                                            <label className="form-label font-weight-bold" htmlFor="input1">Title</label>
+                                            <input onChange={this.handleChange} type="search" className={ this.state.titleError ? "form-control alert" : "form-control"}
+                                                id="input1" name="title" value={ title }
+                                                placeholder={ this.state.titleError ? this.state.titleError : "type your title here" } />
+                                        </div>                            
+                                        <div className="form-group">
+                                            <label className="form-label font-weight-bold" htmlFor="input2">Photo</label>
+                                            <input onChange={this.handleChange} type="search" className="form-control" placeholder="example https://photo.com" id="input2" name="photo" value={ photo } />
+                                        </div>       
+                                        <div className="form-group">
+                                            <label className="form-label font-weight-bold" htmlFor="input3">Contents</label>
+                                            <textarea onChange={this.handleChange} className={ this.state.contentError ? "form-control alert" : "form-control"} 
+                                                    id="input3" name="content" value={ content } rows="20" cols="50"
+                                                    placeholder={ this.state.contentError ? this.state.contentError : "Description" }>
+                                            </textarea>
+                                        </div>
+                                        <div className="text-right">
+                                            <button className="btn btn-primary mr-1" data-toggle="collapse" data-target="#post-edit" aria-expanded="false"
+                                                    onClick={ this.handleEditSubmit } disabled={ this.state.disabled }><small>Update</small></button>
+                                            <button className="btn btn-danger" data-toggle="collapse" data-target="#post-edit" aria-expanded="false"><small>Cancel</small></button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -169,18 +173,20 @@ class Post extends Component {
                                 </div>
                                 : null }
                                 <h4 className="display-5 border-bottom mt-3 pb-2">{ title }</h4> 
-                                <p className="text-secondary mt-2" style={{ whiteSpace: 'pre-line', fontWeight: '100', fontSize: '14px' }}>{ content }</p>
+                                <p className="text-secondary mt-2 mb-4" style={{ whiteSpace: 'pre-line', fontWeight: '100', fontSize: '14px' }}>{ content }</p>
                                 <a href="#top" className="text-center"><small>- Back to the top -</small></a>
 
                                 {/* End here */}
                             </div>
-                            <div className="col-md-6 my-3 m-md-0">
+                            <div className="col-md-6 my-3 m-md-0 p-md-0">
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h2 className="font-weight-bold">Comment</h2>
                                     <p className="text-dark m-0"><span className="icons" role="img" aria-label="comment">💬</span> <small>{ this.state.comments.length } { this.state.comments.length <= 1 ? " comment" : " comments"}</small></p>
                                 </div>
-                                <div className="blog-post p-3" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
-                                    { this.state.comments.map(comment => {
+                                <div className="blog-post p-3 border shadow-sm mb-5" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
+                                    { this.state.comments && !commentsLength
+                                    ? <p className="mb-1" style={{ fontSize: '0.8rem' }}>No Comment</p>
+                                    : this.state.comments.map((comment, index) => {
                                         return  <div className="text-dark" key={ comment._id}>
                                                     <div className="d-flex justify-content-between">
                                                         <a classname="font-weight-bold" href={`/profile/${comment.user}`}><small className="mb-1 text-info">{ comment.userSlug }</small></a>
@@ -196,12 +202,12 @@ class Post extends Component {
                                                                     .catch(err => console.log(err));
                                                                 }}>Delete</small>
                                                         : null }
-                                                    <hr />
+                                                    { index !== (commentsLength - 1) ? <hr /> : null}
                                                 </div>
-                                    })}
+                                    }) }
                                 </div>
                                 <h4 className="font-weight-bold">Comment on this article</h4>
-                                <div className="mb-3 border p-2 pt-4 rounded" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
+                                <div className="mb-3 border shadow-sm p-2 pt-4 rounded" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                                     <Comments
                                         numberComment={ this.state.comments.length }
                                         currentUser={ this.props.currentUser }
