@@ -93,12 +93,12 @@ class Profile extends Component {
         return (
             <>
             <div className="overflow-hidden">
-                <div className="px-4 pt-0 pb-4" style={{ backgroundColor: "#001630" }}>
+                <div className="px-4 pt-0 pb-4 profile-header">
                     <div className="col-md-8 mx-auto p-0 media align-items-end profile-head" style={{ zIndex: '999'}}>
                         <div className="profile mr-3">
                             <img src={ photo } alt={ photo } width="150" height="auto" className="rounded mb-2 img-thumbnail" />
                             { currentUser === this.props.user_Id ?
-                            <button className="btn btn-info btn-block" 
+                            <button className="btn btn-dark btn-block" 
                                     type="button" data-toggle="collapse" data-target="#edit-profile" aria-expanded="false">Edit profile</button>
                             : <div className="d-block text-light">{ name }</div> }
                         </div>

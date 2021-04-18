@@ -2,12 +2,22 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, #001630 50%, whitesmoke 50%);
+    background-color: #001630;
+    background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.welcome-card {
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px #666c74;
+.welcome {
+    color: #e8e8e8;
+    font-weight: 100;
+    text-shadow: white 0px 0px 1px;
+}
+
+.content {
+    font-size: 1.1rem;   
 }
 
 .login-image {
@@ -17,7 +27,6 @@
 
 .card {
     padding: 30px;
-    box-shadow: 0px 8px 16px 0px #666c74;
     max-width: 511px;
 }
 
