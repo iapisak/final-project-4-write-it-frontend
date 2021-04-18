@@ -1,3 +1,7 @@
+.navbar {
+    text-shadow: white 0px 0px 1.1px;
+}
+
 .navbar-sticky-top {
     top: 0;
     position: fixed;
@@ -7,7 +11,7 @@
 }
 
 .light-nav {
-    background-color: #001630;
+    background-color: rgba(0,0,0,0.8);
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
     z-index: 9999;
 }
@@ -24,6 +28,6 @@
 
 @media (max-width: 992px) {  
     #navbar-1 {
-        background-color: #001630;
+        background-color: rgba(0,0,0,0.8);
     }
   }
