@@ -75,8 +75,8 @@ class Home extends Component {
                 <div className="headline position-relative overflow-hidden"
                      style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("${this.props.channelPhoto}")`}}>
                     <div className="captions">
-                        <div className="col-md-8 mx-auto">
-                            <h1 className="display-3 text-light">Write-it</h1>
+                        <div className="col-md-8 mx-auto p-3">
+                            <h1 className="display-4 font-weight-bold text-light">Write-it</h1>
                             <p>A simple of writing. <br />Here you will find news, and share your experiences.</p>
                         </div>
                     </div>

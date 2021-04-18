@@ -12,6 +12,8 @@
     padding: 20px 0;
     bottom: 0;
     color: white;
+    text-shadow: white 0px 0px 2px;
+    font-size: 1.1rem; 
     background-color: rgba(0,0,0,0.4);
 }
 
