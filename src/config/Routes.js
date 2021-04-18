@@ -47,6 +47,7 @@ export default ({ currentUser, userSlug, category, username, setCurrentUser  }) 
                         else return <Post currentUser={ currentUser } 
                                           userSlug={ userSlug }
                                           id={props.match.params.id}/> } } />
+
                 <Route path="/profile/:id" render={(props) => {
                         if (!currentUser) window.location.href = "/"
                         else return <Profile currentUser={ currentUser } id={ props.match.params.id } /> }} />

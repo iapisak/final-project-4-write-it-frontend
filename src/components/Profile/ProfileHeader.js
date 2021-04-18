@@ -93,12 +93,12 @@ class Profile extends Component {
         return (
             <>
             <div className="overflow-hidden">
-                <div className="px-4 pt-0 pb-4 cover">
+                <div className="px-4 pt-0 pb-4" style={{ backgroundColor: "#001630" }}>
                     <div className="col-md-8 mx-auto p-0 media align-items-end profile-head" style={{ zIndex: '999'}}>
                         <div className="profile mr-3">
-                            <img src={ photo } alt={ photo } width="150" className="rounded mb-2 img-thumbnail" />
+                            <img src={ photo } alt={ photo } width="150" height="auto" className="rounded mb-2 img-thumbnail" />
                             { currentUser === this.props.user_Id ?
-                            <button className="btn btn-outline-info btn-block" 
+                            <button className="btn btn-info btn-block" 
                                     type="button" data-toggle="collapse" data-target="#edit-profile" aria-expanded="false">Edit profile</button>
                             : <div className="d-block text-light">{ name }</div> }
                         </div>
@@ -125,47 +125,49 @@ class Profile extends Component {
                     </div>
                 </div>
             </div>
-            <div className="col-md-8 mx-auto p-0 collapse navbar-collapse shadow-sm bg-dark text-light" id="edit-profile">
-                <form className="edit-profile-form d-md-flex py-3">
+            <div className="col-md-8 mx-auto p-0 mb-5 collapse navbar-collapse" id="edit-profile">
+                <div id="edit-profile-form" className="d-md-flex border shadow py-3" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                     <div className="col-md-6">
-                        <div className="mb-3">
-                            <label htmlFor="name">Name</label>
-                            <input onChange={ this.handleChange } className={ !this.state.nameError ? "form-control" : "alert"} type="text" 
-                                   id="name" name="name" value={ this.state.name }
-                                   placeholder={ this.state.nameError ? this.state.nameError : "John" } />
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="name">Name</label>
+                            <input onChange={this.handleChange} type="search" className={ this.state.nameError ? "form-control alert" : "form-control"}
+                                id="name" name="name" value={this.state.name}
+                                placeholder={ this.state.nameError ? this.state.nameError : "John" } />
+                        </div> 
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="lastName">Last Name</label>
+                            <input onChange={this.handleChange} type="search" className={ this.state.lastNameError ? "form-control alert" : "form-control"}
+                                id="lastName" name="lastName" value={this.state.lastName}
+                                placeholder={ this.state.lastNameError ? this.state.lastNameError : "Doe" } />
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="lastName" className="last-name">Last Name</label>
-                            <input onChange={ this.handleChange } className={ !this.state.lastNameError ? "form-control" : "alert"} type="text" 
-                                   id="lastName" name="lastName" value={ this.state.lastName }
-                                   placeholder={ this.state.lastNameError ? this.state.lastNameError : "Doe" } />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="email">Email</label>
-                            <input onChange={this.handleChange} className={ !this.state.emailError ? "form-control" : "alert"} type="text" 
-                                   id="email" name="email" value={ this.state.email } 
-                                   placeholder={ this.state.emailError ? this.state.emailError : "JohnDoe@gmail.com" }/>
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="email">Email</label>
+                            <input onChange={this.handleChange} type="search" className={ this.state.emailError ? "form-control alert" : "form-control"}
+                                id="email" name="email" value={this.state.email}
+                                placeholder={ this.state.emailError ? this.state.emailError : "JohnDoe@gmail.com" } />
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className="mb-3">
-                            <label htmlFor="photo">Photo</label>
-                            <input onChange={ this.handleChange } className="form-control" type="text" id="photo" name="photo" value={ this.state.photo } />
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="photo">Photo</label>
+                            <input onChange={this.handleChange} type="search" className="form-control"
+                                id="photo" name="photo" value={this.state.photo}
+                                placeholder="photo" />
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="slug">Nick</label>
-                            <input onChange={ this.handleChange } className={ !this.state.slugError ? "form-control" : "alert"} type="text" 
-                                   id="slug" name="slug" value={ this.state.slug } 
-                                   placeholder={ this.state.slugError ? this.state.slugError : "JohnDoe" } />
-                        </div>
-                        <div className="mb-3">
-                            <button type="submit" className="btn btn-primary"
-                                    data-toggle="collapse" data-target="#edit-profile" aria-expanded="false" 
-                                    style={{ width: '80px'}} disabled={ this.state.disabled } 
-                                    onClick={ this.handleEditSubmit }>Save</button>
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="slug">Nick Name</label>
+                            <input onChange={this.handleChange} type="search" className={ this.state.slugError ? "form-control alert" : "form-control"}
+                                id="slug" name="slug" value={this.state.slug}
+                                placeholder={ this.state.slugError ? this.state.slugError : "JohnDoe" } />
+                        </div>                
+
+                        <div className="text-right">
+                            <button type="submit" className="btn btn-primary mr-1" data-toggle="collapse" data-target="#edit-profile" aria-expanded="false" 
+                                    disabled={ this.state.disabled } onClick={ this.handleEditSubmit }><small>Update</small></button>
+                            <button className="btn btn-danger" data-toggle="collapse" data-target="#edit-profile" aria-expanded="false"><small>Cancel</small></button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
             </>
             )
