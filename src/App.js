@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Routes from './config/Routes';
@@ -15,6 +14,14 @@ class App extends Component {
     userPhoto: localStorage.getItem('photo'),
     channel: [],
   }
+
+  setCurrentUser = (userId, username, userSlug, userPhoto) => {
+    this.setState({ currentUser: userId, username, userSlug, userPhoto });
+    localStorage.setItem('uid', userId);
+    localStorage.setItem('username', username);
+    localStorage.setItem('slug', userSlug);
+    localStorage.setItem('photo', userPhoto);
+  };
 
   logout = () => {
     localStorage.removeItem('uid');
