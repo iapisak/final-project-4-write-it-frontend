@@ -7,6 +7,7 @@
 }
 
 .light-nav {
-    background-color: rgba(0,0,0,.9);
+    background-color: #001630;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    z-index: 9999;
 }

@@ -1,0 +1,14 @@
+.post-headline {
+    height: 50vh;
+    background-color: #001630;
+    background-size: center;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.post-container {
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

@@ -72,20 +72,21 @@ class Home extends Component {
 
     render () {
         return  <>
-                <div className="headline position-relative overflow-hidden">
+                <div className="headline position-relative overflow-hidden"
+                     style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("${this.props.channelPhoto}")`}}>
                     <div className="captions">
                         <div className="col-md-8 mx-auto">
-                            <h1 className="display-4">Write-it</h1>
+                            <h1 className="display-3 text-light">Write-it</h1>
                             <p>A simple of writing. <br />Here you will find news, and share your experiences.</p>
                         </div>
                     </div>
                 </div>
-                <div className="col-md-8 mx-auto p-0 p-md-3 my-4 bg-light">
+                <div className="col-md-8 mx-auto p-0 p-md-3 mb-4">
                     <div className="p-3 pl-md-0">
                         <div className="d-flex">
                             { this.props.channelName === "General-Article" 
-                                ? <h1>Open Topic</h1>
-                                : <h1>{ this.props.channelName } Channel</h1>
+                                ? <h2 className="font-weight-bold">Open Topic</h2>
+                                : <h2 className="font-weight-bold">{ this.props.channelName } Channel</h2>
                             }
                             { this.props.currentUser 
                                 ? <a href="#create-post" className="ml-auto text-info" > Create post </a>
@@ -96,9 +97,10 @@ class Home extends Component {
                         <p className="text-secondary" style={{ fontWeight: "100", fontSize: '14px' }}>{ this.props.channelDetail }</p>
                     </div>
                     { this.state.posts.map(post => {
+                        const template = <a className="text-info" href={`/post/${ post._id }`} style={{ textDecoration: 'none'}}><small>learn more</small></a>
                         let content 
                         if (post.content.length > 500) {
-                            content = `${post.content.substring(0, 500)} ... `
+                            content = `${post.content.substring(0, 500)}...`
                         } else content = post.content
 
                         return  <div className="d-md-flex" key={ post.photo }>
@@ -111,29 +113,29 @@ class Home extends Component {
                                     </div>
                                     <div className="col-md-9 mb-3">
                                         <a className="text-dark lead" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}>
-                                            <h4>{post.title}</h4>
+                                            <h5>{post.title}</h5>
                                         </a>    
                                         <p className="text-secondary mb-2">{ moment(post.date).format('MMM D, YYYY') } By <Link to={`/profile/${post.user}`}> <small>{ post.userSlug }</small></Link></p>
                                         <hr className=" mt-0 mb-2"/>
-                                        <p className="text-secondary" style={{ fontWeight: "300", fontSize: '14px' }}>{ content }</p>
+                                        <p className="text-secondary" style={{ fontWeight: "300", fontSize: '14px' }}>{ content } { template }</p>
                                     </div>
                                 </div>
                     }) }
 
                     <div className="row m-0 p-3 p-md-0 py-md-4">
-                        <div className="col-md-5 py-3 row m-0 mb-3 mb-md-0 mr-md-3 shadow" style={{ background: "white" }}>
+                        <div className="col-md-5 py-3 row m-0 mb-3 mb-md-0 mr-md-3 shadow" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                             <div>
-                                <h3>Tell your story</h3>
-                                <p className="text-muted mb-4" style={{ fontSize: '15px', fontWeight: '100' }}>Speaking of stories, every blog post needs to have a beginning, a middle and an end. Think of it as an introduction, the main information, and conclusion if you prefer. Even if you don’t give use to those sub-headings because, hopefully, you’ve come up with hotter ones, do follow the convention to avoid confusing your readers.</p>
+                                <h4>Tell your story</h4>
+                                <p className="text-muted mb-4" style={{ fontSize: '13px', fontWeight: '100' }}>Speaking of stories, every blog post needs to have a beginning, a middle and an end. Think of it as an introduction, the main information, and conclusion if you prefer. Even if you don’t give use to those sub-headings because, hopefully, you’ve come up with hotter ones, do follow the convention to avoid confusing your readers.</p>
                                 <hr className=""/>
-                                <h3>Use image</h3>
-                                <p className="text-muted" style={{ fontSize: '15px', fontWeight: '100' }}>Good use of images will draw readers into your blog posts. Sometimes I read a post purely because I like the image. Ideally, your images will add to your blog or emphasize your message</p>
+                                <h4>Use image</h4>
+                                <p className="text-muted" style={{ fontSize: '13px', fontWeight: '100' }}>Good use of images will draw readers into your blog posts. Sometimes I read a post purely because I like the image. Ideally, your images will add to your blog or emphasize your message</p>
                             </div>
                         </div>
-                        <div className="col py-3 shadow" style={{ backgroundColor: 'white' }}>
-                            <div className="d-flex">
-                                <h3>Create new topic</h3>
-                                <a className="ml-auto text-info" href="#top">Back to the Top</a>
+                        <div className="col py-3 shadow" style={{ backgroundColor: 'rgba(248,187,208 ,0.05)' }}>
+                            <div className="d-flex mb-3">
+                                <h4>Create new topic</h4>
+                                <a className="ml-auto text-info" href="#top"><small>Back to the Top</small></a>
                             </div>
                             <form id="create-post">
                                 <div className="form-group">
