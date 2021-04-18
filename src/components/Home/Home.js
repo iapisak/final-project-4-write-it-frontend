@@ -123,7 +123,7 @@ class Home extends Component {
                     }) }
 
                     <div className="row m-0 p-3 p-md-0 py-md-4">
-                        <div className="col-md-5 py-3 row m-0 mb-3 mb-md-0 mr-md-3 shadow" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
+                        <div className="col-md-5 py-3 row m-0 mb-5 mb-md-0 pr-md-3 border shadow" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                             <div>
                                 <h4>Tell your story</h4>
                                 <p className="text-muted mb-4" style={{ fontSize: '13px', fontWeight: '100' }}>Speaking of stories, every blog post needs to have a beginning, a middle and an end. Think of it as an introduction, the main information, and conclusion if you prefer. Even if you don’t give use to those sub-headings because, hopefully, you’ve come up with hotter ones, do follow the convention to avoid confusing your readers.</p>
@@ -132,34 +132,37 @@ class Home extends Component {
                                 <p className="text-muted" style={{ fontSize: '13px', fontWeight: '100' }}>Good use of images will draw readers into your blog posts. Sometimes I read a post purely because I like the image. Ideally, your images will add to your blog or emphasize your message</p>
                             </div>
                         </div>
-                        <div className="col py-3 shadow" style={{ backgroundColor: 'rgba(248,187,208 ,0.05)' }}>
-                            <div className="d-flex mb-3">
-                                <h4>Create new topic</h4>
+                        <div className="col-md-7 p-0 px-md-3">
+                            <div className="d-flex mb-1 align-items-center px-2">
+                                <h3 className="font-weight-bold">Create new topic</h3>
+                                
                                 <a className="ml-auto text-info" href="#top"><small>Back to the Top</small></a>
                             </div>
-                            <form id="create-post">
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="input1">Title</label>
-                                    <input onChange={this.handleChange} type="search" className="form-control"
-                                        id="input1" name="title" value={this.state.title}
-                                        placeholder={ this.state.titleError ? this.state.titleError : "type your title here" } />
-                                </div>                            
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="input2">Photo</label>
-                                    <input onChange={this.handleChange} type="text" className="form-control" placeholder="example https://photo.com" id="input2" name="photo" value={this.state.photo} />
-                                </div>       
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="input3">Contents</label>
-                                    <textarea onChange={this.handleChange} className="form-control"  
-                                            id="input3" name="content" value={ this.state.content } rows="5" cols="50"
-                                            placeholder={ this.state.contentError ? this.state.contentError : "Description" }>
-                                    </textarea>
-                                </div>
-                                <div className="text-right">
-                                    <button type="submit" onClick={ this.handleSubmit } className="btn btn-primary mr-1" disabled={ this.state.disabled } style={{ borderRadius: '30px'}}>Create new article</button>
-                                    <button type="button" onClick={()=> this.setState(initialState) } className="btn btn-danger" style={{ borderRadius: '30px', width: '80px'}}>Cancel</button>
-                                </div>
-                            </form>
+                            <div className="shadow border p-3 flex-grow-1" style={{ backgroundColor: 'rgba(248,187,208 ,0.05)' }}>
+                                <form id="create-post">
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="input1">Title</label>
+                                        <input onChange={this.handleChange} type="search" className={ this.state.titleError ? "form-control alert" : "form-control"}
+                                            id="input1" name="title" value={this.state.title}
+                                            placeholder={ this.state.titleError ? this.state.titleError : "type your title here" } />
+                                    </div>                            
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="input2">Photo</label>
+                                        <input onChange={this.handleChange} type="text" className="form-control" placeholder="example https://photo.com" id="input2" name="photo" value={this.state.photo} />
+                                    </div>       
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="input3">Contents</label>
+                                        <textarea onChange={this.handleChange} className={ this.state.contentError ? "form-control alert" : "form-control"} 
+                                                id="input3" name="content" value={ this.state.content } rows="10" cols="50"
+                                                placeholder={ this.state.contentError ? this.state.contentError : "Description" }>
+                                        </textarea>
+                                    </div>
+                                    <div className="text-right">
+                                        <button type="submit" onClick={ this.handleSubmit } className="btn btn-primary mr-1" disabled={ this.state.disabled } style={{ borderRadius: '30px'}}>Create new article</button>
+                                        <button type="button" onClick={()=> this.setState(initialState) } className="btn btn-danger" style={{ borderRadius: '30px', width: '80px'}}>Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
