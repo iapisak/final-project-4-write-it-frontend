@@ -122,7 +122,7 @@ class Post extends Component {
         return  <>
                 <div className="post-headline"></div>
                 <div className="post-container mt-5">
-                    <div className="col-md-8 mx-auto p-0 py-4 mt-3 mb-3 bg-white p-md-3">
+                    <div className="col-md-8 mx-auto p-0 py-4 mt-3 mb-3 bg-white shadow p-md-3">
                         <div className="px-3 px-md-0">
                             <a className="text-dark" href={ this.state.channel === "General-Article" ? "/home": `/${this.state.channel}`}>
                                 { this.state.channel === "General-Article" 
@@ -179,7 +179,7 @@ class Post extends Component {
                                     <h2 className="font-weight-bold">Comment</h2>
                                     <p className="text-dark m-0"><span className="icons" role="img" aria-label="comment">💬</span> <small>{ this.state.comments.length } { this.state.comments.length <= 1 ? " comment" : " comments"}</small></p>
                                 </div>
-                                <div className="blog-post p-3 mb-3" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
+                                <div className="blog-post p-3" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                                     { this.state.comments.map(comment => {
                                         return  <div className="text-dark" key={ comment._id}>
                                                     <div className="d-flex justify-content-between">
