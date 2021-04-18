@@ -2,6 +2,13 @@ a {
     text-decoration: none !important;
 }
 
+.profile-header {
+    background-color: #001630;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .profile-head {
     transform: translateY(5.5rem)
 }

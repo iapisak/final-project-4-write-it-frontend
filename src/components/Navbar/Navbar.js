@@ -43,7 +43,7 @@ class Navbar extends Component {
                                     <li className="nav-item">
                                         <div className="nav-link navbar-user d-flex align-items-center">
                                             <img src={ this.props.userPhoto} alt="" width="38" height="38"/>
-                                            <span className="ml-2 text-light">Hi, <a className="text-light" href={`/profile/${this.props.currentUser}`}>{ this.props.userSlug }</a></span>
+                                            <a className="ml-2 text-warning" href={`/profile/${this.props.currentUser}`}>{ this.props.userSlug }</a>
                                         </div>
                                     </li>
                                     <li className="nav-item d-flex align-items-center" onClick={ this.props.logout }>
