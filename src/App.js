@@ -12,9 +12,6 @@ class App extends Component {
     username: localStorage.getItem('username'),
     userSlug: localStorage.getItem('slug'),
     userPhoto: localStorage.getItem('photo'),
-    loginToggle: false,
-    signupToggle: false,
-    mainToggle: true,
     channel: [],
   }
 
@@ -32,61 +29,37 @@ class App extends Component {
     localStorage.removeItem('slug')
     localStorage.removeItem('photo')
     axios.delete(`${process.env.REACT_APP_API_URL}/logout`)
-    .then(res => {
+    .then(() => {
       this.setState({ currentUser: null, username: '' });
       this.props.history.push('/');
       })
       .catch(err => console.log(err));
   };
 
-  loginToggle = (e) => {
-    this.setState({ 
-        loginToggle: !this.state.loginToggle, 
-        signupToggle: false, 
-        mainToggle: this.state.loginToggle === true ? true: false, });
-  }
-
-  signupToggle = (e) => {
-    this.setState({ 
-        signupToggle: !this.state.signupToggle, 
-        loginToggle: false, 
-        mainToggle: this.state.signupToggle === true ? true: false, });
-  }
-
   componentDidMount () {
     axios.get(`${process.env.REACT_APP_API_URL}/channel`)
-    .then(res => {
-        this.setState({ channel: res.data.data });
-        })
+    .then(async res => {
+      const channels = await res.data.data.filter(item => item._id !== '5fadad8b99d1600017502810')
+      this.setState({ channel: channels});
+    })
     .catch(err => console.log(err));
   }
 
   render() {
+    return <>
+            { this.state.currentUser 
+              ? <Navbar currentUser={ this.state.currentUser } logout={ this.logout } category={ this.state.channel } />
+              : null
+            }
+              
+            <Routes 
+              currentUser={ this.state.currentUser } 
+              username={ this.state.username }
+              userSlug={ this.state.userSlug}
+              setCurrentUser={ this.setCurrentUser }
+              category={ this.state.channel } />
+            </>
     
-    return (
-      <>
-      <Navbar 
-        currentUser={ this.state.currentUser }
-        username={ this.state.username }
-        userPhoto={ this.state.userPhoto }
-        slug={ this.state.userSlug }
-        setCurrentUser={ this.setCurrentUser }
-        logout={ this.logout }
-        login={ this.state.loginToggle }
-        signup={ this.state.signupToggle }
-        loginToggle={ this.loginToggle }
-        signupToggle={ this.signupToggle } 
-        category={ this.state.channel } />
-
-        <main style={{ display: this.state.mainToggle ? 'block': 'none' }}>
-          <Routes 
-            currentUser={ this.state.currentUser } 
-            username={ this.state.username }
-            userSlug={ this.state.userSlug}
-            category={ this.state.channel } />
-        </main>
-      </>
-    );
   }
 }
 

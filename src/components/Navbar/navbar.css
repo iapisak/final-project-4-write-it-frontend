@@ -1,0 +1,13 @@
+.navbar-sticky-top {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    transition: transform 0.5s;
+    z-index: 99999;
+}
+
+.light-nav {
+    background-color: #001630;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    z-index: 9999;
+}
