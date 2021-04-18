@@ -23,13 +23,12 @@ class Navbar extends Component {
         })
 
         return  <div className="navbar-sticky-top">
-                    <div className="col-md-8 mx-auto">
-                        <nav id="nav-top" className="navbar navbar-expand-lg navbar-dark rounded px-md-0">
-                            {/* <h3 className="navbar-item text-warning">Write-it</h3> */}
-                            <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
+                    <div className="col-md-8 mx-auto p-0">
+                        <nav id="nav-top" className="navbar navbar-expand-lg navbar-dark rounded px-0">
+                            <button className="navbar-toggler ml-auto m-2" type="button" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            <div className="collapse navbar-collapse" id="navbar-1">
+                            <div className="collapse navbar-collapse px-3" id="navbar-1">
                                 <ul className="navbar-nav mr-auto">
                                     <li className="nav-item">
                                         <a className="nav-link text-light" href="/home">Home</a>
@@ -40,13 +39,16 @@ class Navbar extends Component {
                                                 </li>
                                     }) }
                                 </ul>
-                                <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <a className="nav-link text-light" href={`/profile/${this.props.currentUser}`}>Profile</a>
-                                </li>
-                                <li className="nav-item" onClick={ this.props.logout }>
-                                    <div className="nav-link text-light" style={{ cursor: 'pointer' }}>Sign out</div>
-                                </li>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <div className="nav-link navbar-user d-flex align-items-center">
+                                            <img src={ this.props.userPhoto} alt="" width="38" height="38"/>
+                                            <span className="ml-2 text-light">Hi, <a className="text-light" href={`/profile/${this.props.currentUser}`}>{ this.props.userSlug }</a></span>
+                                        </div>
+                                    </li>
+                                    <li className="nav-item d-flex align-items-center" onClick={ this.props.logout }>
+                                        <div className="nav-link text-light" style={{ cursor: 'pointer' }}>Sign out</div>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
