@@ -76,8 +76,7 @@ class Post extends Component {
     handleDelete = () => {
         const post_Id = this.state.postId
         axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`)
-        .then((res) => {
-            console.log(res)
+        .then(() => {
             if (this.state.channel === "General-Article") {
                 this.props.history.push(`/`)
             } else this.props.history.push(`/${ this.state.channel }`)
@@ -193,7 +192,7 @@ class Post extends Component {
                                     : this.state.comments.map((comment, index) => {
                                         return  <div className="text-dark" key={ comment._id}>
                                                     <div className="d-flex justify-content-between">
-                                                        <a classname="font-weight-bold" href={`/profile/${comment.user}`}><small className="mb-1 text-info">{ comment.userSlug }</small></a>
+                                                        <a className="font-weight-bold" href={`/profile/${comment.user}`}><small className="mb-1 text-info">{ comment.userSlug }</small></a>
                                                         <small className="mb-2">{moment(comment.date).fromNow()}</small>
                                                     </div>
                                                     <p className="mb-1" style={{ fontSize: '0.8rem', fontWeight: '300' }}>{ comment.comment }</p>
