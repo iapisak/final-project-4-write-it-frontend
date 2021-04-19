@@ -61,10 +61,11 @@ class Profile extends Component {
                                                     <p className="mb-2 text-dark" style={{ fontWeight: '300', fontSize: '13px' }}>Post on { moment(post.date).format('MMMM D, YYYY') }</p> 
                                                     <small className="">{ moment(post.date).fromNow() }</small>
                                                 </div>
-                                                <div className="mb-3" style={{ height: "250px", overflow: "hidden" }}>
-                                                    <a href={`/post/${post._id}`}>
-                                                        <img className="img-fluid" src={ post.photo } alt={ post.title } />
-                                                    </a>
+                                                <div className="mb-3 d-flex justify-content-center" style={{ height: "240px", overflow: "hidden" }}>
+                                                { post.photo 
+                                                    ? <a href={`/post/${post._id}`}><img className="img-fluid" src={ post.photo } alt={ post.photo} onError={ (e)=>  e.target.src = 'https://www.pmchospitals.com/libs/images/error-404.png' } / ></a>
+                                                    : <a href={`/post/${post._id}`}><img className="img-fluid" src="https://www.xlcncm.com/images/products/vertical-honing.jpg" alt="error"/></a> 
+                                                }
                                                 </div>
                                                 <a className="text-dark lead mb-2" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}><h5 className="display-5">{ index + 1 }. { post.title }</h5></a>
                                                 <p className="text-secondary" style={{ fontWeight: '100', fontSize: '14px' }}>{ content } { template }</p>

@@ -104,12 +104,11 @@ class Home extends Component {
                         } else content = post.content
 
                         return  <div className="d-md-flex" key={ post.photo }>
-                                    <div className="col-md-3 p-0 mb-3 py-md-1" style={{ height: "210px", overflow: "hidden" }}>
-                                        { post.photo ? 
-                                        <a href={`/post/${post._id}`}>
-                                            <img className="img-fluid" src={ post.photo } alt={ post.photo} / >
-                                        </a>
-                                        : null }
+                                    <div className="col-md-3 p-0 mb-3 py-md-1 d-flex justify-content-center" style={{ height: "180px", overflow: "hidden" }}>
+                                    { post.photo 
+                                        ? <a href={`/post/${post._id}`}><img className="img-fluid" src={ post.photo } alt={ post.photo} onError={ (e)=>  e.target.src = 'https://www.pmchospitals.com/libs/images/error-404.png' } / ></a>
+                                        : <a href={`/post/${post._id}`}><img className="img-fluid" src="https://www.xlcncm.com/images/products/vertical-honing.jpg" alt="error"/></a> 
+                                    }
                                     </div>
                                     <div className="col-md-9 mb-3">
                                         <a className="text-dark lead" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}>
