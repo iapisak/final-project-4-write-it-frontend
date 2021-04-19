@@ -108,9 +108,9 @@ class Signup extends Component {
   render() {
 
     return  <div id="signup" >
-              <div className="container p-0 pt-3">
+              <div className="container p-0 pt-md-3">
                 <div className="d-flex justify-content-center align-items-center flex-wrap">
-                    <div className="col-md-6 p-md-0 pr-md-4 mb-4 mb-md-0">
+                    <div className="col-md-6 p-md-0 pr-md-4 mb-4 mb-md-0 d-none d-md-block">
                       <div className="my-3 pr-md-3 text-md-right welcome"> 
                           <h1 className="display-3 font-weight-bold ">Write-it</h1>
                           <p className="content mb-5">Write-It is social Blog with different communities that users can join. In these communities, users can create posts to share their experiences with other users or comment on other user's posts. The goal of this site is to create an online community for users to share their interests and ideas</p>

@@ -92,7 +92,7 @@ class Login extends Component {
                                     <div className="row justify-content-center mb-4">
                                         <small>or <a href="/register" className="text-secondary">Register</a></small>
                                     </div>
-                                    <div className="w-100" style={{ width: '', overflow: "hidden" }}>
+                                    <div className="w-100 d-none d-md-block">
                                         <img className="img-fluid" style={{ opacity: "0.9" }}
                                             src="https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80" alt=""/>
                                     </div>
