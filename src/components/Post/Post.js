@@ -76,7 +76,8 @@ class Post extends Component {
     handleDelete = () => {
         const post_Id = this.state.postId
         axios.delete(`${process.env.REACT_APP_API_URL}/posts/delete/${post_Id}`)
-        .then(() => {
+        .then((res) => {
+            console.log(res)
             if (this.state.channel === "General-Article") {
                 this.props.history.push(`/`)
             } else this.props.history.push(`/${ this.state.channel }`)
