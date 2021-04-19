@@ -164,8 +164,11 @@ class Post extends Component {
                                 </div>
 
                                 {/* Start from here */}
+                                { this.state.photo 
+                                    ? <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } onError={ e => e.target.src = "https://www.pmchospitals.com/libs/images/error-404.png" }/>
+                                    : <img className="img-fluid" src="https://www.xlcncm.com/images/products/vertical-honing.jpg" alt="error"/> 
+                                }
 
-                                <img className="img-fluid" src={ this.state.photo } alt={ this.state.title } />
                                 { this.props.currentUser === this.state.userId ? 
                                 <div className="d-flex justify-content-end">
                                     <p className="m-0 p-2 pb-0 text-primary" data-toggle="collapse" data-target="#post-edit" aria-expanded="false" style={{ cursor: 'pointer' }}><small>Edit</small></p>
