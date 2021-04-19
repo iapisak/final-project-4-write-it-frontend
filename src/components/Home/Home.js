@@ -94,7 +94,7 @@ class Home extends Component {
                             }
                         </div>
                         <hr className="mt-0"/>
-                        <p className="text-secondary" style={{ fontWeight: "100", fontSize: '14px' }}>{ this.props.channelDetail }</p>
+                        <p className="text-secondary" style={{ fontSize: '14px', fontWeight: "300" }}>{ this.props.channelDetail }</p>
                     </div>
                     { this.state.posts.map(post => {
                         const template = <a className="text-info" href={`/post/${ post._id }`} style={{ textDecoration: 'none'}}><small>learn more</small></a>
@@ -125,10 +125,10 @@ class Home extends Component {
                         <div className="col-md-5 py-3 row m-0 mb-5 mb-md-0 pr-md-3 border shadow" style={{ backgroundColor: "rgba(149,117,205,0.06)"}}>
                             <div>
                                 <h4>Tell your story</h4>
-                                <p className="text-muted mb-4" style={{ fontSize: '13px', fontWeight: '100' }}>Speaking of stories, every blog post needs to have a beginning, a middle and an end. Think of it as an introduction, the main information, and conclusion if you prefer. Even if you don’t give use to those sub-headings because, hopefully, you’ve come up with hotter ones, do follow the convention to avoid confusing your readers.</p>
+                                <p className="text-secondary mb-4" style={{ fontSize: '14px', fontWeight: '300' }}>Speaking of stories, every blog post needs to have a beginning, a middle and an end. Think of it as an introduction, the main information, and conclusion if you prefer. Even if you don’t give use to those sub-headings because, hopefully, you’ve come up with hotter ones, do follow the convention to avoid confusing your readers.</p>
                                 <hr className=""/>
                                 <h4>Use image</h4>
-                                <p className="text-muted" style={{ fontSize: '13px', fontWeight: '100' }}>Good use of images will draw readers into your blog posts. Sometimes I read a post purely because I like the image. Ideally, your images will add to your blog or emphasize your message</p>
+                                <p className="text-secondary" style={{ fontSize: '14px', fontWeight: '300' }}>Good use of images will draw readers into your blog posts. Sometimes I read a post purely because I like the image. Ideally, your images will add to your blog or emphasize your message</p>
                             </div>
                         </div>
                         <div className="col-md-7 p-0 px-md-3">

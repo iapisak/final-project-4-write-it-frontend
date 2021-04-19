@@ -176,7 +176,7 @@ class Post extends Component {
                                 </div>
                                 : null }
                                 <h4 className="display-5 border-bottom mt-3 pb-2">{ title }</h4> 
-                                <p className="text-secondary mt-2 mb-4" style={{ whiteSpace: 'pre-line', fontWeight: '100', fontSize: '14px' }}>{ content }</p>
+                                <p className="text-secondary mt-2 mb-4" style={{ whiteSpace: 'pre-line', fontWeight: '300', fontSize: '14px' }}>{ content }</p>
                                 <a href="#top" className="text-center"><small>- Back to the top -</small></a>
 
                                 {/* End here */}
@@ -195,7 +195,7 @@ class Post extends Component {
                                                         <a classname="font-weight-bold" href={`/profile/${comment.user}`}><small className="mb-1 text-info">{ comment.userSlug }</small></a>
                                                         <small className="mb-2">{moment(comment.date).fromNow()}</small>
                                                     </div>
-                                                    <p className="mb-1" style={{ fontSize: '0.8rem' }}>{ comment.comment }</p>
+                                                    <p className="mb-1" style={{ fontSize: '0.8rem', fontWeight: '300' }}>{ comment.comment }</p>
                                                     { this.props.currentUser === comment.user 
                                                         ?   <small className="text-danger text-right mb-1"
                                                             style={{ cursor: 'pointer' }}

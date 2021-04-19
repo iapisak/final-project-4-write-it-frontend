@@ -58,11 +58,11 @@ class Login extends Component {
 
     render () {
         return  <div id="login">
-                    <div className="container p-0 py-3">
+                    <div className="container p-0 pt-3">
                         <div className="d-flex justify-content-center align-items-center flex-wrap">
                             <div className="col-md-6 p-md-0 pr-md-4 mb-4 mb-md-0">
                                 <div className="my-3 pr-md-3 text-md-right welcome"> 
-                                    <h1 className="display-3 font-weight-bold " style={{ textShadow: "white 0px 0px 3px" }}>Write-it</h1>
+                                    <h1 className="display-3 font-weight-bold ">Write-it</h1>
                                     <p className="content mb-5">Write-It is social Blog with different communities that users can join. In these communities, users can create posts to share their experiences with other users or comment on other user's posts. The goal of this site is to create an online community for users to share their interests and ideas</p>
                                     <h2 className="display-6 font-weight-bold">Test with this account</h2>
                                     <p className="content">
@@ -92,8 +92,10 @@ class Login extends Component {
                                     <div className="row justify-content-center mb-4">
                                         <small>or <a href="/register" className="text-secondary">Register</a></small>
                                     </div>
-                                    <img style={{ opacity: "0.9" }}
-                                         src="https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80" alt=""/>
+                                    <div className="w-100" style={{ width: '', overflow: "hidden" }}>
+                                        <img className="img-fluid" style={{ opacity: "0.9" }}
+                                            src="https://images.unsplash.com/photo-1478728073286-db190d3d8ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80" alt=""/>
+                                    </div>
                                 </form> 
                             </div>
                         </div>

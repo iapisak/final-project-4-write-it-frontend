@@ -68,11 +68,11 @@ class Profile extends Component {
                                                 }
                                                 </div>
                                                 <a className="text-dark lead mb-2" href={`/post/${post._id}`} style={{ textDecoration: 'none'}}><h5 className="display-5">{ index + 1 }. { post.title }</h5></a>
-                                                <p className="text-secondary" style={{ fontWeight: '100', fontSize: '14px' }}>{ content } { template }</p>
+                                                <p className="text-secondary" style={{ fontWeight: '300', fontSize: '14px' }}>{ content } { template }</p>
                                                 <hr className=""/>
                                         </div> })
                             : <div className="p-3 p-md-0">
-                                <p className="text-secondary" style={{ fontWeight: '100', fontSize: '14px' }}>No Article created</p>
+                                <p className="text-secondary" style={{ fontWeight: '300', fontSize: '14px' }}>No Article created</p>
                               </div>
                         }
                     </div>
@@ -86,7 +86,7 @@ class Profile extends Component {
                                                     <small className="mb-1"><a href={`/post/${ comment.post }`}>Read the Article...</a></small>
                                                     <small className="mb-1 text-dark">{moment(comment.date).fromNow()}</small>
                                                 </div>
-                                                <p className="text-secondary mb-1" style={{ fontWeight: '100', fontSize: '14px' }}>{ comment.comment }</p>
+                                                <p className="text-secondary mb-1" style={{ fontWeight: '300', fontSize: '14px' }}>{ comment.comment }</p>
                                                 { this.props.currentUser === comment.user._id 
                                                     ? <small className="text-danger text-right mb-1"
                                                         style={{ cursor: 'pointer' }}
@@ -99,7 +99,7 @@ class Profile extends Component {
                                                 { index !== (commentsLength - 1) ? <hr /> : null}
                                             </div>
                                 })
-                            : <div><p className="text-secondary mb-1" style={{ fontWeight: '100', fontSize: '14px' }}>No comment found</p></div>
+                            : <div><p className="text-secondary mb-1" style={{ fontWeight: '300', fontSize: '14px' }}>No comment found</p></div>
                             }
                         </div>
                     </div>
